@@ -6,8 +6,8 @@
   "scripts": {
     "preinstall": "npm install -g http-server",
     "postinstall": "ng build --prod && mv dist/* .",
-    "start":        "http-server",
-
+    "start": "http-server",
+    "start_lolal": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
@@ -54,6 +54,5 @@
     "webdriver-manager": "10.2.5"
   },
   "devDependencies": {
-
   }
 }
