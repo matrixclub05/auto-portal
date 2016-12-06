@@ -15,6 +15,7 @@ import {PartsComponent} from "./pages/shop/parts/parts.component";
 import {GoodsComponent} from "./pages/shop/goods/goods.component";
 import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.component";
 import {CreditCalcComponent} from "./components/credit-calc/credit-calc.component";
+import {StartServiceComponent} from "./pages/service/start-service/start-service.component";
 
 const appRoutes: Routes = [
   {
@@ -65,7 +66,32 @@ const appRoutes: Routes = [
 
     ]
   },
-  { path: 'service', component: ServiceComponent },
+  { path: 'service', component: ServiceComponent,
+    children: [
+      {
+        path: '',
+        component: StartServiceComponent
+      },
+      {
+        path: 'machines',
+        component: MachinesComponent
+      },
+      {
+        path: 'parts',
+        component: PartsComponent
+      },
+      {
+        path: 'cart',
+        component: ShoppingCartComponent
+      },
+      {
+        path: 'goods',
+        component: GoodsComponent
+      },
+      { path: 'credit-calc', component: CreditCalcComponent }
+
+    ]
+  },
 
 
 
