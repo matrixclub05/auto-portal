@@ -1,0 +1,7 @@
+<div class="row">
+  <div *ngFor="let item of this._loginService.loginData.getUserData('garageCar').shopCartData" [ngSwitch]="item.type" class="col-md-4">
+      <div *ngSwitchCase="'Car'">
+        <img src="assets/default-car-image.jpg" width="100%"/>
+      </div>
+  </div>
+</div>
