@@ -4,8 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "preinstall": "npm install -g http-server",
-    "postinstall": "ng build --prod",
+
     "start":        "http-server dist/",
 
     "lint": "tslint \"src/**/*.ts\"",
@@ -18,6 +17,7 @@
   },
   "private": true,
   "dependencies": {
+    "http-server": "*",
     "@angular/common": "^2.1.0",
     "@angular/compiler": "^2.1.0",
     "@angular/core": "^2.1.0",
