@@ -5,6 +5,7 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 import { MachinesComponent } from './machines/machines.component';
 import { PartsComponent } from './parts/parts.component';
 import { GoodsComponent } from './goods/goods.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   imports: [

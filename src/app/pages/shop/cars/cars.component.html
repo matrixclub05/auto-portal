@@ -71,4 +71,16 @@
   </div>
 
 
+  <div class="car-pop-out" #carPopOut>
+    <h5>Автомобиль Добавлен в Корзину</h5>
+    <div class="car-item" *ngIf="_carToAddToCart">
+      <h4>{{_carToAddToCart.name}}</h4>
+      <div>{{_carToAddToCart.engineCapacity}}</div>
+      <div>{{_carToAddToCart.engineType}}</div>
+      <div>{{_carToAddToCart.transmissionType}}</div>
+      <!--<img src="{{item.photo}}" width="100%"/>-->
+      <img src="assets/default-car-image.jpg" width="100%"/>
+    </div>
+  </div>
+
 

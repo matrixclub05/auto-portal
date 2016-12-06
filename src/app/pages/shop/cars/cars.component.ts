@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterContentInit, AfterViewInit} from '@angular/core';
+import {Component, OnInit, AfterContentInit, AfterViewInit, ViewChild} from '@angular/core';
 import {Cars} from "../../../garage/draftData/Cars";
 import {AskToRegisterBanerComponent} from "../../../registration/ask-to-register-baner/ask-to-register-baner.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -11,6 +11,8 @@ import {UserData, IGoods} from "../../../global-services/data-objects/UserData";
   styleUrls: ['./cars.component.scss']
 })
 export class CarsComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('carPopOut') popOut;
 
   protected carEngineTypes = ['Дизельный', "Бензиновый", 'LPG'];
   protected carEngineCapacity = ['2.0', '1.8', '1.6', '2.0T', '3.0T'];
@@ -25,6 +27,10 @@ export class CarsComponent implements OnInit, AfterViewInit {
   private _carList:Array<CarShopSingleCar> = [];
 
   private _carsToDisplay:Array<CarShopSingleCar> = [];
+
+  private _carToAddToCart:CarShopSingleCar = null;
+
+  private timeout = null;
 
   constructor(private _modalService: NgbModal, private _loginService:LoginServiceService)
   {
@@ -77,6 +83,14 @@ export class CarsComponent implements OnInit, AfterViewInit {
     let ud:UserData = this._loginService.loginData.getUserData("garageCar");
     ud.shopCartData.push(car);
 
+    this._carToAddToCart = car;
+
+    let pnE = this.popOut.nativeElement;
+    pnE.style.display = "block";
+
+    let k = function(){pnE.style.display = "none"};
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(k, 2000);
     this._loginService.loginData.storeUserData("garageCar", ud);
   }
 
