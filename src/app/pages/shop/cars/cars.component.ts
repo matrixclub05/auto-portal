@@ -2,6 +2,8 @@ import {Component, OnInit, AfterContentInit, AfterViewInit} from '@angular/core'
 import {Cars} from "../../../garage/draftData/Cars";
 import {AskToRegisterBanerComponent} from "../../../registration/ask-to-register-baner/ask-to-register-baner.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {LoginServiceService} from "../../../global-services/login-service.service";
+import {UserData, IGoods} from "../../../global-services/data-objects/UserData";
 
 @Component({
   selector: 'app-cars',
@@ -24,7 +26,7 @@ export class CarsComponent implements OnInit, AfterViewInit {
 
   private _carsToDisplay:Array<CarShopSingleCar> = [];
 
-  constructor(private _modalService: NgbModal)
+  constructor(private _modalService: NgbModal, private _loginService:LoginServiceService)
   {
     var aDaTa = Cars.accessoryData;
     for(let key in aDaTa)
@@ -72,7 +74,10 @@ export class CarsComponent implements OnInit, AfterViewInit {
 
   protected haveARide(car:CarShopSingleCar)
   {
-    alert(JSON.stringify(car));
+    let ud:UserData = this._loginService.loginData.getUserData("garageCar");
+    ud.shopCartData.push(car);
+
+    this._loginService.loginData.storeUserData("garageCar", ud);
   }
 
   protected shuffle(a)
@@ -103,8 +108,11 @@ export class CarsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
-    modalInstance.componentInstance.modalInstance = modalInstance;
+    if(!this._loginService.isLoggedIn)
+    {
+      let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
+      modalInstance.componentInstance.modalInstance = modalInstance;
+    }
   }
 
   ngAfterViewInit()
@@ -118,8 +126,10 @@ export class CarsComponent implements OnInit, AfterViewInit {
 }
 
 
-export class CarShopSingleCar
+export class CarShopSingleCar implements IGoods
 {
+  public readonly type:string = "Car"
+
   constructor(public name:string,
   public engineCapacity:string,
   public engineType:string,
