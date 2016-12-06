@@ -1,29 +1,18 @@
-:host
-{
-  padding: 20px;
+:host {
+  padding: 15px;
+  display: block;
 }
-
-#reg-form-holder
-{
-  padding: 10px 20px 10px 20px;
-
-  .form-group
-  {
-    margin: 10px 0;
-  }
-
-  .form-group a:visited
-  {
-    color:#fff;
-  }
-
-  .mainbox
-  {
-    overflow: auto;
-  }
-
-  .prcdbtns
-  {
-    margin: 5px;
+.form-group::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+.panel-title {
+  margin-bottom: 15px;
+  line-height: 2em;
+  &::after{
+    content: '';
+    display: block;
+    border-bottom: 2px solid #df1f3d;
   }
 }
