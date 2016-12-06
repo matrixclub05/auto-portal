@@ -1,0 +1,21 @@
+.description
+{
+  text-overflow: ellipsis;
+  height: 53px;
+  overflow: hidden;
+}
+
+.car-item {
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  margin-left: -15px;
+  padding: 10px;
+}
+
+.car-item h4
+{
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 79px;
+}
