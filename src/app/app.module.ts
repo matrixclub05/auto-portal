@@ -40,6 +40,7 @@ import {CarsComponent} from "./pages/shop/cars/cars.component";
 import {MachinesComponent} from "./pages/shop/machines/machines.component";
 import {PartsComponent} from "./pages/shop/parts/parts.component";
 import {GoodsComponent} from "./pages/shop/goods/goods.component";
+import { CreditCalcComponent } from './components/credit-calc/credit-calc.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import {GoodsComponent} from "./pages/shop/goods/goods.component";
     SignUpForServiceComponent,
     AboutComponent,
     PersonalComponent,
-    ServiceComponent
+    ServiceComponent,
+    CreditCalcComponent
   ],
   imports: [
     BrowserModule,
