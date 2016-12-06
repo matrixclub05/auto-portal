@@ -1,0 +1,15 @@
+:host
+{
+  display: block;
+}
+
+.modal-header{
+  position: absolute;
+  right: 0;
+  width: 50px;
+  z-index: 50;
+}
+
+.modal-footer{
+  border: 0;
+}
