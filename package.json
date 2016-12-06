@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "preinstall": "npm install -g http-server",
+    "preinstall": "npm install -g angular-cli",
     "postinstall": "ng build --prod",
     "start": "http-server dist/",
     "start_local": "ng serve",
