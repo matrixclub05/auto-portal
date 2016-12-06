@@ -6,4 +6,10 @@ export class UserData
 {
   public carList:Array<CarData> = [];
   public selectedCar:CarData = null;
+  public shopCartData:Array<IGoods> = [];
+}
+
+export interface IGoods{
+  readonly type:string;
+  photo:string;
 }
