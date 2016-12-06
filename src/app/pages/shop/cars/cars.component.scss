@@ -14,3 +14,28 @@ h4 {
   font-size: 18px;
   color: #df1f3d;
 }
+
+.car-pop-out
+{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 42%;
+  bottom: 0;
+  width: 240px;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  background-color: white;
+  padding: 2px 15px 0 19px;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {bottom: -400px}
+  100% {bottom: 0}
+}
+
+@keyframes fadeIn {
+  0% {bottom: -400px}
+  100% {bottom: 0}
+}
