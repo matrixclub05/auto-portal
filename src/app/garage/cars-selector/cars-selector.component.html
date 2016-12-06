@@ -1,0 +1,19 @@
+<div *ngIf="_carList.length > 0" class="container list-group row">
+  <div class="col-md-3">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let car of _carList; let i = index"
+          [ngClass]="{active: i === _selectedCarIndex}" (click)="setSelectedIndex(i)">{{car.manufacturer}} {{car.model}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9 list-group-item">
+    <div *ngIf="(_carViewState == CAR_VIEW_STATES.CarView)" app-garage-single-car [_car]="selectedCar"
+         (onSelected)="openServiceBook($event)"></div>
+
+    <div *ngIf="_carViewState == CAR_VIEW_STATES.ServiceBook" service-book [carServiceBook]="_garageData.serviceBook"
+         (goBack)="showCar($event)">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="_carList.length ==0" add-to-garage-button></div>

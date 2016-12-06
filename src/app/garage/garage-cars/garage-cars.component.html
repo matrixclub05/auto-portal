@@ -1,0 +1,11 @@
+<div *ngIf="_currentState == _states.ADD_CARS_OR_SHOW_CARS">
+
+  <div *ngIf="getAndSaveGarageCars().length > 0" class="row">
+
+      <div class="col-lg-6" *ngFor="let car of _carList" app-garage-single-car [_car]="car" (onSelected)="onCarSelected($event)" ></div>
+
+  </div>
+</div>
+
+<span *ngIf="_currentState == _states.SERVICE_BOOK" service-book [carServiceBook]="_garageData.serviceBook" (goBack)="backFromServiceBook($event)">
+</span>

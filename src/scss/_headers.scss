@@ -1,0 +1,32 @@
+.top-bar {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.sub-breadcrumbs{
+  text-align: right;
+
+  margin: 0;
+  position: relative;
+  height: 38px;
+  &::after{
+    content: '';
+    clear: both;
+    display: table;
+  }
+  &>h2{
+    font-size: 20px;
+    color: #df1f3d;
+    float: right;
+    margin: 0;
+    width: 40%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    &::after {
+      content: '';
+      display: block;
+      border-bottom: 2px solid #111;
+      margin-top: 5px;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<section class="container top">
+  <div class="breadcrumbs">
+    <div class="row vertical-align">
+      <nav class="col-sm-7 vertical-align">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/shop/cars']" [routerLinkActive]="['active']">Автомобили</a>
+            <!--<ul class="sub-menu">
+              <li>
+                <a [routerLink]="['/profile/car-store']">
+                Легковые
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/profile/car-store']">
+                Спецтехника
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/profile/car-store']">
+                Подобрать авто
+                </a>
+              </li>
+            </ul>-->
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/machines']" [routerLinkActive]="['active']">Техника</a>
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/parts']" [routerLinkActive]="['active']">Запчасти</a>
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/goods']" [routerLinkActive]="['active']">Товары</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="col-sm-5 vertical-align">Салон-магазин</h1>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+</section>
+
+<div class="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <app-rollover-btn [text]="'Запись на тест-драйв'" [height]="150"></app-rollover-btn>
+      </div>
+      <div class="col-lg-4">
+        <app-rollover-btn [text]="'Заказ запчастей'" [height]="150"></app-rollover-btn>
+      </div>
+      <div class="col-lg-4">
+        <app-rollover-btn [text]="'Страховка'" [height]="150"></app-rollover-btn>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <app-categories class="col-sm-9"></app-categories>
+    <div class="col-sm-3">
+      <img src="assets/ads_black.jpg" alt="" width="100%">
+      <img src="assets/vestaxray.jpg" alt="" width="100%">
+    </div>
+  </div>
+</div>
+

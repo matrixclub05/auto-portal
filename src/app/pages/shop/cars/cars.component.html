@@ -1,0 +1,74 @@
+
+  <div class="row top-bar">
+    <div class="col-sm-4">
+      <input class="form-control" type="text" placeholder="Введите название или марку автомобиля" (input)="onCarFilter($event)"/>
+    </div>
+    <div class="col-sm-8">
+      <div class="sub-breadcrumbs">
+        <h2>Автомобили</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <div class="list-group-item">
+          <label class="control-label">Типы двигателей</label>
+          <div *ngFor="let type of carEngineTypes;">
+            <label for="{{type}}">
+              <input class="checkbox" type="checkbox" id="{{type}}" name="engineType" value="{{type}}"
+                     [(ngModel)]="_selectedEngineType[type]" (ngModelChange)="createCarForDisplay()">
+              {{type}}
+            </label>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <label>Объем двигателя</label>
+          <div *ngFor="let capa of carEngineCapacity">
+            <label for="{{capa}}">
+              <input class="checkbox" type="checkbox" id="{{capa}}" name="engineCapacity" value="{{capa}}"
+                     [(ngModel)]="_selectedEngineCapacity[capa]" (ngModelChange)="createCarForDisplay()">
+              {{capa}}
+            </label>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <label>Тип коробки</label>
+          <div *ngFor="let trans of transmissionTypes">
+            <input class="checkbox" type="checkbox" id="{{trans}}" name="selectedTransmissionType"  value="{{trans}}"
+                   [(ngModel)]="_selectedTransmissionTypes[trans]" (ngModelChange)="createCarForDisplay()">
+            <label class="control-label" for="{{trans}}">{{trans}}</label>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-sm-9">
+
+        <div class="row" *ngIf="_carsToDisplay.length > 0">
+          <div class="col-md-4" *ngFor="let item of _carsToDisplay">
+            <div class="car-item">
+              <h4>{{item.name}}</h4>
+              <div>{{item.engineCapacity}}</div>
+              <div>{{item.engineType}}</div>
+              <div>{{item.transmissionType}}</div>
+              <!--<img src="{{item.photo}}" width="100%"/>-->
+              <img src="assets/default-car-image.jpg" width="100%"/>
+              <button class="btn btn-primary" (click)="haveARide(item)">Прокатиться</button>
+            </div>
+
+          </div>
+        </div>
+        <div *ngIf="_carsToDisplay.length == 0">
+          <p>Ни одна из машин не совпадает с выюраными критериями</p>
+          <p>Пожалуйста измените критерии поиска</p>
+        </div>
+
+    </div>
+
+  </div>
+
+
+

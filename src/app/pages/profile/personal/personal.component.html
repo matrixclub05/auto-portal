@@ -1,0 +1,41 @@
+<div class="row" *ngIf="_loginService.isLoggedIn">
+  <div class="col-sm-6">
+    <div class="form-group ">
+      <label class="control-label" for="step4form-lastname">Фамилия</label>
+      <input type="text" id="step4form-lastname" class="form-control" name="Step4Form[lastname]"
+             [(ngModel)]="user.lastName">
+      <div class="help-block"></div>
+    </div>
+    <div class="form-group required">
+      <label class="control-label" for="step4form-firstname">Имя</label>
+      <input type="text" id="step4form-firstname" class="form-control" name="Step4Form[firstname]"
+             [(ngModel)]="user.firstName">
+
+      <div class="help-block"></div>
+    </div>
+    <div class="form-group ">
+      <label class="control-label" for="step4form-middlename">Отчество</label>
+      <input type="text" id="step4form-middlename" class="form-control" name="Step4Form[middlename]"
+             [(ngModel)]="user.middleName">
+
+      <div class="help-block"></div>
+    </div>
+    <div class="form-group ">
+      <label class="control-label" for="step4form-email">Email</label>
+      <input type="text" id="step4form-email" class="form-control" name="Step4Form[email]" [(ngModel)]="user.login">
+
+      <div class="help-block"></div>
+    </div>
+    <div class="form-group required">
+      <label class="control-label" for="step4form-phone">Мобильный телефон</label>
+      <input type="text" id="step4form-phone" class="form-control" name="Step4Form[phone]"
+             [(ngModel)]="user.phoneNumber">
+      <div class="help-block"></div>
+    </div>
+    <div class="form-group">
+
+        <button id="btn-signup" type="button" class="btn btn-info" (click)="updateUser()">Обновить данные</button>
+
+    </div>
+  </div>
+</div>

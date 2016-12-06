@@ -1,0 +1,24 @@
+
+  <div class="wrapper">
+    <div class="col-xs-4 image">
+      <div class="row">
+        <img src="assets/default-car-image.jpg" width="100%"/>
+      </div>
+
+    </div>
+    <div class="col-xs-8">
+      <ul class="list-group row">
+        <li><h4>{{_car.manufacturer}} {{_car.model}} {{_car.year}}</h4></li>
+        <li>Дата покупки: 20.12.2015</li>
+        <li>Дата последнего ТО: 20.12.2015</li>
+        <li>Дата следующего ТО: 20.12.2015</li>
+        <li>Объем двигателя: 22л</li>
+        <li class="footer">
+          <a href="javascript:void(0)" (click)="select()">Сервисная книга</a>
+        </li>
+
+        <!--<app-rollover-btn [text]="'Сервисная книга'" (click)="select()" class="info small"></app-rollover-btn>-->
+
+      </ul>
+    </div>
+  </div>

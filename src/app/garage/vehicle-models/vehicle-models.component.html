@@ -1,0 +1,37 @@
+<div class="col-sm-6">
+  <div class="form-group">
+    <label for="selectedManufacturer">Марка</label>
+    <select id="selectedManufacturer" class="form-control" [(ngModel)]="_selectedManufacturer"
+            (ngModelChange)="getVehiclesByManufacturer()" [disabled]="_manufacturers.length == 0">
+      <option value="">Выберите Марку</option>
+      <option *ngFor="let manufacturer of _manufacturers" value="{{manufacturer}}">
+        {{manufacturer}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="selectedVehicle">Модель</label>
+    <select id="selectedVehicle" class="form-control" [(ngModel)]="_selectedVehicle" (ngModelChange)="getVehicleYears()"
+            [disabled]="_selectedManufacturer == ''">
+      <option value="">Выберите Модель</option>
+      <option *ngFor="let vehicle of _vehicles" value="{{vehicle}}">
+        {{vehicle}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="selectedYear">Год Выпуска</label>
+    <select id="selectedYear" class="form-control" [(ngModel)]="_selectedYear" [disabled]="_selectedVehicle == ''">
+      <option value="">Выберите Год Выпуска</option>
+      <option *ngFor="let year of _years" value="{{year}}">
+        {{year}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-bipek" (click)="saveCar()" [disabled]="!readyForSave">Добавить в гараж</button>
+  </div>
+</div>

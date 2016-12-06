@@ -1,0 +1,41 @@
+<section class="container top">
+  <div class="breadcrumbs">
+    <div class="row vertical-align">
+      <nav class="col-lg-9 vertical-align">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile/car-store']" [routerLinkActive]="['active']" href="">Мои Автомобили</a>
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:void(0)" >Заказы</a>
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:void(0)">Запчасти</a>
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:void(0)">Сервис</a>
+          </li>
+          <li *ngIf="_loginService.isLoggedIn">
+            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/personal']" [routerLinkActive]="['active']">Личные данные</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="col-lg-3 vertical-align">Гараж</h1>
+    </div>
+  </div>
+
+      <router-outlet></router-outlet>
+
+</section>
+
+<app-store-services></app-store-services>
+
+<div class="container">
+  <div class="row">
+    <app-categories class="col-lg-9"></app-categories>
+    <div class="col-lg-3">
+      <img src="assets/ads_black.jpg" alt="" width="100%">
+      <img src="assets/vestaxray.jpg" alt="" width="100%">
+    </div>
+  </div>
+</div>
