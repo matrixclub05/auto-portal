@@ -7,4 +7,40 @@
       <h2>Товары</h2>
     </div>
   </div>
+
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <div class="list-group-item">
+          <label class="control-label">Типы двигателей</label>
+          <div *ngFor="let type of _types;">
+            <label for="{{type}}">
+              <input class="checkbox" type="checkbox" id="{{type}}" name="engineType" value="{{type}}"
+                     [(ngModel)]="_selectedGoodsType[type]" (ngModelChange)="createGoodListToDisplay()">
+              {{type}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="row" *ngIf="_goodsListToDisplay.length > 0">
+        <div class="col-md-4" *ngFor="let item of _goodsListToDisplay">
+          <div class="car-item">
+            <h4>{{item.name}}</h4>
+            <img src="assets/default-product.png" width="100%"/>
+            <div class="description">{{item.description}}</div>
+            <button class="btn btn-primary" (click)="addGoods(item)">Добавить в корзину</button>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="_goodsListToDisplay.length == 0">
+        <p>Ни одна из машин не совпадает с выюраными критериями</p>
+        <p>Пожалуйста измените критерии поиска</p>
+      </div>
+    </div>
+  </div>
+
+
 </div>
