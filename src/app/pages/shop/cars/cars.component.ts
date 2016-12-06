@@ -1,5 +1,7 @@
 import {Component, OnInit, AfterContentInit, AfterViewInit} from '@angular/core';
 import {Cars} from "../../../garage/draftData/Cars";
+import {AskToRegisterBanerComponent} from "../../../registration/ask-to-register-baner/ask-to-register-baner.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-cars',
@@ -22,7 +24,7 @@ export class CarsComponent implements OnInit, AfterViewInit {
 
   private _carsToDisplay:Array<CarShopSingleCar> = [];
 
-  constructor()
+  constructor(private _modalService: NgbModal)
   {
     var aDaTa = Cars.accessoryData;
     for(let key in aDaTa)
@@ -101,6 +103,8 @@ export class CarsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
+    modalInstance.componentInstance.modalInstance = modalInstance;
   }
 
   ngAfterViewInit()
