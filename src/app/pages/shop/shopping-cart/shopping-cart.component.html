@@ -4,7 +4,7 @@
       <h2>Машины для тестдрайва</h2>
     </div>
   </div>
-  <div *ngFor="let item of _cars" class="col-md-4">
+  <div *ngFor="let item of _cars" class="col-md-3">
       <p>{{item.name}}</p>
       <p>{{item.engineCapacity}}</p>
       <p>{{item.engineType}}</p>
@@ -22,7 +22,7 @@
       <h2>Товары</h2>
     </div>
   </div>
-  <div *ngFor="let item of _rest" class="col-md-4">
+  <div *ngFor="let item of _rest" class="col-md-3">
     <h4>{{item.name}}</h4>
     <div>{{item.type}}</div>
     <img src="assets/default-product.png" width="100%"/>
