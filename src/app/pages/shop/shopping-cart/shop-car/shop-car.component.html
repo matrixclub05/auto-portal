@@ -1,0 +1,15 @@
+<div class="col-sm-12">
+  <div class="sub-breadcrumbs">
+    <h2>Машины для тестдрайва</h2>
+  </div>
+</div>
+<div *ngFor="let item of cars" class="col-md-3">
+  <p>{{item.name}}</p>
+  <p>{{item.engineCapacity}}</p>
+  <p>{{item.engineType}}</p>
+  <p>{{item.transmissionType}}</p>
+  <img src="assets/default-car-image.jpg" width="100%"/>
+</div>
+<div class="col-md-12">
+  <button class="btn btn-primary pull-right">Отправить форму менеджеру</button>
+</div>

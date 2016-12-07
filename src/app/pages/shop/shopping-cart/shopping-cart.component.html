@@ -1,37 +1,9 @@
-<div class="row" *ngIf="_cars.length > 0">
-  <div class="col-sm-12">
-    <div class="sub-breadcrumbs">
-      <h2>Машины для тестдрайва</h2>
-    </div>
-  </div>
-  <div *ngFor="let item of _cars" class="col-md-3">
-      <p>{{item.name}}</p>
-      <p>{{item.engineCapacity}}</p>
-      <p>{{item.engineType}}</p>
-      <p>{{item.transmissionType}}</p>
-      <img src="assets/default-car-image.jpg" width="100%"/>
-  </div>
-  <div class="col-md-12">
-    <button class="btn btn-primary pull-right">Отправить форму менеджеру</button>
-  </div>
+<div class="row" shop-car [cars]="_cars"  *ngIf="_cars.length > 0">
+
 </div>
 
-<div class="row" *ngIf="_rest.length > 0">
-  <div class="col-sm-12">
-    <div class="sub-breadcrumbs">
-      <h2>Товары</h2>
-    </div>
-  </div>
-  <div *ngFor="let item of _rest" class="col-md-3">
-    <h4>{{item.name}}</h4>
-    <div>{{item.type}}</div>
-    <img src="assets/default-product.png" width="100%"/>
-    <div class="description">{{item.description}}</div>
-  </div>
+<div class="row" shop-goods [goods]="_rest" *ngIf="_rest.length > 0">
 
-  <div class="col-md-12">
-    <button class="btn btn-primary pull-right">Оформить заказ</button>
-  </div>
 </div>
 
 <div class="row" *ngIf="_rest.length == 0 && _rest.length == 0">
