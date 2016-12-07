@@ -1,8 +1,12 @@
 <div class="row top-bar">
-  <div class="col-sm-4">
-
+  <div class="col-sm-3">
+    <a class="btn btn-primary w-100" href="javascript:void(0)" [routerLink]="['/service/credit-calc']"
+       [routerLinkActive]="['active']">
+      <i class="fa fa-calculator" aria-hidden="true"></i>
+      Кредитный калькулятор
+    </a>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-9">
     <div class="sub-breadcrumbs">
       <h2>Кредит</h2>
     </div>
@@ -11,11 +15,7 @@
 
 <div class="row">
   <div class="col-sm-3">
-    <a class="btn btn-primary w-100" href="javascript:void(0)" [routerLink]="['/service/credit-calc']"
-       [routerLinkActive]="['active']">
-      <i class="fa fa-calculator" aria-hidden="true"></i>
-      Кредитный калькулятор
-    </a>
+
   </div>
   <div class="col-sm-9 static-content">
 
@@ -126,7 +126,7 @@
       <li>Комиссия за перевод 2%</li>
     </ul>
 
-    <hr>
+    <div class="divider"></div>
 
     <a id="evraziiskiybank"></a>
     <img src="/assets/evraziski.jpg" class="img-responsive img-centered">
@@ -244,7 +244,7 @@
     </table>
 
 
-    <hr>
+    <div class="divider"></div>
     <a id="halykbank"></a>
     <img src="/assets/nbk.jpg" class="img-responsive img-centered">
     <h3>Программа потребительского кредитования на приобретение автомобилей от АО «Народный Банк Казахстана»:</h3>
@@ -367,7 +367,7 @@
     </table>
     </div>
 
-    <hr>
+    <div class="divider"></div>
 
     <a id="alfabank"></a>
     <img src="/assets/alfabank.jpg" class="img-responsive img-centered">

@@ -44,6 +44,7 @@ import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.co
 import { CreditCalcComponent } from './components/credit-calc/credit-calc.component';
 import { StartServiceComponent } from './pages/service/start-service/start-service.component';
 import { ServiceCreditComponent } from './pages/service/service-credit/service-credit.component';
+import { GBEComponent } from './pages/service/gbe/gbe.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { ServiceCreditComponent } from './pages/service/service-credit/service-c
     CreditCalcComponent,
     StartComponent,
     StartServiceComponent,
-    ServiceCreditComponent
+    ServiceCreditComponent,
+    GBEComponent
   ],
   imports: [
     BrowserModule,

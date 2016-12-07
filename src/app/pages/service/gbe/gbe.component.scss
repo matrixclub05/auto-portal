@@ -1,0 +1,29 @@
+:host{
+  display: block;
+}
+.static-content {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.lovato {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li {
+    display: block;
+    min-height: 120px;
+    padding: 10px 0px;
+  }
+}
+ul.lovato li img {
+  display: block;
+  max-width: 100px;
+  float: left;
+  margin: 0 20px 0px 0px;
+}
+blockquote, .mark {
+  background-color: #fff;
+  border-left: 3px solid #b21931;
+  margin: 0 0 10px 20px;
+  padding: 20px;
+}

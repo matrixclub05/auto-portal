@@ -17,6 +17,7 @@ import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.co
 import {CreditCalcComponent} from "./components/credit-calc/credit-calc.component";
 import {StartServiceComponent} from "./pages/service/start-service/start-service.component";
 import {ServiceCreditComponent} from "./pages/service/service-credit/service-credit.component";
+import {GBEComponent} from "./pages/service/gbe/gbe.component";
 
 const appRoutes: Routes = [
   {
@@ -76,6 +77,10 @@ const appRoutes: Routes = [
       {
         path: 'credit',
         component: ServiceCreditComponent
+      },
+      {
+        path: 'gbe',
+        component: GBEComponent
       },
       { path: 'credit-calc', component: CreditCalcComponent },
       {
