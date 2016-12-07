@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ReflectiveInjector} from '@angular/core';
 import {GarageDataService} from "../services/garage-data.service";
-import {NgbTabChangeEvent, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {NgbTabChangeEvent} from "@ng-bootstrap/ng-bootstrap";
 import {LoginServiceService} from "../../global-services/login-service.service";
 
 @Component({
@@ -10,7 +10,9 @@ import {LoginServiceService} from "../../global-services/login-service.service";
 })
 export class SignUpForServiceComponent implements OnInit {
 
-  protected _modalRef:NgbModalRef = null;
+  protected _modalRef:any = null;
+
+  private _testDriveMode:boolean = false;
 
   protected _manufacturers:Array<string> = [];
   protected _vehicles:Array<string> = [];
@@ -18,24 +20,13 @@ export class SignUpForServiceComponent implements OnInit {
   protected _selectedManufacturer:string = "";
   protected _selectedVehicle:string = "";
 
-  constructor(private _garageDataService:GarageDataService, private _loginService:LoginServiceService)
+  constructor(private _garageDataService:GarageDataService)
   {
 
   }
 
   ngOnInit() {
 
-    let userData = this._loginService.loginData.getUserData("garageCar");
-    let selectedCar = userData.selectedCar;
-    if(selectedCar)
-    {
-      this._selectedManufacturer = selectedCar.manufacturer;
-      if(selectedCar.manufacturer)
-      {
-        this.getVehiclesByManufacturer();
-      }
-      this._selectedVehicle = selectedCar.model;
-    }
     this.getManufacturers();
   }
 
@@ -57,9 +48,14 @@ export class SignUpForServiceComponent implements OnInit {
 
   }
 
-  public set modalRef(modalRef:NgbModalRef)
+  public set modalRef(modalRef:any)
   {
     this._modalRef = modalRef;
+  }
+
+
+  set testDriveMode(value: boolean) {
+    this._testDriveMode = value;
   }
 
   protected formSubmit()
