@@ -1,150 +1,167 @@
-<div class="container">
-  <ngb-tabset (tabChange)="beforeChange($event)">
-    <ngb-tab title="Техцентр" id="techcenter" *ngIf="!_testDriveMode">
-      <template ngbTabContent>
-        <div class="form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="city">City:</label>
-            <div class="col-sm-10">
-              <select id="city" class="form-control">
-                <option value="">Выберите Город</option>
-              </select>
+<div class="panel panel-default">
+  <div class="modal-header">Запись на сервис</div>
+  <div class="modal-body">
+
+    <div class="container">
+      <ngb-tabset (tabChange)="beforeChange($event)">
+        <ngb-tab title="Техцентр" id="techcenter" *ngIf="!_testDriveMode">
+          <template ngbTabContent>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="city">Город:</label>
+                <div class="col-sm-10">
+                  <select id="city" class="form-control">
+                    <option value="">Выберите Город</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="sevice">Сервис</label>
+                <div class="col-sm-10">
+                  <select id="sevice" class="form-control">
+                    <option value="">Выберите сервис</option>
+                  </select>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="sevice">Service</label>
-            <div class="col-sm-10">
-              <select id="sevice" class="form-control">
-                <option value="">Выберите Город</option>
-              </select>
+
+          </template>
+        </ngb-tab>
+        <ngb-tab title="Модель" id="CarDeatiled">
+          <template ngbTabContent>
+            <div class="form-horizontal">
+              <div class="form-group ">
+                <label for="selectedManufacturer">Марка</label>
+                <select id="selectedManufacturer" class="form-control" [(ngModel)]="_selectedManufacturer"
+                        (ngModelChange)="getVehiclesByManufacturer()" [disabled]="_manufacturers.length == 0">
+                  <option value="">Выберите Марку</option>
+                  <option *ngFor="let manufacturer of _manufacturers" value="{{manufacturer}}">
+                    {{manufacturer}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group ">
+                <label for="selectedVehicle">Модель</label>
+                <select id="selectedVehicle" class="form-control" [(ngModel)]="_selectedVehicle"
+                        (ngModelChange)="getVehicleYears()" [disabled]="_selectedManufacturer == ''">
+                  <option value="">Выбирите Модель</option>
+                  <option *ngFor="let vehicle of _vehicles" value="{{vehicle}}">
+                    {{vehicle}}
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-        </div>
 
-      </template>
-    </ngb-tab>
-    <ngb-tab title="Модель" id="CarDeatiled">
-      <template ngbTabContent>
-        <div class="form-horizontal">
-          <div class="form-group row">
-            <label for="selectedManufacturer">Марка</label>
-            <select id="selectedManufacturer" class="form-control" [(ngModel)]="_selectedManufacturer"
-                    (ngModelChange)="getVehiclesByManufacturer()" [disabled]="_manufacturers.length == 0">
-              <option value="">Выберите Марку</option>
-              <option *ngFor="let manufacturer of _manufacturers" value="{{manufacturer}}">
-                {{manufacturer}}
-              </option>
-            </select>
-          </div>
+          </template>
+        </ngb-tab>
+        <ngb-tab title="Детали ТО" id="Car Details" *ngIf="!_testDriveMode">
+          <template ngbTabContent>
+            <div class="form-horizontal">
+              <div class="form-group">
 
-          <div class="form-group row">
-            <label for="selectedVehicle">Модель</label>
-            <select id="selectedVehicle" class="form-control" [(ngModel)]="_selectedVehicle"
-                    (ngModelChange)="getVehicleYears()" [disabled]="_selectedManufacturer == ''">
-              <option value="">Выбирите Модель</option>
-              <option *ngFor="let vehicle of _vehicles" value="{{vehicle}}">
-                {{vehicle}}
-              </option>
-            </select>
-          </div>
-        </div>
+                <label class="control-label" for="workType">Тип работ</label>
+                <select id="workType" name="Step3Form[to_type_id]" class="form-control">
+                  <option value="1">Техническое обслуживание (ТО)</option>
+                  <option value="2">Ремонт</option>
+                  <option value="3">Кузовной ремонт</option>
+                  <option value="4">Замена масла ДВС</option>
+                  <option value="5">Экспресс сервис</option>
+                  <option value="6">Прочее</option>
+                </select>
 
-      </template>
-    </ngb-tab>
-    <ngb-tab title="Детали ТО" id="Car Details" *ngIf="!_testDriveMode">
-      <template ngbTabContent>
-        <div class="form-group row">
+              </div>
+              <div class="form-group">
+                <label for="TO" class="control-label">Выберите ТО</label>
+                <select id="TO" class="form-control" name="Step3Form[to_id]">
+                  <option value="0"></option>
+                  <option value="1">ТО-1 Пробег 15000км или 12 месяцев</option>
+                  <option value="2">ТО-2 Пробег 30000км или 24 месяцев</option>
+                  <option value="3">ТО-3 Пробег 45000км или 36 месяцев</option>
+                  <option value="4">ТО-4 Пробег 60000км или 48 месяцев</option>
+                  <option value="5">ТО-5 Пробег 75000км или 60 месяцев</option>
+                  <option value="6">ТО-6 Пробег 90000км или 72 месяцев</option>
+                  <option value="7">ТО-7 Пробег 105000км или 84 месяцев</option>
+                  <option value="8">ТО-8 Пробег 120000км или 96 месяцев</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="TO_date">Выберите подходящую дату</label>
+                <div class="input-group">
 
-          <label class="control-label" for="workType">Тип работ</label>
-          <select id="workType" name="Step3Form[to_type_id]">
-            <option value="1">Техническое обслуживание (ТО)</option>
-            <option value="2">Ремонт</option>
-            <option value="3">Кузовной ремонт</option>
-            <option value="4">Замена масла ДВС</option>
-            <option value="5">Экспресс сервис</option>
-            <option value="6">Прочее</option>
-          </select>
+                  <input id="TO_date" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                         ngbDatepicker
+                         #d="ngbDatepicker">
+                  <div class="input-group-addon" (click)="d.toggle()">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
 
-        </div>
-        <div class="form-group row">
-          <label for="TO" class="control-label">Выберите ТО</label>
-          <select id="TO" class="form-control" name="Step3Form[to_id]">
-            <option value="0"></option>
-            <option value="1">ТО-1 Пробег 15000км или 12 месяцев</option>
-            <option value="2">ТО-2 Пробег 30000км или 24 месяцев</option>
-            <option value="3">ТО-3 Пробег 45000км или 36 месяцев</option>
-            <option value="4">ТО-4 Пробег 60000км или 48 месяцев</option>
-            <option value="5">ТО-5 Пробег 75000км или 60 месяцев</option>
-            <option value="6">ТО-6 Пробег 90000км или 72 месяцев</option>
-            <option value="7">ТО-7 Пробег 105000км или 84 месяцев</option>
-            <option value="8">ТО-8 Пробег 120000км или 96 месяцев</option>
-          </select>
-        </div>
-
-        <div class="input-group">
-          <label for="TO_date">Выберите подходящую дату</label>
-          <input id="TO_date" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
-                 #d="ngbDatepicker">
-          <div class="input-group-addon" (click)="d.toggle()">
-            <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
-          </div>
-        </div>
-
-      </template>
-    </ngb-tab>
+            </div>
 
 
-    <ngb-tab title="Личные Данные" id="customerDetails">
-      <template ngbTabContent>
+          </template>
+        </ngb-tab>
 
 
-        <div class="form-group field-step4form-lastname">
-          <label class="control-label" for="step4form-lastname">Фамилия</label>
-          <input type="text" id="step4form-lastname" class="form-control" name="Step4Form[lastname]">
+        <ngb-tab title="Личные Данные" id="customerDetails">
+          <template ngbTabContent>
 
-          <div class="help-block"></div>
-        </div>
-        <div class="form-group field-step4form-firstname required">
-          <label class="control-label" for="step4form-firstname">Имя</label>
-          <input type="text" id="step4form-firstname" class="form-control" name="Step4Form[firstname]">
 
-          <div class="help-block"></div>
-        </div>
-        <div class="form-group field-step4form-middlename">
-          <label class="control-label" for="step4form-middlename">Отчество</label>
-          <input type="text" id="step4form-middlename" class="form-control" name="Step4Form[middlename]">
+            <div class="form-group field-step4form-lastname">
+              <label class="control-label" for="step4form-lastname">Фамилия</label>
+              <input type="text" id="step4form-lastname" class="form-control" name="Step4Form[lastname]">
 
-          <div class="help-block"></div>
-        </div>
-        <div class="form-group field-step4form-email">
-          <label class="control-label" for="step4form-email">Email</label>
-          <input type="text" id="step4form-email" class="form-control" name="Step4Form[email]">
+              <div class="help-block"></div>
+            </div>
+            <div class="form-group field-step4form-firstname required">
+              <label class="control-label" for="step4form-firstname">Имя</label>
+              <input type="text" id="step4form-firstname" class="form-control" name="Step4Form[firstname]">
 
-          <div class="help-block"></div>
-        </div>
-        <div class="form-group field-step4form-phone required">
-          <label class="control-label" for="step4form-phone">Мобильный телефон</label>
-          <input type="text" id="step4form-phone" class="form-control" name="Step4Form[phone]">
+              <div class="help-block"></div>
+            </div>
+            <div class="form-group field-step4form-middlename">
+              <label class="control-label" for="step4form-middlename">Отчество</label>
+              <input type="text" id="step4form-middlename" class="form-control" name="Step4Form[middlename]">
 
-          <div class="help-block"></div>
-        </div>
-        <div class="form-group field-step4form-vin has-success">
-          <label class="control-label" for="step4form-vin">Номер кузова</label>
-          <input type="text" id="step4form-vin" class="form-control" name="Step4Form[vin]">
+              <div class="help-block"></div>
+            </div>
+            <div class="form-group field-step4form-email">
+              <label class="control-label" for="step4form-email">Email</label>
+              <input type="text" id="step4form-email" class="form-control" name="Step4Form[email]">
 
-          <div class="help-block"></div>
-        </div>
-        <p>
-          <small>Номер кузова своего автомобиля вы можете посмотреть в свидетельстве о регистрации транспортного
-            средства.
-          </small>
-        </p>
-        <div class="form-group field-step4form-gos">
-          <label class="control-label" for="step4form-gos">Гос. номер автомобиля</label>
-          <input type="text" id="step4form-gos" class="form-control" name="Step4Form[gos]">
-        </div>
-      </template>
-    </ngb-tab>
-  </ngb-tabset>
-  <a href="javascript:void(0)" class="btn btn-primary" (click)="formSubmit()">Записаться</a>
+              <div class="help-block"></div>
+            </div>
+            <div class="form-group field-step4form-phone required">
+              <label class="control-label" for="step4form-phone">Мобильный телефон</label>
+              <input type="text" id="step4form-phone" class="form-control" name="Step4Form[phone]">
+
+              <div class="help-block"></div>
+            </div>
+            <div class="form-group field-step4form-vin has-success">
+              <label class="control-label" for="step4form-vin">Номер кузова</label>
+              <input type="text" id="step4form-vin" class="form-control" name="Step4Form[vin]">
+
+              <div class="help-block"></div>
+            </div>
+            <p>
+              <small>Номер кузова своего автомобиля вы можете посмотреть в свидетельстве о регистрации транспортного
+                средства.
+              </small>
+            </p>
+            <div class="form-group field-step4form-gos">
+              <label class="control-label" for="step4form-gos">Гос. номер автомобиля</label>
+              <input type="text" id="step4form-gos" class="form-control" name="Step4Form[gos]">
+            </div>
+          </template>
+        </ngb-tab>
+      </ngb-tabset>
+
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <a href="javascript:void(0)" class="btn btn-primary" (click)="formSubmit()">Записаться</a>
+  </div>
 </div>
