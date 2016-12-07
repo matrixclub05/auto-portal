@@ -5,7 +5,19 @@
   width: 100%;
   bottom:0;
 }
-
+.chat-btn{
+  border-radius: 50%;
+  font-size: 29px;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  margin: 15px;
+  outline: none !important;
+  z-index: 0 !important;
+  &:hover{
+    z-index: 0 !important;
+  }
+}
 .col-md-2, .col-md-10{
   padding:0;
 }
