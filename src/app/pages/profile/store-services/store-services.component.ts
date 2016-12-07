@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {SignUpForServiceComponent} from "../../../garage/sign-up-for-service/sign-up-for-service.component";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-store-services',
@@ -9,14 +10,17 @@ import {SignUpForServiceComponent} from "../../../garage/sign-up-for-service/sig
 })
 export class StoreServicesComponent implements OnInit {
 
-  constructor(private _modalService:NgbModal) { }
+  constructor(private _modalService: NgbModal, private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-  protected openServiceSignUp($event)
-  {
-    const modalRef:NgbModalRef = this._modalService.open(SignUpForServiceComponent);
+  protected openServiceSignUp($event) {
+    const modalRef: NgbModalRef = this._modalService.open(SignUpForServiceComponent);
     modalRef.componentInstance.modalRef = modalRef;
+  }
+  protected openCredit(){
+    this.router.navigate(['./service/credit']);
   }
 }

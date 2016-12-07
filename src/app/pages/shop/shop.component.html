@@ -36,7 +36,7 @@
         <app-rollover-btn [text]="'Заказ запчастей'" [height]="150"></app-rollover-btn>
       </div>
       <div class="col-lg-4">
-        <app-rollover-btn [text]="'Страховка'" [height]="150"></app-rollover-btn>
+        <app-rollover-btn [text]="'Кредит'" [height]="150" (click)="openCredit()" ></app-rollover-btn>
       </div>
     </div>
   </div>
@@ -47,6 +47,7 @@
     <app-categories class="col-sm-9"></app-categories>
     <div class="col-sm-3">
       <img src="assets/ads_black.jpg" alt="" width="100%">
+      <div class="divider"></div>
       <img src="assets/vestaxray.jpg" alt="" width="100%">
     </div>
   </div>
