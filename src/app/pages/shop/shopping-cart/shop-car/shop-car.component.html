@@ -3,12 +3,15 @@
     <h2>Машины для тестдрайва</h2>
   </div>
 </div>
+<br>
 <div *ngFor="let item of cars" class="col-md-3">
-  <p>{{item.name}}</p>
-  <p>{{item.engineCapacity}}</p>
-  <p>{{item.engineType}}</p>
-  <p>{{item.transmissionType}}</p>
-  <img src="assets/default-car-image.jpg" width="100%"/>
+  <div class="cart-item">
+    <h4>{{item.name}}</h4>
+    <div>{{item.engineCapacity}}</div>
+    <div>{{item.engineType}}</div>
+    <div>{{item.transmissionType}}</div>
+    <img src="assets/default-car-image.jpg" width="100%"/>
+  </div>
 </div>
 <div class="col-md-12">
   <button class="btn btn-primary pull-right">Отправить форму менеджеру</button>
