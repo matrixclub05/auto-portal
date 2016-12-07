@@ -16,6 +16,7 @@ import {GoodsComponent} from "./pages/shop/goods/goods.component";
 import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.component";
 import {CreditCalcComponent} from "./components/credit-calc/credit-calc.component";
 import {StartServiceComponent} from "./pages/service/start-service/start-service.component";
+import {ServiceCreditComponent} from "./pages/service/service-credit/service-credit.component";
 
 const appRoutes: Routes = [
   {
@@ -73,8 +74,8 @@ const appRoutes: Routes = [
         component: StartServiceComponent
       },
       {
-        path: 'machines',
-        component: MachinesComponent
+        path: 'credit',
+        component: ServiceCreditComponent
       },
       {
         path: 'parts',

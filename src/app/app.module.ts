@@ -42,8 +42,8 @@ import {PartsComponent} from "./pages/shop/parts/parts.component";
 import {GoodsComponent} from "./pages/shop/goods/goods.component";
 import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.component";
 import { CreditCalcComponent } from './components/credit-calc/credit-calc.component';
-import { StartComponent } from './pages/service/start/start.component';
 import { StartServiceComponent } from './pages/service/start-service/start-service.component';
+import { ServiceCreditComponent } from './pages/service/service-credit/service-credit.component';
 
 
 @NgModule({
@@ -83,7 +83,8 @@ import { StartServiceComponent } from './pages/service/start-service/start-servi
     ShoppingCartComponent,
     CreditCalcComponent,
     StartComponent,
-    StartServiceComponent
+    StartServiceComponent,
+    ServiceCreditComponent
   ],
   imports: [
     BrowserModule,
