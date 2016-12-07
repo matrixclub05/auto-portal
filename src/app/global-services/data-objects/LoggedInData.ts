@@ -56,4 +56,15 @@ export class LoggedInData {
     siteData = JSON.parse(localStorage.getItem("siteData"));
     return siteData;
   }
+
+  public get isInitialBanerShown()
+  {
+    let banerKey:boolean = JSON.parse(localStorage.getItem("initial_baner_" + this._loginKey));
+    return  (banerKey != null) || (banerKey == false);
+  }
+
+  public set isInitialBanerShown(value:boolean)
+  {
+    localStorage.setItem("initial_baner_" + this._loginKey, JSON.stringify(value));
+  }
 }

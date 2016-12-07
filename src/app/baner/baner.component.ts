@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {LoginServiceService} from "../global-services/login-service.service";
 
 @Component({
   selector: 'baner',
@@ -11,10 +12,14 @@ export class BanerComponent implements OnInit {
   @ViewChild('content') content;
   private _banerVisible:boolean = true;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private _loginService:LoginServiceService) { }
 
   ngOnInit() {
-    this.open(this.content);
+    if(!this._loginService.loginData.isInitialBanerShown)
+    {
+      this.open(this.content);
+      this._loginService.loginData.isInitialBanerShown = true;
+    }
   }
 
   open(content) {
