@@ -8,9 +8,11 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 })
 export class ShopComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
   }
-
+  protected openCredit(){
+    this.router.navigate(['./service/credit']);
+  }
 }
