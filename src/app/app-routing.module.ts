@@ -77,6 +77,7 @@ const appRoutes: Routes = [
         path: 'credit',
         component: ServiceCreditComponent
       },
+      { path: 'credit-calc', component: CreditCalcComponent },
       {
         path: 'parts',
         component: PartsComponent

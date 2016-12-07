@@ -1,0 +1,23 @@
+:host{
+  display: table;
+}
+table {
+  width: 100%;
+  border-spacing: 5px;
+  border-collapse: separate;
+}
+table tr:nth-child(odd) {
+  background-color: #E1EFF7;
+}
+table tr {
+  background-color: #C7E8FB;
+}
+table th, td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
