@@ -1,0 +1,17 @@
+:host{
+  display: block;
+}
+.form-group::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.form-horizontal {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.modal-header{
+  font-size: 20px;
+  color: #df1f3d;
+}
