@@ -1,5 +1,4 @@
-.description
-{
+.description {
   text-overflow: ellipsis;
   height: 53px;
   overflow: hidden;
@@ -12,10 +11,14 @@
   padding: 10px;
 }
 
-.car-item h4
-{
-  text-align: center;
-  text-overflow: ellipsis;
+h4 {
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 10px 0;
+  font-size: 18px;
+  color: #df1f3d;
+  height: 4em;
   overflow: hidden;
-  height: 79px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
