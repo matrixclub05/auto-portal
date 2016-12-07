@@ -1,9 +1,11 @@
-<span *ngIf="goods.length > 0">
+<div *ngIf="goods.length > 0">
   <div class="col-sm-12">
     <div class="sub-breadcrumbs">
       <h2>Товары</h2>
     </div>
+    <div class="marg"></div>
   </div>
+
   <div *ngFor="let item of goods" class="col-md-3">
     <div class="cart-item">
       <h4>{{item.name}}</h4>
@@ -16,4 +18,4 @@
   <div class="col-md-12">
     <button class="btn btn-primary pull-right">Оформить заказ</button>
   </div>
-</span>
+</div>
