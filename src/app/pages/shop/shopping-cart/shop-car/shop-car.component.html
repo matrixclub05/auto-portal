@@ -1,5 +1,5 @@
-<div *ngIf="cars.length > 0">
-  <div class="col-sm-12">
+<div *ngIf="cars.length > 0" class="col-sm-12">
+  <div >
     <div class="sub-breadcrumbs">
       <h2>Машины для тест-драйва</h2>
     </div>
@@ -9,9 +9,9 @@
   <div *ngFor="let item of cars" class="col-md-3">
     <div class="cart-item">
       <h4>{{item.name}}</h4>
-      <div>{{item.engineCapacity}}</div>
-      <div>{{item.engineType}}</div>
-      <div>{{item.transmissionType}}</div>
+      <div>Объем двигателя: {{item.engineCapacity}}</div>
+      <div>Тип двигателя: {{item.engineType}}</div>
+      <div>КПП: {{item.transmissionType}}</div>
       <img src="assets/default-car-image.jpg" width="100%"/>
     </div>
   </div>

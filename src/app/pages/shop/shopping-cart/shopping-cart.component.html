@@ -1,14 +1,15 @@
 <br>
-<div  shop-car [cars]="_cars" *ngIf="_cars.length > 0">
+<div class="row" shop-car [cars]="_cars" *ngIf="_cars.length > 0">
 
 </div>
 
+<div class="divider"></div>
 
-<div  shop-goods [goods]="_rest" *ngIf="_rest.length > 0">
+<div class="row" shop-goods [goods]="_rest" *ngIf="_rest.length > 0">
 
 </div>
 
-<div  *ngIf="_rest.length == 0 && _cars.length == 0">
+<div class="row" *ngIf="_rest.length == 0 && _cars.length == 0">
   <div class="col-sm-12">
     <div class="sub-breadcrumbs">
       <h2>Ваша корзина пуста</h2>

@@ -23,3 +23,8 @@ h4 {
 .marg{
   margin-bottom: 15px;
 }
+.description {
+  text-overflow: ellipsis;
+  height: 53px;
+  overflow: hidden;
+}
