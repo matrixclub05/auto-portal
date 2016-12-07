@@ -1,6 +1,6 @@
 <div class="container">
   <ngb-tabset (tabChange)="beforeChange($event)">
-    <ngb-tab title="Техцентр" id="techcenter">
+    <ngb-tab title="Техцентр" id="techcenter" *ngIf="!_testDriveMode">
       <template ngbTabContent>
         <div class="form-horizontal">
           <div class="form-group">
@@ -51,7 +51,7 @@
 
       </template>
     </ngb-tab>
-    <ngb-tab title="Детали ТО" id="Car Details">
+    <ngb-tab title="Детали ТО" id="Car Details" *ngIf="!_testDriveMode">
       <template ngbTabContent>
         <div class="form-group row">
 
