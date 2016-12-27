@@ -4,18 +4,20 @@ $border: 2px solid rgb(169, 32, 52);
 }
 
 .brand-list {
-  padding: 20px;
+  padding: 0px;
   margin: 0;
   &::after {
     content: "";
     clear: both;
     display: table;
   }
+}
+a {
 
 }
-
 img {
   filter: grayscale(100%);
+  width: 100%;
   &:hover {
     transition: filter 0.5s;
     filter: grayscale(0%);
@@ -26,5 +28,13 @@ img {
   list-style: none;
   display: block;
   float: left;
-  width: 14.28571428571429%;
+  width: 50%;
+
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+@media (min-width: 320px) {
+  .brand-item {
+    width: 14.28571428571429%;
+  }
 }

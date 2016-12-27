@@ -29,15 +29,25 @@ a:hover {
   }
 }
 
-
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
 
 .category {
   margin-bottom: 15px;
 
+
   &-block {
     border: 1px solid #E5E5E5;
     padding: 20px;
+    min-height: 248px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   &-title {
     color: #2a2a2a;

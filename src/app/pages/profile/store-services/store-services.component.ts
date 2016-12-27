@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {SignUpForServiceComponent} from "../../../garage/sign-up-for-service/sign-up-for-service.component";
 import {Route, Router} from "@angular/router";
+import {SignUpForServiceComponent} from "../../../garage/sign-up-for-service/sign-up-for-service.component";
 
 @Component({
   selector: 'app-store-services',

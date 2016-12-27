@@ -52,6 +52,7 @@
   text-align: center;
   text-transform: uppercase;
   font-weight: 500;
+  display: none;
 }
 
 .main-menu li {
@@ -105,4 +106,9 @@
 }
 .pull-right {
   float: right;
+}
+@media (min-width: 768px) {
+  .main-menu {
+    display: block;
+  }
 }

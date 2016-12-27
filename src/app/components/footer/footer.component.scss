@@ -1,7 +1,18 @@
 :host {
-  display: block;
+  display: flex;
   padding: 20px 0;
-  height: 560px;
+  height: 580px;
+  align-items: center;
+  .wrap {
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+  .b-block {
+    flex: 1;
+    height: 100%;
+    align-self: flex-start;
+  }
   a, a:visited, a:focus, a:active, a:hover {
     color: #a6a6a6
   }
@@ -32,8 +43,8 @@
 }
 
 .footer {
-  padding-top: 65px;
-  padding-bottom: 60px;
+  /* padding-top: 65px;
+   padding-bottom: 60px;*/
 }
 
 ul {
@@ -56,3 +67,8 @@ li {
   margin: 0 5px 5px;
 }
 
+@media (max-width: 992px) {
+  :host {
+    display: none;
+  }
+}

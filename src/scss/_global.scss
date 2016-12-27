@@ -17,13 +17,10 @@ html, body {
 body {
   min-height: 100%;
 }
-app-root, app-profile {
+app-root, app-profile, app-main {
   display: block;
 }
 
-app-root {
-  padding-bottom: 560px;
-}
 .wrapper {
   background: #fff;
   z-index: 1;
@@ -75,6 +72,7 @@ app-root {
 }
 
 .breadcrumbs {
+  display: none;
   position: relative;
   z-index: 1;
   li {
@@ -130,5 +128,15 @@ app-root {
 
       }
     }
+  }
+}
+@media (min-width: 992px) {
+  app-root {
+    padding-bottom: 560px;
+  }
+}
+@media (min-width: 768px) {
+  .breadcrumbs {
+    display: block;
   }
 }
