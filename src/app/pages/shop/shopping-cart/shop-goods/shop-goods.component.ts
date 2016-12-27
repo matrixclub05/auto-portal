@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {IGoods} from "../../../../global-services/data-objects/UserData";
 import {LoginServiceService} from "../../../../global-services/login-service.service";
 
@@ -27,6 +27,11 @@ export class ShopGoodsComponent implements OnInit {
         }
       }
     }
+  }
+
+  protected asd(item)
+  {
+    this.goods.push(item);
   }
 
 }
