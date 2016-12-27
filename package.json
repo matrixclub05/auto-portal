@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npm install -g http-server",
     "postinstall": "ng build --prod && mv dist/* .",
-    "start": "http-server ./dist",
+    "start": "http-server",
     "start_local": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
