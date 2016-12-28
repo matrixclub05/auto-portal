@@ -1,19 +1,21 @@
 <div class="header-bg"></div>
 <div class="top">
   <div class="container">
+    <a class="navbar-brand" [routerLink]="['']">
+      <h1>Автосервис</h1>
+    </a>
     <nav class="navbar">
       <ul class="nav navbar-nav">
-        <li class="nav-item pull-right"  *ngIf="!_loginService.isLoggedIn">
-          <a (click)="openRegistrationModal(true)" href="javascript:void(0)" class="nav-link btn btn-primary sign-in">Войти</a>
+        <li class="nav-item pull-right" style="padding: 0 20px;">
+          <a (click)="_loginService.logOut()" href="javascript:void(0)" class="nav-link"  *ngIf="_loginService.isLoggedIn" >Выйти</a>
         </li>
-        <li class="nav-item pull-right"  *ngIf="!_loginService.isLoggedIn">
-          <a (click)="openRegistrationModal()" href="javascript:void(0)" class="nav-link btn btn-primary" data-hover="Регистрация">Регистрация</a>
+        <li class="nav-item pull-right">
+          <a (click)="openRegistrationModal(true)" href="javascript:void(0)" *ngIf="!_loginService.isLoggedIn" class="nav-link btn btn-primary sign-in">Мой Гараж</a>
+          <a class="nav-link btn btn-primary" [routerLink]="['/profile']" *ngIf="_loginService.isLoggedIn" >Мой Гараж</a>
         </li>
       </ul>
       <ul class="nav navbar-nav" *ngIf="_loginService.isLoggedIn">
-        <li class="nav-item pull-right">
-          <a (click)="_loginService.logOut()" href="javascript:void(0)" class="nav-link">Выйти</a>
-        </li>
+
         <li class="nav-item pull-right">
           <a href="javascript:void(0)" class="nav-link user" [routerLink]="['/profile/personal']">{{_loginService.getCurrentUser().firstName}} {{_loginService.getCurrentUser().middleName}}</a>
         </li>
@@ -30,9 +32,7 @@
 <div class="container">
 
   <nav class="navbar">
-    <a class="navbar-brand" [routerLink]="['']">
-      <img src="/assets/logo.png">
-    </a>
+
 
     <ul class="nav navbar-nav main-menu">
       <li class="nav-item active">
@@ -44,9 +44,9 @@
       <li class="nav-item">
         <a class="nav-link"  data-hover="Мы" [routerLink]="['/about']" >Мы</a>
       </li>
-      <li class="nav-item pull-right">
+      <!--<li class="nav-item pull-right">
         <a class="nav-link" [routerLink]="['/profile']" data-hover="ГАРАЖ">ГАРАЖ</a>
-      </li>
+      </li>-->
     </ul>
   </nav>
 </div>

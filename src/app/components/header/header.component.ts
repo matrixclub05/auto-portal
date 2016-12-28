@@ -5,6 +5,7 @@ import {
   UserInputInfo
 } from "../../registration/registrationFlow/registration-flow.component";
 import {LoginServiceService} from "../../global-services/login-service.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: '[app-header]',

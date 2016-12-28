@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {LoggedInData} from "./data-objects/LoggedInData";
 import {LoginStrategies} from "./data-objects/LoginStategies";
 import {UserInputInfo} from "../registration/registrationFlow/registration-flow.component";
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoginServiceService {
@@ -10,7 +11,8 @@ export class LoginServiceService {
   private _currentLoginStrategy: LoginStrategies = LoginStrategies.LocalStorageFlow;
   private _loginData: LoggedInData = null;
   private _currentUser: UserInputInfo = null;
-  constructor() {
+
+  constructor(private router: Router) {
     let loginKey: string = localStorage.getItem("siteLoginKey");
     if (!loginKey) {
       loginKey = this.__DEFAULT_LOGIN_KEY;
@@ -35,7 +37,8 @@ export class LoginServiceService {
 
   public logOut() {
     localStorage.setItem("siteLoginKey", this.__DEFAULT_LOGIN_KEY);
-    this._loginData = new LoggedInData(this.__DEFAULT_LOGIN_KEY)
+    this._loginData = new LoggedInData(this.__DEFAULT_LOGIN_KEY);
+    this.router.navigateByUrl('/');
   }
 
   private loginWithLocalStorage(user: UserInputInfo): void {

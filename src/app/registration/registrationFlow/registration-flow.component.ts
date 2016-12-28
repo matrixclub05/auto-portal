@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {LoginServiceService} from "../../global-services/login-service.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -13,10 +14,9 @@ export class RegistrationFlowComponent {
 
   private RegistrationStatesEnum = RegistrationStates;
   private _currentRegistrationState: RegistrationStates = RegistrationStates.LOGIN;
-
   private _userInputInfo: UserInputInfo = new UserInputInfo();
 
-  constructor(public _currentModal: NgbActiveModal, private _loginService: LoginServiceService) {
+  constructor(public _currentModal: NgbActiveModal, private _loginService: LoginServiceService, private router: Router) {
   }
 
   ngOnInit() {
@@ -35,10 +35,12 @@ export class RegistrationFlowComponent {
   protected registerUser(): void {
     this._loginService.tryLoginUser(this._userInputInfo);
     this._currentModal.close();
+    this.router.navigateByUrl('profile')
   }
   protected logUserIn(): void {
     this._loginService.tryLoginUser(this._userInputInfo);
     this._currentModal.close();
+    this.router.navigateByUrl('profile')
   }
 
   protected get canLogin(): boolean {
