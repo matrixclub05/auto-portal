@@ -130,19 +130,16 @@ export class CarsComponent implements OnInit, AfterViewInit {
 }
 
 
-export class CarShopSingleCar implements IGoods {
-  public readonly type: string = "Car";
-  public name: string;
-  public engineCapacity: string;
-  public engineType: string;
-  public transmissionType: string;
-  public photo: string;
+export class CarShopSingleCar implements IGoods
+{
+  public readonly type:string = "Car"
 
-  constructor(public name: string,
-              public engineCapacity: string,
-              public engineType: string,
-              public transmissionType: string,
-              public photo: string) {
+  constructor(public name:string,
+  public engineCapacity:string,
+  public engineType:string,
+  public transmissionType:string,
+  public photo:string)
+  {
 
   }
 }

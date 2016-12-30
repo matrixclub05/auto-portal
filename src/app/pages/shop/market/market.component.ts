@@ -136,8 +136,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
     this._selectedTransmissionTypes[this.transmissionTypes[0]] = true;
     var currentYear = new Date().getFullYear();
     var aDaTa = Cars.accessoryData;
+    var arr: any;
     for (let key in aDaTa) {
-      let arr: string[] = this.cartesian([aDaTa[key].engineCapacity, aDaTa[key].engineType, aDaTa[key].transmissionType], this.cities);
+      arr = this.cartesian([aDaTa[key].engineCapacity, aDaTa[key].engineType, aDaTa[key].transmissionType]);
       for (let i = 0; i < arr.length; i++) {
 
         this._carList.push(
@@ -164,14 +165,3 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
 }
 
-
-@Pipe({
-  name: 'myfilter',
-  pure: false
-})
-@Injectable()
-export class MyFilterPipe implements PipeTransform {
-  transform(items, ...filter): any {
-    return items.filter(item => true);
-  }
-}

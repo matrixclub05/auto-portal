@@ -47,7 +47,7 @@ import {ServiceCreditComponent} from './pages/service/service-credit/service-cre
 /*import {GBEComponent} from './pages/service/gbe/gbe.component';*/
 import {ShopCarComponent} from "./pages/shop/shopping-cart/shop-car/shop-car.component";
 import {ShopGoodsComponent} from "./pages/shop/shopping-cart/shop-goods/shop-goods.component";
-import {MarketComponent, MyFilterPipe} from "./pages/shop/market/market.component";
+import {MarketComponent} from "./pages/shop/market/market.component";
 import { MarketCarComponent } from './components/market-car/market-car.component';
 
 
@@ -92,7 +92,7 @@ import { MarketCarComponent } from './components/market-car/market-car.component
     ServiceCreditComponent,
     /*GBEComponent,*/
     MarketComponent,
-    MyFilterPipe,
+
     ShopCarComponent,
     ShopGoodsComponent,
     MarketCarComponent
