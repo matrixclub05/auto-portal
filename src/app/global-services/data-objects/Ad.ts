@@ -1,4 +1,4 @@
-
+import {Vehicle, IVehicle} from "./Vehicle";
 
 export class Ad implements IVehicle{
   public type: string = "";
