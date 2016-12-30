@@ -16,9 +16,9 @@
       </ul>
       <ul class="nav navbar-nav" *ngIf="_loginService.isLoggedIn">
 
-        <li class="nav-item pull-right">
+        <!--<li class="nav-item pull-right">
           <a href="javascript:void(0)" class="nav-link user" [routerLink]="['/profile/personal']">{{_loginService.getCurrentUser().firstName}} {{_loginService.getCurrentUser().middleName}}</a>
-        </li>
+        </li>-->
         <li class="nav-item pull-right">
           <a [routerLink]="['/shop/cart']" class="nav-link">Корзина</a>
         </li>
@@ -41,9 +41,9 @@
       <li class="nav-item">
         <a class="nav-link"  data-hover="Сервис" [routerLink]="['/service']">Сервис</a>
       </li>
-      <li class="nav-item">
+    <!--  <li class="nav-item">
         <a class="nav-link"  data-hover="Мы" [routerLink]="['/about']" >Мы</a>
-      </li>
+      </li>-->
       <!--<li class="nav-item pull-right">
         <a class="nav-link" [routerLink]="['/profile']" data-hover="ГАРАЖ">ГАРАЖ</a>
       </li>-->

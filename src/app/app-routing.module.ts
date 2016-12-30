@@ -5,7 +5,7 @@ import {MainComponent} from "./pages/main/component/main.component";
 import {ProfileComponent} from "./pages/profile/component/profile.component";
 import {CarStoreComponent} from "./pages/profile/car-store/car-store.component";
 import {StartComponent} from "./pages/profile/start/start.component";
-import {AboutComponent} from "./pages/about/about.component";
+/*import {AboutComponent} from "./pages/about/about.component";*/
 import {PersonalComponent} from "./pages/profile/personal/personal.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {ServiceComponent} from "./pages/service/service.component";
@@ -17,9 +17,12 @@ import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.co
 import {CreditCalcComponent} from "./components/credit-calc/credit-calc.component";
 import {StartServiceComponent} from "./pages/service/start-service/start-service.component";
 import {ServiceCreditComponent} from "./pages/service/service-credit/service-credit.component";
-import {GBEComponent} from "./pages/service/gbe/gbe.component";
+import {MarketComponent} from "./pages/shop/market/market.component";
+/*import {GBEComponent} from "./pages/service/gbe/gbe.component";*/
+
 
 const appRoutes: Routes = [
+
   {
     path: 'profile',
     component: ProfileComponent,
@@ -41,12 +44,16 @@ const appRoutes: Routes = [
 
   { path: '', component: MainComponent },
 
-  { path: 'about', component: AboutComponent },
+  /*{ path: 'about', component: AboutComponent },*/
   { path: 'shop', component: ShopComponent,
     children: [
       {
         path: 'cars',
         component: CarsComponent
+      },
+      {
+        path: 'market',
+        component: MarketComponent
       },
       {
         path: 'machines',
@@ -78,10 +85,10 @@ const appRoutes: Routes = [
         path: 'credit',
         component: ServiceCreditComponent
       },
-      {
+      /*{
         path: 'gbe',
         component: GBEComponent
-      },
+      },*/
       { path: 'credit-calc', component: CreditCalcComponent },
       {
         path: 'parts',

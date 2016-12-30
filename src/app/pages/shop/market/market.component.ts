@@ -1,22 +1,28 @@
-import {Component, OnInit, AfterContentInit, AfterViewInit, ViewChild} from '@angular/core';
-import {Cars} from "../../../garage/draftData/Cars";
+import {Component, OnInit, AfterViewInit, ViewChild, Injectable, PipeTransform} from '@angular/core';
+import {CarShopSingleCar} from "../cars/cars.component";
 import {AskToRegisterBanerComponent} from "../../../registration/ask-to-register-baner/ask-to-register-baner.component";
+import {UserData} from "../../../global-services/data-objects/UserData";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginServiceService} from "../../../global-services/login-service.service";
-import {UserData, IGoods} from "../../../global-services/data-objects/UserData";
+import {Cars} from "../../../garage/draftData/Cars";
+import {Vehicle, IVehicle} from "../../../global-services/data-objects/Vehicle";
+import {Ad} from "../../../global-services/data-objects/Ad";
+import {Pipe} from "@angular/core/src/metadata/directives";
 
 @Component({
-  selector: 'app-cars',
-  templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.scss']
+  selector: 'app-market',
+  templateUrl: './market.component.html',
+  styleUrls: ['./market.component.scss']
 })
-export class CarsComponent implements OnInit, AfterViewInit {
+export class MarketComponent implements OnInit, AfterViewInit {
 
   @ViewChild('carPopOut') popOut;
 
+  public filter: any;
   protected carEngineTypes = ['Дизельный', "Бензиновый", 'LPG'];
   protected carEngineCapacity = ['2.0', '1.8', '1.6', '2.0T', '3.0T'];
   protected transmissionTypes = ['МКПП', "АКПП"];
+  protected cities = ["Алматы", "Астана", "Актау", "Караганда"];
 
   protected _selectedEngineType: {} = {'Дизельный': false, "Бензиновый": false, 'LPG': false};
   protected _selectedEngineCapacity: {} = {'2.0': false, '1.8': false, '1.6': false, '2.0T': false, '3.0T': false};
@@ -24,24 +30,22 @@ export class CarsComponent implements OnInit, AfterViewInit {
 
   protected _filterCarName: string = "";
 
-  private _carList: Array<CarShopSingleCar> = [];
+  private _carList: Array<Ad> = [];
 
-  private _carsToDisplay: Array<CarShopSingleCar> = [];
+  private _carsToDisplay: Array<Ad> = [];
 
-  private _carToAddToCart: CarShopSingleCar = null;
+  private _carToAddToCart: Ad = null;
 
   private timeout = null;
 
   constructor(private _modalService: NgbModal, private _loginService: LoginServiceService) {
-    var aDaTa = Cars.accessoryData;
-    for (let key in aDaTa) {
-      let arr: string[] = this.cartesian([aDaTa[key].engineCapacity, aDaTa[key].engineType, aDaTa[key].transmissionType]);
-      for (let i = 0; i < arr.length; i++) {
-        this._carList.push(new CarShopSingleCar(key, arr[i][0], arr[i][1], arr[i][2], aDaTa[key].photoPath));
-      }
-    }
+
 
     this.shuffle(this._carList);
+  }
+
+  protected cond(item) {
+
   }
 
   protected onCarFilter($event) {
@@ -53,11 +57,11 @@ export class CarsComponent implements OnInit, AfterViewInit {
     this._carsToDisplay = [];
     for (var i = 0; i < this._carList.length; i++) {
       let car = this._carList[i];
-      if (this._selectedEngineCapacity[car.engineCapacity] &&
-        this._selectedEngineType[car.engineType] &&
-        this._selectedTransmissionTypes[car.transmissionType]) {
+
+
+      if (this._selectedEngineCapacity[car.engineCapacity] && this._selectedEngineType[car.engineType] && this._selectedTransmissionTypes[car.transmissionType]) {
         if (this._filterCarName.length > 0) {
-          if (car.name.toLowerCase().indexOf(this._filterCarName) > -1) {
+          if ([car.brand, car.model].join(' ').toLowerCase().indexOf(this._filterCarName) > -1) {
             this._carsToDisplay.push(car);
           }
         }
@@ -68,9 +72,9 @@ export class CarsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  protected haveARide(car: CarShopSingleCar) {
+  protected haveARide(car: Ad) {
     let ud: UserData = this._loginService.loginData.getUserData("garageCar");
-    ud.shopCartData.push(car);
+    //ud.shopCartData.push(car);
 
     this._carToAddToCart = car;
 
@@ -120,29 +124,54 @@ export class CarsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  protected getRandomInt( min:number, max: number) {
+    var _min = Math.ceil(min);
+    var _max = Math.floor(max);
+    return Math.floor(Math.random() * (_max - _min)) + _min;
+  }
+
   ngAfterViewInit() {
     this._selectedEngineType[this.carEngineTypes[0]] = true;
     this._selectedEngineCapacity[this.carEngineCapacity[0]] = true;
     this._selectedTransmissionTypes[this.transmissionTypes[0]] = true;
+    var currentYear = new Date().getFullYear();
+    var aDaTa = Cars.accessoryData;
+    for (let key in aDaTa) {
+      let arr: string[] = this.cartesian([aDaTa[key].engineCapacity, aDaTa[key].engineType, aDaTa[key].transmissionType], this.cities);
+      for (let i = 0; i < arr.length; i++) {
+
+        this._carList.push(
+          new Ad({
+            engineType: arr[i][1],
+            engineCapacity: arr[i][0],
+            transmissionType: arr[i][2],
+            city: this.cities[this.getRandomInt(0, this.cities.length-1)],
+            year: this.getRandomInt(2000, currentYear),
+            price: this.getRandomInt(500000, 10000000),
+            brand: key.split(' ')[0],
+            model: key.split(' ')[1],
+            internalService: true,
+            photo: aDaTa[key].photoPath,
+            ownerId: ''
+          })
+        );
+
+      }
+    }
+
     this.createCarForDisplay();
   }
 
 }
 
 
-export class CarShopSingleCar implements IGoods {
-  public readonly type: string = "Car";
-  public name: string;
-  public engineCapacity: string;
-  public engineType: string;
-  public transmissionType: string;
-  public photo: string;
-
-  constructor(public name: string,
-              public engineCapacity: string,
-              public engineType: string,
-              public transmissionType: string,
-              public photo: string) {
-
+@Pipe({
+  name: 'myfilter',
+  pure: false
+})
+@Injectable()
+export class MyFilterPipe implements PipeTransform {
+  transform(items, ...filter): any {
+    return items.filter(item => true);
   }
 }

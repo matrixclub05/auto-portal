@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="col-xs-4 image">
+    <div class="row">
+      <img src="assets/default-car-image.jpg" width="100%"/>
+    </div>
+
+  </div>
+  <div class="col-xs-8">
+    <ul class="list-group row">
+      <li><h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4></li>
+      <li>Трансмиссия: {{_car.transmissionType}}</li>
+      <li>{{_car.year}}г</li>
+      <li>{{_car.city}}</li>
+      <li>Объем двигателя: {{_car.engineCapacity}}л</li>
+      <li class="footer">
+        <a href="">50 просмотров</a>
+        <a href="">100 комментариев</a>
+        <a href="">30.12.2016</a>
+      </li>
+
+    </ul>
+  </div>
+</div>
