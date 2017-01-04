@@ -1,46 +1,50 @@
-<h4>{{_car.carName}}</h4>
-<h5>Автомобиль проверен на нашем СТО</h5>
-<ul>
-  <li>
-    <span class="label">Тип транспорта:</span>
-    <span class="argument">Седан</span>
-  </li>
-  <li>
-    <span class="label"></span>
-    <span class="argument">4 дверей | 5 мест</span>
-  </li>
-  <li>
-    <span class="label">Пробег</span>
-    <span class="argument">168тыс. км</span>
-  </li>
-  <li>
-    <span class="label">Двигатель:</span>
-    <span class="argument">{{_car.engineCapacity}} {{_car.engineType}}</span>
-  </li>
-  <li>
-    <span class="label">КПП</span>
-    <span class="argument">{{_car.transmissionType}}</span>
-  </li>
-  <li>
-    <span class="label">Цвет</span>
-    <span class="argument">очень красивый</span>
-  </li>
-</ul>
+<div class="modal-header">
+  <h4>{{_car.carName}}</h4>
+  <h5>Автомобиль проверен на нашем СТО</h5>
+</div>
+<div class="modal-body">
+  <ul>
+    <li>
+      <span class="label">Тип транспорта:</span>
+      <span class="argument">Седан</span>
+    </li>
+    <li>
+      <span class="label"></span>
+      <span class="argument">4 дверей | 5 мест</span>
+    </li>
+    <li>
+      <span class="label">Пробег</span>
+      <span class="argument">168тыс. км</span>
+    </li>
+    <li>
+      <span class="label">Двигатель:</span>
+      <span class="argument">{{_car.engineCapacity}} {{_car.engineType}}</span>
+    </li>
+    <li>
+      <span class="label">КПП</span>
+      <span class="argument">{{_car.transmissionType}}</span>
+    </li>
+    <li>
+      <span class="label">Цвет</span>
+      <span class="argument">очень красивый</span>
+    </li>
+  </ul>
 
-<p>
-  <b>Описание</b>
-  <span>
-    БЕЗ ПОДКРАСОВ!ОРИГИНАЛЬНЫЙ ПРОБЕГ-подтвержден отметками в СЕРВИСНОЙ КНИЖКЕ!
-    Богатый, роскошный автомобиль класса«ЛЮКС»-ПРЕДСТАВИТЕЛЬСКИЙ, просторный салон как в лимузинах.
-    Высочайший уровень-КОМФОРТА, надежности и самых современных, передовых технологий!
-    Каждая деталь, от отделки салона до систем безопасности, говорит о ВЫСОКОМ статусе автомобиля.
-    Отвечает высоким стандартам ПРЕДСТАВИТЕЛЬСКОГО класса:солидный, импозантный внешний вид,
-    ОГРОМНЫЙ салон, современное техническое оснащение и соответствие самым строгим нормам безопасности!
-    МОЩНЫЙ, ДИНАМИЧНЫЙ и СУПЕР ЭКОНОМИЧНЫЙ-6л/100км, запас хода 1000км.!
-  </span>
-</p>
 
-<div>
+  <p>
+    <b>Описание</b>
+    <span>
+      БЕЗ ПОДКРАСОВ!ОРИГИНАЛЬНЫЙ ПРОБЕГ-подтвержден отметками в СЕРВИСНОЙ КНИЖКЕ!
+      Богатый, роскошный автомобиль класса«ЛЮКС»-ПРЕДСТАВИТЕЛЬСКИЙ, просторный салон как в лимузинах.
+      Высочайший уровень-КОМФОРТА, надежности и самых современных, передовых технологий!
+      Каждая деталь, от отделки салона до систем безопасности, говорит о ВЫСОКОМ статусе автомобиля.
+      Отвечает высоким стандартам ПРЕДСТАВИТЕЛЬСКОГО класса:солидный, импозантный внешний вид,
+      ОГРОМНЫЙ салон, современное техническое оснащение и соответствие самым строгим нормам безопасности!
+      МОЩНЫЙ, ДИНАМИЧНЫЙ и СУПЕР ЭКОНОМИЧНЫЙ-6л/100км, запас хода 1000км.!
+    </span>
+  </p>
+</div>
+<div class="modal-footer">
   <p>Связаться с продавцом: <b>{{_ownerData.userName}}</b></p>
   <p>{{_ownerData.phoneNumber}}</p>
   <button class="btn btn-primary" type="button">Торг</button>

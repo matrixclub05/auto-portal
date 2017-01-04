@@ -1,0 +1,12 @@
+<div _ngcontent-cny-50="" class="modal-header">{{_car.model}} {{_car.manufacturer}} ТО</div>
+<div class="modal-body">
+  <p>
+    Ваш {{_car.model}} {{_car.manufacturer}} не может быть добавлен на авторынок так как слишком давно не проходил ТО.
+  </p>
+  <p>Запишитесь сейчас и получите скидку 10%</p>
+
+</div>
+<div class="button-wrapper modal-footer">
+  <button class="btn btn-primary pull-left" (click)="_modalRef.close()">Закрыть</button>
+  <button class="btn btn-primary pull-right" (click)="openService()">Записатся на ТО</button>
+</div>
