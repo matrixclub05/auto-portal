@@ -36,18 +36,25 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
   private timeout = null;
 
-  constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService:DBServiceService)
-  {
-    this.selectCars();
+  constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService: DBServiceService) {
   }
 
-  protected selectCars(filter?:Object)
-  {
+  ngOnInit() {
+    if (!this._loginService.isLoggedIn) {
+      let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
+      modalInstance.componentInstance.modalInstance = modalInstance;
+    }
+  }
+
+  ngAfterViewInit() {
+    this.createCarForDisplay();
+  }
+
+  protected selectCars(filter?: Object) {
     this._dbService.selectCars(filter).then(this.setCarList.bind(this));
   }
 
-  protected setCarList(data:Array<Ad>)
-  {
+  protected setCarList(data: Array<Ad>) {
     this._carList = data;
     this._carsToDisplay = data;
   }
@@ -57,41 +64,30 @@ export class MarketComponent implements OnInit, AfterViewInit {
     this.createCarForDisplay();
   }
 
-  protected createCarForDisplay()
-  {
-    let filter:Object = {};
+  protected createCarForDisplay() {
+    let filter: Object = {};
+    let selectedTransmissionTypes: Array<string> = [];
+    let selectedEngineTypes: Array<string> = [];
 
-    let selectedEngineTypes:Array<string> = [];
-
-    for(var key in this._selectedEngineType)
-    {
-      if(this._selectedEngineType[key])
-      {
+    for (var key in this._selectedEngineType) {
+      if (this._selectedEngineType[key])
         selectedEngineTypes.push("'" + key + "'")
-      }
     }
 
-    let selectedTransmissionTypes:Array<string> = [];
 
-    for(var key in this._selectedTransmissionTypes)
-    {
-      if(this._selectedTransmissionTypes[key])
-      {
+    for (var key in this._selectedTransmissionTypes) {
+      if (this._selectedTransmissionTypes[key])
         selectedTransmissionTypes.push("'" + key + "'")
-      }
     }
 
-    if(selectedEngineTypes.length > 0)
-    {
+    if (selectedEngineTypes.length > 0)
       filter['engineType'] = selectedEngineTypes;
-    }
 
-    if(selectedTransmissionTypes.length > 0)
-    {
+    if (selectedTransmissionTypes.length > 0)
       filter['transmissionType'] = selectedTransmissionTypes;
-    }
 
-    filter['carName'] = this._filterCarName.toUpperCase();
+    if(this._filterCarName != "")
+      filter['carName'] = this._filterCarName.toUpperCase();
 
     this.selectCars(filter);
   }
@@ -112,45 +108,5 @@ export class MarketComponent implements OnInit, AfterViewInit {
     this.timeout = setTimeout(k, 2000);
     this._loginService.loginData.storeUserData("garageCar", ud);
   }
-
-  cartesian(args) {
-    var r = [], arg = args, max = arg.length - 1;
-
-    function helper(arr, i) {
-      for (var j = 0, l = arg[i].length; j < l; j++) {
-        var a = arr.slice(0); // clone arr
-        a.push(arg[i][j]);
-        if (i == max)
-          r.push(a);
-        else
-          helper(a, i + 1);
-      }
-    }
-
-    helper([], 0);
-    return r;
-  }
-
-  ngOnInit() {
-    if (!this._loginService.isLoggedIn) {
-      let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
-      modalInstance.componentInstance.modalInstance = modalInstance;
-    }
-  }
-
-  protected getRandomInt( min:number, max: number) {
-    var _min = Math.ceil(min);
-    var _max = Math.floor(max);
-    return Math.floor(Math.random() * (_max - _min)) + _min;
-  }
-
-  ngAfterViewInit() {
-    /*this._selectedEngineType[this.carEngineTypes[0]] = true;
-    this._selectedEngineCapacity[this.carEngineCapacity[0]] = true;
-    this._selectedTransmissionTypes[this.transmissionTypes[0]] = true;*/
-
-    this.createCarForDisplay();
-  }
-
 }
 

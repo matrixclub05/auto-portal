@@ -46,7 +46,7 @@ export class DBServiceService {
   protected createCarFilter(filter): string {
     let conditions: Array<string> = [];
 
-    if (!filter.engineCapacity && !filter.transmissionType && !filter.engineType && filter.carName === "")
+    if (!filter.engineCapacity && !filter.transmissionType && !filter.engineType && !filter.carName)
       return "";
 
     if (filter.engineType)
