@@ -11,63 +11,67 @@ export class DBServiceService {
   protected carEngineTypes = ['Дизельный', "Бензиновый", 'LPG'];
   protected transmissionTypes = ['МКПП', "АКПП"];
 
-  private _isDataCreated:boolean = false;
+  private _isDataCreated: boolean = false;
 
-  private _carData:Array<Ad> = null;
+  private _carData: Array<Ad> = null;
 
-  constructor() {
-    //noinspection TypeScriptUnresolvedFunction
+  constructor()
+  {
     this._database = openDatabase("carPortal", '1.0', 'Car Portal Database', 5 * 1024 * 1024);
 
     if (this._database) {
-      this._database.transaction((tx)=> {
+      this._database.transaction((tx) => {
         tx.executeSql("SELECT * FROM car_list", [], this.dataReady, this.createData.bind(this));
       });
     }
   }
-  public selectCars(filter?:any, prevDeffered?:Deferred<Array<Ad>>){
 
-    let deferred = !prevDeffered? new Deferred():prevDeffered;
+  public selectCars(filter?: any, prevDeffered?: Deferred<Array<Ad>>) {
+
+    let deferred = !prevDeffered ? new Deferred() : prevDeffered;
 
 
     let filterString = '';
-    if(filter)filterString = this.createCarFilter(filter);
+    if (filter) filterString = this.createCarFilter(filter);
     this._database.transaction((tx) => {
       tx.executeSql("SELECT * FROM car_list " + filterString, [],
-        (tx, queryResult) => {deferred.resolve(<Array<Ad>>(queryResult.rows))}
-        )
+        (tx, queryResult) => {
+          deferred.resolve(<Array<Ad>>(queryResult.rows))
+        }
+      )
     });
     return deferred.promise;
   }
 
-  protected createCarFilter(filter):string
-  {
-    let ret:string = "WHERE ";
-    let conditions:Array<string> = [];
-    if(!filter.engineCapacity && !filter.transmissionType && !filter.engineType)
-    {
+  protected createCarFilter(filter): string {
+    let conditions: Array<string> = [];
+
+    if (!filter.engineCapacity && !filter.transmissionType && !filter.engineType && !filter.carName && !filter.city)
       return "";
-    }
 
-    if(filter.engineType)
-    {
+    if (filter.engineType)
       conditions.push("engineType == " + filter.engineType.join(" OR engineType == "));
-    }
 
-    if(filter.transmissionType)
-    {
-      conditions.push("transmissionType == " + filter.transmissionType.join("OR transmissionType == "));
-    }
-    return ret + conditions.join(" ");
+    if (filter.transmissionType)
+      conditions.push("transmissionType == " + filter.transmissionType.join(" OR transmissionType == "));
+
+    if (filter.city)
+      conditions.push("city == " + filter.city.join(" OR city == "));
+
+    if (filter.carName && filter.carName != "")
+      conditions.push("carName LIKE '%" + filter.carName + "%'");
+
+    if(filter.engineCapacity)
+      conditions.push('engineCapacity BETWEEN ' + filter.engineCapacity[0] + ' AND ' + filter.engineCapacity[1]);
+
+    return "WHERE " + conditions.join(" AND ");
   }
 
-  protected createData()
-  {
+  protected createData() {
     this.createCars();
   }
 
-  protected createCars()
-  {
+  protected createCars() {
     let aDaTa = Cars.accessoryData;
     let currentYear = (new Date()).getFullYear();
 
@@ -86,7 +90,8 @@ export class DBServiceService {
             price: this.getRandomInt(500000, 10000000),
             brand: key.split(' ')[0],
             model: key.split(' ')[1],
-            internalService: true,
+            carName: key,
+            internalService: this.getRandomInt(0,2) === 0,
             photo: aDaTa[key].photoPath,
             ownerId: 'empty'
           })
@@ -97,7 +102,7 @@ export class DBServiceService {
     if (carList.length > 0) {
       var columnNames: string[] = Object.keys(carList[0]);
       var columnNameList: string = columnNames.join(",");
-      this._database.transaction( (tx) => {
+      this._database.transaction((tx) => {
         tx.executeSql('CREATE TABLE IF NOT EXISTS car_list (' + columnNameList + ')', [],
           (insertTx) => {
             var values: any[] = [];
