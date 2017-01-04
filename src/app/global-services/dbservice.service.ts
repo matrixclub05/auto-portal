@@ -70,6 +70,40 @@ export class DBServiceService {
     this.createCars();
   }
 
+  public addFakeCarFromGarage(manufacturer:string, model:string, year:number)
+  {
+    let randomCarParams = this.generateRandomCarParams();
+    let advCar:Ad = new Ad({
+      engineType: randomCarParams.engineType,
+      engineCapacity: randomCarParams.engineCapacity,
+      transmissionType: randomCarParams.transmission,
+      city: this.cities[this.getRandomInt(0, this.cities.length - 1)],
+      year: year,
+      price: this.getRandomInt(500000, 10000000),
+      brand: manufacturer,
+      model: model,
+      carName: manufacturer + model,
+      internalService: this.getRandomInt(0, 1) === 0,
+      photo: "assets/subaru-impreza/impreza.jpg",
+      ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)})
+    });
+
+    var columnNames: string[] = Object.keys(advCar);
+    var columnNameList: string = columnNames.join(",");
+
+    let values:Array<string> = [];
+    for (var key in advCar) {
+      values.push(advCar[key]);
+    }
+
+    let repl = new Array(values.length);
+    repl.fill('?');
+
+    this._database.transaction((tx) => {
+      tx.executeSql('INSERT INTO car_list (' + columnNameList + ') VALUES (' + repl.join(',') + ')', values);
+    });
+  }
+
   protected createCars() {
     let aDaTa = Cars.accessoryData;
     let currentYear = (new Date()).getFullYear();

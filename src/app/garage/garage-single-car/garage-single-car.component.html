@@ -10,15 +10,14 @@
       <ul class="list-group row">
         <li><h4>{{_car.manufacturer}} {{_car.model}} {{_car.year}}</h4></li>
         <li>Дата покупки: 20.12.2015</li>
-        <li>Дата последнего ТО: 20.12.2015</li>
-        <li>Дата следующего ТО: 20.12.2015</li>
-        <li>Объем двигателя: 22л</li>
+        <li>Дата последнего ТО: 20.12.2016</li>
+        <li>Дата следующего ТО: 20.04.2017</li>
+        <li>Объем двигателя: 5л</li>
         <li class="footer">
-          <a href="javascript:void(0)" (click)="select()">Сервисная книга</a>
+            <a href="javascript:void(0)" class="btn btn-primary pull-right" (click)="select()">Сервисная книга</a>
+            <a href="javascript:void(0)" class="btn btn-primary pull-right" (click)="addToMarket()">Добавить на рынок</a>
         </li>
-
         <!--<app-rollover-btn [text]="'Сервисная книга'" (click)="select()" class="info small"></app-rollover-btn>-->
-
       </ul>
     </div>
   </div>

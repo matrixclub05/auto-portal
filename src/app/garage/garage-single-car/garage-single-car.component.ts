@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {CarData} from "../../global-services/data-objects/CarData";
+import {DBServiceService} from "../../global-services/dbservice.service";
 
 @Component({
   selector: '[app-garage-single-car]',
@@ -11,7 +12,7 @@ export class GarageSingleCarComponent implements OnInit {
   @Input() _car:CarData;
   @Output() onSelected = new EventEmitter<CarData>();
 
-  constructor() { }
+  constructor(private _databaseService:DBServiceService) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,11 @@ export class GarageSingleCarComponent implements OnInit {
   protected select(car:CarData)
   {
     this.onSelected.emit(this._car);
+  }
+
+  public addToMarket()
+  {
+    this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year);
   }
 
 }
