@@ -1,13 +1,11 @@
-import {Component, OnInit, AfterViewInit, ViewChild, Injectable, PipeTransform} from '@angular/core';
-import {CarShopSingleCar} from "../cars/cars.component";
+import {Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
 import {AskToRegisterBanerComponent} from "../../../registration/ask-to-register-baner/ask-to-register-baner.component";
 import {UserData} from "../../../global-services/data-objects/UserData";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginServiceService} from "../../../global-services/login-service.service";
-import {Cars} from "../../../garage/draftData/Cars";
-import {Vehicle, IVehicle} from "../../../global-services/data-objects/Vehicle";
+
 import {Ad} from "../../../global-services/data-objects/Ad";
-import {Pipe} from "@angular/core/src/metadata/directives";
+import {DBServiceService} from "../../../global-services/dbservice.service";
 
 @Component({
   selector: 'app-market',
@@ -38,14 +36,20 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
   private timeout = null;
 
-  constructor(private _modalService: NgbModal, private _loginService: LoginServiceService) {
-
-
-    this.shuffle(this._carList);
+  constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService:DBServiceService)
+  {
+    this.selectCars();
   }
 
-  protected cond(item) {
+  protected selectCars(filter?:Object)
+  {
+    this._dbService.selectCars(filter).then(this.setCarList.bind(this));
+  }
 
+  protected setCarList(data:Array<Ad>)
+  {
+    this._carList = data;
+    this._carsToDisplay = data;
   }
 
   protected onCarFilter($event) {
@@ -53,23 +57,42 @@ export class MarketComponent implements OnInit, AfterViewInit {
     this.createCarForDisplay();
   }
 
-  protected createCarForDisplay() {
-    this._carsToDisplay = [];
-    for (var i = 0; i < this._carList.length; i++) {
-      let car = this._carList[i];
+  protected createCarForDisplay()
+  {
+    let filter:Object = {};
 
+    let selectedEngineTypes:Array<string> = [];
 
-      if (this._selectedEngineCapacity[car.engineCapacity] && this._selectedEngineType[car.engineType] && this._selectedTransmissionTypes[car.transmissionType]) {
-        if (this._filterCarName.length > 0) {
-          if ([car.brand, car.model].join(' ').toLowerCase().indexOf(this._filterCarName) > -1) {
-            this._carsToDisplay.push(car);
-          }
-        }
-        else {
-          this._carsToDisplay.push(car);
-        }
+    for(var key in this._selectedEngineType)
+    {
+      if(this._selectedEngineType[key])
+      {
+        selectedEngineTypes.push("'" + key + "'")
       }
     }
+
+    let selectedTransmissionTypes:Array<string> = [];
+
+    for(var key in this._selectedTransmissionTypes)
+    {
+      if(this._selectedTransmissionTypes[key])
+      {
+        selectedTransmissionTypes.push("'" + key + "'")
+      }
+    }
+
+    if(selectedEngineTypes.length > 0)
+    {
+      filter['engineType'] = selectedEngineTypes;
+    }
+
+    if(selectedTransmissionTypes.length > 0)
+    {
+      filter['transmissionType'] = selectedTransmissionTypes;
+    }
+
+    this.selectCars(filter);
+
   }
 
   protected haveARide(car: Ad) {
@@ -87,16 +110,6 @@ export class MarketComponent implements OnInit, AfterViewInit {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(k, 2000);
     this._loginService.loginData.storeUserData("garageCar", ud);
-  }
-
-  protected shuffle(a) {
-    var j, x, i;
-    for (i = a.length; i; i--) {
-      j = Math.floor(Math.random() * i);
-      x = a[i - 1];
-      a[i - 1] = a[j];
-      a[j] = x;
-    }
   }
 
   cartesian(args) {
@@ -131,34 +144,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this._selectedEngineType[this.carEngineTypes[0]] = true;
+    /*this._selectedEngineType[this.carEngineTypes[0]] = true;
     this._selectedEngineCapacity[this.carEngineCapacity[0]] = true;
-    this._selectedTransmissionTypes[this.transmissionTypes[0]] = true;
-    var currentYear = new Date().getFullYear();
-    var aDaTa = Cars.accessoryData;
-    var arr: any;
-    for (let key in aDaTa) {
-      arr = this.cartesian([aDaTa[key].engineCapacity, aDaTa[key].engineType, aDaTa[key].transmissionType]);
-      for (let i = 0; i < arr.length; i++) {
-
-        this._carList.push(
-          new Ad({
-            engineType: arr[i][1],
-            engineCapacity: arr[i][0],
-            transmissionType: arr[i][2],
-            city: this.cities[this.getRandomInt(0, this.cities.length-1)],
-            year: this.getRandomInt(2000, currentYear),
-            price: this.getRandomInt(500000, 10000000),
-            brand: key.split(' ')[0],
-            model: key.split(' ')[1],
-            internalService: true,
-            photo: aDaTa[key].photoPath,
-            ownerId: ''
-          })
-        );
-
-      }
-    }
+    this._selectedTransmissionTypes[this.transmissionTypes[0]] = true;*/
 
     this.createCarForDisplay();
   }
