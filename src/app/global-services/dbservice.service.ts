@@ -15,8 +15,8 @@ export class DBServiceService {
 
   private _carData: Array<Ad> = null;
 
-  constructor() {
-    //noinspection TypeScriptUnresolvedFunction
+  constructor()
+  {
     this._database = openDatabase("carPortal", '1.0', 'Car Portal Database', 5 * 1024 * 1024);
 
     if (this._database) {
@@ -85,7 +85,7 @@ export class DBServiceService {
             brand: key.split(' ')[0],
             model: key.split(' ')[1],
             carName: key,
-            internalService: true,
+            internalService: this.getRandomInt(0,2) === 0,
             photo: aDaTa[key].photoPath,
             ownerId: 'empty'
           })
