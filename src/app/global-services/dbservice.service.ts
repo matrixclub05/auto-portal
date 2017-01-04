@@ -90,9 +90,9 @@ export class DBServiceService {
             brand: key.split(' ')[0],
             model: key.split(' ')[1],
             carName: key,
-            internalService: this.getRandomInt(0, 2) === 0,
+            internalService: this.getRandomInt(0, 1) === 0,
             photo: aDaTa[key].photoPath,
-            ownerData: JSON.stringify({userName: "Антон Антонов", phoneNumber: "+74951234567"})
+            ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)})
           })
         );
       }
@@ -153,5 +153,11 @@ export class DBServiceService {
 
   get isDataCreated(): boolean {
     return this._isDataCreated;
+  }
+
+  private getRandomName():string
+  {
+    let randomNames:Array<string> = ["Василий","Антоний","Владиславий","Владимирий","Пётрий","Григорий","Алексеий","Виталий","Викторий","Серегей"];
+    return randomNames[this.getRandomInt(0, randomNames.length - 1)] + " " + randomNames[this.getRandomInt(0, randomNames.length - 1)];
   }
 }
