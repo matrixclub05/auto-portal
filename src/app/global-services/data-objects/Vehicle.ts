@@ -5,7 +5,7 @@ export interface IVehicle {
   brand: string;
   model: string;
   internalService: boolean;
-  ownerId: string;
+  ownerData: string;
   transmissionType: string;
   photo: string;
   price: number;
@@ -22,7 +22,7 @@ export class Vehicle implements IVehicle{
   public model: string = "";
   public transmissionType: string = "";
   public internalService: boolean = false;
-  public ownerId: string = "";
+  public ownerData: string = "";
   public photo: string;
   public price: number;
   public city: string;

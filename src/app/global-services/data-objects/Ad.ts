@@ -9,10 +9,11 @@ export class Ad implements IVehicle{
   public model: string = "";
   public transmissionType: string = "";
   public internalService: boolean = false;
-  public ownerId: string = "";
+  public ownerData: string = "";
   public photo: string;
   public price: number;
   public city: string;
+  public carName:string;
 
   constructor(cfg?: any) {
     //noinspection TypeScriptUnresolvedFunction

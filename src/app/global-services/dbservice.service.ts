@@ -92,7 +92,7 @@ export class DBServiceService {
             carName: key,
             internalService: this.getRandomInt(0, 2) === 0,
             photo: aDaTa[key].photoPath,
-            ownerId: 'empty'
+            ownerData: JSON.stringify({userName: "Антон Антонов", phoneNumber: "+74951234567"})
           })
         );
       }

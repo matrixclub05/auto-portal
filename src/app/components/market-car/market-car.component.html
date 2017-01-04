@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="sale" *ngIf="_car.internalService == 'true'">ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>
+  <div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook()">ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>
   <div class="col-xs-4 image">
     <div class="row">
       <img src="assets/default-car-image.jpg" width="100%"/>
@@ -14,9 +14,9 @@
       <li>{{_car.city}}</li>
       <li>Объем двигателя: {{_car.engineCapacity}}л</li>
       <li class="footer">
-        <a href="">50 просмотров</a>
-        <a href="">100 комментариев</a>
-        <a href="">30.12.2016</a>
+        <a href="javascript:void(0)">50 просмотров</a>
+        <a href="javascript:void(0)">100 комментариев</a>
+        <a href="javascript:void(0)">30.12.2016</a>
       </li>
 
     </ul>

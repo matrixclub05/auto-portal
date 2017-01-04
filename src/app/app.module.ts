@@ -50,6 +50,7 @@ import {ShopGoodsComponent} from "./pages/shop/shopping-cart/shop-goods/shop-goo
 import {MarketComponent} from "./pages/shop/market/market.component";
 import { MarketCarComponent } from './components/market-car/market-car.component';
 import {DBServiceService} from "./global-services/dbservice.service";
+import { MarketServiceBookComponent } from './components/market-car/market-service-book/market-service-book.component';
 
 
 @NgModule({
@@ -96,6 +97,7 @@ import {DBServiceService} from "./global-services/dbservice.service";
 
     ShopCarComponent,
     ShopGoodsComponent,
+    MarketServiceBookComponent,
     MarketCarComponent
   ],
   imports: [
@@ -109,7 +111,8 @@ import {DBServiceService} from "./global-services/dbservice.service";
     NgbModule.forRoot()
   ],
   providers: [LoginServiceService, NativeWindowTools, DBServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MarketServiceBookComponent]
 })
 export class AppModule {
 }
