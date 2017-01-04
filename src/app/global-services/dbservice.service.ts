@@ -15,8 +15,7 @@ export class DBServiceService {
 
   private _carData: Array<Ad> = null;
 
-  constructor()
-  {
+  constructor() {
     this._database = openDatabase("carPortal", '1.0', 'Car Portal Database', 5 * 1024 * 1024);
 
     if (this._database) {
@@ -61,7 +60,7 @@ export class DBServiceService {
     if (filter.carName && filter.carName != "")
       conditions.push("carName LIKE '%" + filter.carName + "%'");
 
-    if(filter.engineCapacity)
+    if (filter.engineCapacity)
       conditions.push('engineCapacity BETWEEN ' + filter.engineCapacity[0] + ' AND ' + filter.engineCapacity[1]);
 
     return "WHERE " + conditions.join(" AND ");
@@ -91,7 +90,7 @@ export class DBServiceService {
             brand: key.split(' ')[0],
             model: key.split(' ')[1],
             carName: key,
-            internalService: this.getRandomInt(0,2) === 0,
+            internalService: this.getRandomInt(0, 2) === 0,
             photo: aDaTa[key].photoPath,
             ownerId: 'empty'
           })
