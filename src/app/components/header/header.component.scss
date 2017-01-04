@@ -1,3 +1,6 @@
+:host{
+  display: block;
+}
 [app-registration] {
   float: right;
 }
@@ -108,7 +111,91 @@
   float: right;
 }
 @media (min-width: 768px) {
-  .main-menu {
+  .main-menu, .main-header, .xs-hidden{
     display: block;
+  }
+
+}
+.xs-hidden, .main-header {
+  display: none;
+}
+@media (min-width: 320px) {
+
+}
+
+.header-container{
+  display: flex;
+  position: fixed;
+  top:0;
+  width: 100%;
+  background-color: #000;
+  z-index: 100;
+  box-shadow: 0 0 10px 0 #333;
+  align-items: center;
+  margin: auto;
+  justify-content: space-between;
+  .menu {
+    position: absolute;
+    /*background-color: rgba(223,31,61,.7);*/
+    background: rgba(0,0,0,0.8);
+    top: -1000%;
+    width: 100%;
+    box-shadow: 0 0 10px #000;
+    will-change: top;
+    z-index: 99;
+    transition: top 0.3s;
+
+    .submenu{
+      padding-left: 20px;
+      &>li{
+        list-style-type: none;
+        border-bottom-color: rgba(255,255,255,0.3);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        &>a{
+          padding: 5px 10px;
+          color: #ffffff;
+        }
+      }
+    }
+    &.active {
+      top: 100%;
+      transition: top 0.3s;
+
+    }
+    &>li{
+      list-style-type: none;
+
+      &>a{
+        padding: 5px 10px;
+        color: #ffffff;
+        background-color: rgba(0,0,0,0.6);
+        width: 100%;
+        color: rgba(223,31,61,1);
+        font-weight: bold;
+      }
+    }
+  }
+  .menu-btn{
+    padding: 0 15px;
+    color: #fff;
+  }
+
+  .sign-in {
+    padding: 0 15px;
+    color: #fff;
+    &:hover, &:focus {
+      color: #fff;
+    }
+  }
+
+  .brand {
+    color: #fff;
+
+    &>h1{
+      font-size: 2em;
+      text-align: center;
+      margin: 10px 0;
+    }
   }
 }
