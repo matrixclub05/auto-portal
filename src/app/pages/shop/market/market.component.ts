@@ -16,14 +16,18 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
   @ViewChild('carPopOut') popOut;
 
-  public filter: any;
+  private MIN_ENGINE_CAPACITY:number = 0.8;
+  private MAX_ENGINE_CAPACITY:number = 6.4;
+
+  private _engineCapacityFrom:number = this.MIN_ENGINE_CAPACITY;
+  private _engineCapacityTo:number = this.MAX_ENGINE_CAPACITY;
+
   protected carEngineTypes = ['Дизельный', "Бензиновый", 'LPG'];
-  protected carEngineCapacity = ['2.0', '1.8', '1.6', '2.0T', '3.0T'];
   protected transmissionTypes = ['МКПП', "АКПП"];
-  protected cities = ["Алматы", "Астана", "Актау", "Караганда"];
+  protected cities:Array<string> = ["Алматы", "Астана", "Актау", "Караганда"];
+  protected _selectedCities:{} = {"Алматы":false, "Астана":false, "Актау":false, "Караганда":false};
 
   protected _selectedEngineType: {} = {'Дизельный': false, "Бензиновый": false, 'LPG': false};
-  protected _selectedEngineCapacity: {} = {'2.0': false, '1.8': false, '1.6': false, '2.0T': false, '3.0T': false};
   protected _selectedTransmissionTypes: {} = {'МКПП': false, "АКПП": false};
 
   protected _filterCarName: string = "";
@@ -60,7 +64,7 @@ export class MarketComponent implements OnInit, AfterViewInit {
   }
 
   protected onCarFilter($event) {
-    this._filterCarName = $event.target.value.toLowerCase();
+    this._filterCarName = $event.target.value.toUpperCase();
     this.createCarForDisplay();
   }
 
@@ -68,10 +72,16 @@ export class MarketComponent implements OnInit, AfterViewInit {
     let filter: Object = {};
     let selectedTransmissionTypes: Array<string> = [];
     let selectedEngineTypes: Array<string> = [];
+    let selectedCities: Array<string> = [];
 
     for (var key in this._selectedEngineType) {
       if (this._selectedEngineType[key])
         selectedEngineTypes.push("'" + key + "'")
+    }
+
+    for (var key in this._selectedCities) {
+      if (this._selectedCities[key])
+        selectedCities.push("'" + key + "'")
     }
 
 
@@ -86,8 +96,13 @@ export class MarketComponent implements OnInit, AfterViewInit {
     if (selectedTransmissionTypes.length > 0)
       filter['transmissionType'] = selectedTransmissionTypes;
 
+    if (selectedCities.length > 0)
+      filter['city'] = selectedCities;
+
     if(this._filterCarName != "")
-      filter['carName'] = this._filterCarName.toUpperCase();
+      filter['carName'] = this._filterCarName;
+
+    filter['engineCapacity'] = [this._engineCapacityFrom, this._engineCapacityTo];
 
     this.selectCars(filter);
   }

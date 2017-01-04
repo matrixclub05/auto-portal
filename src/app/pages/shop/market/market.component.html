@@ -19,13 +19,24 @@
         </div>
       </div>
       <div class="list-group-item">
-        <label>Объем двигателя</label>
-        <div *ngFor="let capa of carEngineCapacity">
-          <label for="{{capa}}">
-            <input class="checkbox" type="checkbox" id="{{capa}}" name="engineCapacity" value="{{capa}}"
-                   [(ngModel)]="_selectedEngineCapacity[capa]" (ngModelChange)="createCarForDisplay()">
-            {{capa}}
+        <label>Город</label>
+        <div *ngFor="let city of cities;">
+          <label for="{{city}}">
+            <input class="checkbox" type="checkbox" id="{{city}}" name="engineType" value="{{city}}"
+                   [(ngModel)]="_selectedCities[city]" (ngModelChange)="createCarForDisplay()">
+            {{city}}
           </label>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <label>Объем двигателя</label>
+        <div>
+          <label for="minEngCapa">Минимальный объем двигателя</label>
+          <input id="minEngCapa" type="number" min="0.8" max="6.4" [(ngModel)]="_engineCapacityFrom" step="0.1" (ngModelChange)="createCarForDisplay()">
+        </div>
+        <div>
+          <label for="maxEngCapa">Максимальный объем двигателя</label>
+          <input id="maxEngCapa" type="number" min="0.8" max="6.4" [(ngModel)]="_engineCapacityTo" step="0.1" (ngModelChange)="createCarForDisplay()">
         </div>
       </div>
       <div class="list-group-item">

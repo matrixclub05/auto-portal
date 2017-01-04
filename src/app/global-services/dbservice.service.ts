@@ -46,7 +46,7 @@ export class DBServiceService {
   protected createCarFilter(filter): string {
     let conditions: Array<string> = [];
 
-    if (!filter.engineCapacity && !filter.transmissionType && !filter.engineType && !filter.carName)
+    if (!filter.engineCapacity && !filter.transmissionType && !filter.engineType && !filter.carName && !filter.city)
       return "";
 
     if (filter.engineType)
@@ -55,8 +55,14 @@ export class DBServiceService {
     if (filter.transmissionType)
       conditions.push("transmissionType == " + filter.transmissionType.join("OR transmissionType == "));
 
-    if (filter.carName != "")
+    if (filter.city)
+      conditions.push("city == " + filter.city.join("OR city == "));
+
+    if (filter.carName && filter.carName != "")
       conditions.push("carName LIKE '%" + filter.carName + "%'");
+
+    if(filter.engineCapacity)
+      conditions.push('engineCapacity BETWEEN ' + filter.engineCapacity[0] + ' AND ' + filter.engineCapacity[1]);
 
     return "WHERE " + conditions.join(" AND ");
   }
