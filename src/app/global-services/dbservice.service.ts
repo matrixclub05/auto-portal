@@ -3,7 +3,7 @@ import {Cars} from "../garage/draftData/Cars";
 import {Ad} from "./data-objects/Ad";
 import {Deferred} from "./Deffered";
 import {DefaultKeyValueDiffer} from "@angular/core/src/change_detection/differs/default_keyvalue_differ";
-
+declare var openDatabase: any;
 @Injectable()
 export class DBServiceService {
   private _database = null;
