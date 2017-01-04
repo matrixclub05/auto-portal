@@ -9,6 +9,7 @@
   <div class="col-xs-8">
     <ul class="list-group row">
       <li><h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4></li>
+      <li><span class="price" *ngIf="_car.isNew === 'true'">БЕЗ ПРОБЕГА</span></li>
       <li>Трансмиссия: {{_car.transmissionType}}</li>
       <li>{{_car.year}}г</li>
       <li>{{_car.city}}</li>

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from "@angular/core";
 import {CarData} from "../../global-services/data-objects/CarData";
 import {DBServiceService} from "../../global-services/dbservice.service";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";

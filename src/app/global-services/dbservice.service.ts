@@ -113,20 +113,22 @@ export class DBServiceService {
       let iterationsNumber: number = this.getRandomInt(4, 8);
       for (var j = 0; j < iterationsNumber; j++) {
         let randomCarParams = this.generateRandomCarParams();
+        let carYear = this.getRandomInt(2000, currentYear);
         carList.push(
           new Ad({
             engineType: randomCarParams.engineType,
             engineCapacity: randomCarParams.engineCapacity,
             transmissionType: randomCarParams.transmission,
             city: this.cities[this.getRandomInt(0, this.cities.length - 1)],
-            year: this.getRandomInt(2000, currentYear),
+            year: carYear,
             price: this.getRandomInt(500000, 10000000),
             brand: key.split(' ')[0],
             model: key.split(' ')[1],
             carName: key,
             internalService: this.getRandomInt(0, 1) === 0,
             photo: aDaTa[key].photoPath,
-            ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)})
+            ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)}),
+            isNew: carYear == currentYear
           })
         );
       }
