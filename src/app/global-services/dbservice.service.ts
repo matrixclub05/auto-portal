@@ -53,10 +53,10 @@ export class DBServiceService {
       conditions.push("engineType == " + filter.engineType.join(" OR engineType == "));
 
     if (filter.transmissionType)
-      conditions.push("transmissionType == " + filter.transmissionType.join("OR transmissionType == "));
+      conditions.push("transmissionType == " + filter.transmissionType.join(" OR transmissionType == "));
 
     if (filter.city)
-      conditions.push("city == " + filter.city.join("OR city == "));
+      conditions.push("city == " + filter.city.join(" OR city == "));
 
     if (filter.carName && filter.carName != "")
       conditions.push("carName LIKE '%" + filter.carName + "%'");
