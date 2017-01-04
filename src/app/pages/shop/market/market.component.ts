@@ -91,8 +91,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
       filter['transmissionType'] = selectedTransmissionTypes;
     }
 
-    this.selectCars(filter);
+    filter['carName'] = this._filterCarName.toUpperCase();
 
+    this.selectCars(filter);
   }
 
   protected haveARide(car: Ad) {
