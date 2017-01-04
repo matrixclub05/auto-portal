@@ -1,7 +1,7 @@
 import {Vehicle, IVehicle} from "./Vehicle";
 
 export class Ad implements IVehicle{
-  public type: string = "";
+  public type: string = "empty";
   public engineType: string = "";
   public engineCapacity: number = 0.0;
   public year: number = new Date().getFullYear();

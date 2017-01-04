@@ -49,6 +49,7 @@ import {ShopCarComponent} from "./pages/shop/shopping-cart/shop-car/shop-car.com
 import {ShopGoodsComponent} from "./pages/shop/shopping-cart/shop-goods/shop-goods.component";
 import {MarketComponent} from "./pages/shop/market/market.component";
 import { MarketCarComponent } from './components/market-car/market-car.component';
+import {DBServiceService} from "./global-services/dbservice.service";
 
 
 @NgModule({
@@ -107,7 +108,7 @@ import { MarketCarComponent } from './components/market-car/market-car.component
     GarageModule,
     NgbModule.forRoot()
   ],
-  providers: [LoginServiceService, NativeWindowTools],
+  providers: [LoginServiceService, NativeWindowTools, DBServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
