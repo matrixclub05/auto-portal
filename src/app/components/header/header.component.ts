@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   private _currentUser: UserInputInfo;
-
+  private isMenuOpened: boolean = false;
   constructor(private _modalService: NgbModal, private _loginService:LoginServiceService) {
   }
 
@@ -27,7 +27,14 @@ export class HeaderComponent implements OnInit {
       this._currentUser = new UserInputInfo();
     }
   }
-
+  private toggleMenu(){
+    this.isMenuOpened = !this.isMenuOpened;
+  }
+  private onMenuClick(e:any){
+    if(e.target.tagName.toLowerCase() == 'a'){
+      this.isMenuOpened = false;
+    }
+  }
   public openRegistrationModal(param: boolean) {
     let v = this._modalService.open(RegistrationFlowComponent);
     v.componentInstance.isLogin = param;
