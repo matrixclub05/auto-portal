@@ -5,8 +5,8 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-3">
+<div class="row" id="car-list" (swipeleft)="swipe(true)" (swiperight)="swipe(false)" >
+  <div class="col-md-3 cars-filter" [ngClass]="{'active': isFilterOpened }">
     <div class="list-group">
       <div class="list-group-item">
         <label class="control-label">Типы двигателей</label>
@@ -56,12 +56,12 @@
       <i class="fa fa-calculator" aria-hidden="true"></i>
       Кредитный калькулятор
     </a>
-    <div class="divider"></div>
-    <img src="assets/img/ads/1.jpg" alt="" width="100%">
-    <div class="divider"></div>
-    <img src="assets/ads_black.jpg" alt="" width="100%">
-    <div class="divider"></div>
-    <img src="assets/vestaxray.jpg" alt="" width="100%">
+    <div class="divider xs-hidden"></div>
+    <img src="assets/img/ads/1.jpg" alt="" width="100%" class="xs-hidden">
+    <div class="divider xs-hidden"></div>
+    <img src="assets/ads_black.jpg" alt="" width="100%" class="xs-hidden">
+    <div class="divider xs-hidden"></div>
+    <img src="assets/vestaxray.jpg" alt="" width="100%" class="xs-hidden">
   </div>
   <div class="col-sm-9">
 

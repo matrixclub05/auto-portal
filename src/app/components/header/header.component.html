@@ -1,5 +1,5 @@
 <div class="header-container">
-  <a class="menu-btn" (click)="toggleMenu()" >
+  <a class="menu-btn" (click)="toggleMenu()">
     <i class="fa" aria-hidden="true" [ngClass]="{'fa-bars': !isMenuOpened, 'fa-times': isMenuOpened}"></i>
   </a>
   <a [routerLink]="['']" class="brand">
@@ -8,10 +8,12 @@
   <a (click)="openRegistrationModal(true)" href="javascript:void(0)"
      *ngIf="!_loginService.isLoggedIn"
      class="sign-in">
-    <i class="fa fa-car" aria-hidden="true"></i>
+    <i class="fa fa-user-circle" aria-hidden="true"></i>
   </a>
-  <a class="sign-in" [routerLink]="['/profile']" data-hover="ГАРАЖ">
-    <i class="fa fa-car" aria-hidden="true"></i>
+  <a class="sign-in active" [routerLink]="['/profile']"
+     href="javascript:void(0)"
+     *ngIf="_loginService.isLoggedIn">
+    <i class="fa fa-user-circle" aria-hidden="true"></i>
   </a>
   <nav class="menu" [ngClass]="{'active': isMenuOpened }" (click)="onMenuClick($event)">
     <li>
@@ -24,7 +26,8 @@
           <a class="nav-link" [routerLink]="['/shop/market']" [routerLinkActive]="['active']">Автобазар</a>
         </li>
         <li>
-          <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/machines']" [routerLinkActive]="['active']">Техника</a>
+          <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/machines']"
+             [routerLinkActive]="['active']">Техника</a>
         </li>
         <li>
           <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/parts']" [routerLinkActive]="['active']">Запчасти</a>
@@ -35,7 +38,7 @@
       </ul>
     </li>
     <li>
-      <a class="nav-link"  data-hover="Сервис" [routerLink]="['/service']">Сервис</a>
+      <a class="nav-link" data-hover="Сервис" [routerLink]="['/service']">Сервис</a>
       <ul class="submenu">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/service/credit']" [routerLinkActive]="['active']">Кредит</a>
@@ -43,6 +46,16 @@
       </ul>
     </li>
   </nav>
+</div>
+<div class="services">
+  <a href="javascript:void(0)" (click)="openTestDrive()"><i class="fa fa-car" aria-hidden="true"></i></a>
+  <a href="javascript:void(0)" (click)="openSignUpService()"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+  <a href="javascript:void(0)" [routerLink]="['/service/credit']"><i class="fa fa-money" aria-hidden="true"></i></a>
+  <a href="javascript:void(0)" [routerLink]="['/shop/cart']"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+  <a (click)="_loginService.logOut()" href="javascript:void(0)" class="nav-link" *ngIf="_loginService.isLoggedIn">
+    <i class="fa fa-sign-out" aria-hidden="true"></i>
+  </a>
+
 </div>
 
 

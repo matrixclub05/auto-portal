@@ -4,6 +4,7 @@ import {GarageDataService} from "./services/garage-data.service";
 import {GarageComponent} from "./moduleView/garage.component";
 import {SignUpForServiceComponent} from "./sign-up-for-service/sign-up-for-service.component";
 import { TooMuchTimeWOServiceComponent } from './garage-single-car/too-much-time-woservice/too-much-time-woservice.component';
+import { TestDriveComponent } from './test-drive/test-drive.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { TooMuchTimeWOServiceComponent } from './garage-single-car/too-much-time
   ],
   declarations: [TooMuchTimeWOServiceComponent],
   providers: [GarageDataService],
-  entryComponents: [GarageComponent, SignUpForServiceComponent, TooMuchTimeWOServiceComponent]
+  entryComponents: [GarageComponent, SignUpForServiceComponent, TestDriveComponent, TooMuchTimeWOServiceComponent]
 })
 export class GarageModule { }

@@ -25,6 +25,9 @@ app-root, app-profile, app-main {
   background: #fff;
   z-index: 1;
   position: relative;
+  top: 100px;
+  overflow: auto;
+
 }
 .breadcrumbs {
   background: rgba(223, 31, 61, 0.7);
@@ -139,4 +142,24 @@ app-root, app-profile, app-main {
   .breadcrumbs {
     display: block;
   }
+}
+@media (min-width: 768px) {
+  .xs-hidden{
+    display: block;
+  }
+
+}
+.xs-hidden {
+  display: none;
+}
+
+.cars-filter {
+  position: fixed;
+  background: #fff;
+  z-index: 20;
+  overflow: hidden;
+  top: 96px;
+  left: -320px;
+  width: 320px;
+  box-shadow: 0 0 10px #000;
 }

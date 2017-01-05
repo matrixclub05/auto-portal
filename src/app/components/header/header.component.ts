@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {
   RegistrationFlowComponent,
   UserInputInfo
 } from "../../registration/registrationFlow/registration-flow.component";
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {Router} from '@angular/router';
+import {SignUpForServiceComponent} from "../../garage/sign-up-for-service/sign-up-for-service.component";
+import {TestDriveComponent} from "../../garage/test-drive/test-drive.component";
 
 @Component({
   selector: '[app-header]',
@@ -38,5 +40,15 @@ export class HeaderComponent implements OnInit {
   public openRegistrationModal(param: boolean) {
     let v = this._modalService.open(RegistrationFlowComponent);
     v.componentInstance.isLogin = param;
+  }
+  protected openTestDrive($event){
+    const modalRef: NgbModalRef = this._modalService.open(TestDriveComponent);
+    modalRef.componentInstance.modalRef = modalRef;
+    modalRef.componentInstance.testDriveMode = true;
+  }
+  protected openSignUpService($event) {
+    const modalRef: NgbModalRef = this._modalService.open(SignUpForServiceComponent);
+    modalRef.componentInstance.modalRef = modalRef;
+    modalRef.componentInstance.testDriveMode = true;
   }
 }

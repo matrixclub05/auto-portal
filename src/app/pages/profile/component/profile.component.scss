@@ -1,6 +1,16 @@
 :host {
   display: block;
 }
+@media (min-width: 768px) {
+  .xs-hidden{
+    display: block;
+  }
+
+}
+.xs-hidden {
+  display: none;
+}
+
 
 /* li {
    position: relative;

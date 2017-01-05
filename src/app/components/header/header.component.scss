@@ -134,6 +134,7 @@
   align-items: center;
   margin: auto;
   justify-content: space-between;
+  font-size: 1.1em;
   .menu {
     position: absolute;
     /*background-color: rgba(223,31,61,.7);*/
@@ -153,8 +154,12 @@
         border-bottom-width: 1px;
         border-bottom-style: solid;
         &>a{
-          padding: 5px 10px;
+          padding: 0.5em 1em 0.5em 2em;
           color: #ffffff;
+          font-size: 1.2em;
+          &.active{
+            color: #2980b9;
+          }
         }
       }
     }
@@ -167,12 +172,13 @@
       list-style-type: none;
 
       &>a{
-        padding: 5px 10px;
-        color: #ffffff;
+        padding: 0.5em 1em 0.5em 1.5em;
+        font-size: 1.2em;
         background-color: rgba(0,0,0,0.6);
         width: 100%;
-        color: rgba(223,31,61,1);
+        color: rgb(223,31,61);
         font-weight: bold;
+
       }
     }
   }
@@ -187,15 +193,39 @@
     &:hover, &:focus {
       color: #fff;
     }
+    &.active{
+      color: rgb(223,31,61);
+    }
   }
 
   .brand {
     color: #fff;
 
     &>h1{
-      font-size: 2em;
+      font-size: 1.8em;
       text-align: center;
       margin: 10px 0;
     }
   }
+}
+.services{
+  display: flex;
+  position: fixed;
+  top:50px;
+  width: 100%;
+  background-color: rgb(223,31,61);
+  z-index: 90;
+  color: #ffffff;
+  align-items: center;
+  margin: auto;
+  justify-content: space-between;
+  font-size: 1.1em;
+
+  &>a{
+    text-align: center;
+    color: #ffffff;
+    padding: 10px;
+    flex: 1;
+  }
+
 }

@@ -4,24 +4,23 @@ import {NgbTabChangeEvent} from "@ng-bootstrap/ng-bootstrap";
 import {LoginServiceService} from "../../global-services/login-service.service";
 
 @Component({
-  selector: 'app-sign-up-for-service',
-  templateUrl: './sign-up-for-service.component.html',
-  styleUrls: ['./sign-up-for-service.component.scss']
+  selector: 'app-test-drive',
+  templateUrl: './test-drive.component.html',
+  styleUrls: ['./test-drive.component.scss']
 })
-export class SignUpForServiceComponent implements OnInit {
+export class TestDriveComponent implements OnInit {
 
-  protected _modalRef:any = null;
+  protected _modalRef: any = null;
 
-  private _testDriveMode:boolean = false;
+  private _testDriveMode: boolean = false;
 
-  protected _manufacturers:Array<string> = [];
-  protected _vehicles:Array<string> = [];
+  protected _manufacturers: Array<string> = [];
+  protected _vehicles: Array<string> = [];
 
-  protected _selectedManufacturer:string = "";
-  protected _selectedVehicle:string = "";
+  protected _selectedManufacturer: string = "";
+  protected _selectedVehicle: string = "";
 
-  constructor(private _garageDataService:GarageDataService)
-  {
+  constructor(private _garageDataService: GarageDataService) {
 
   }
 
@@ -30,15 +29,12 @@ export class SignUpForServiceComponent implements OnInit {
     this.getManufacturers();
   }
 
-  protected getManufacturers()
-  {
+  protected getManufacturers() {
     this._manufacturers = this._garageDataService.getManufacturersBySection("Автомобили");
   }
 
-  protected getVehiclesByManufacturer()
-  {
-    if(this._selectedManufacturer != "")
-    {
+  protected getVehiclesByManufacturer() {
+    if (this._selectedManufacturer != "") {
       this._selectedVehicle = "";
       this._vehicles = this._garageDataService.getVehiclesByManufacturer("Автомобили", this._selectedManufacturer);
     }
@@ -48,8 +44,7 @@ export class SignUpForServiceComponent implements OnInit {
 
   }
 
-  public set modalRef(modalRef:any)
-  {
+  public set modalRef(modalRef: any) {
     this._modalRef = modalRef;
   }
 
@@ -62,10 +57,8 @@ export class SignUpForServiceComponent implements OnInit {
       this._modalRef.close();
     }
   }
-  protected formSubmit()
-  {
-    if(this._modalRef)
-    {
+  protected formSubmit() {
+    if (this._modalRef) {
       this._modalRef.close();
     }
   }
