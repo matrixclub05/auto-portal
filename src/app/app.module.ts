@@ -51,6 +51,7 @@ import {MarketComponent} from "./pages/shop/market/market.component";
 import { MarketCarComponent } from './components/market-car/market-car.component';
 import {DBServiceService} from "./global-services/dbservice.service";
 import { MarketServiceBookComponent } from './components/market-car/market-service-book/market-service-book.component';
+import {PhotoMemoryService} from "./global-services/photo-memory.service";
 
 
 @NgModule({
@@ -110,7 +111,7 @@ import { MarketServiceBookComponent } from './components/market-car/market-servi
     GarageModule,
     NgbModule.forRoot()
   ],
-  providers: [LoginServiceService, NativeWindowTools, DBServiceService],
+  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService],
   bootstrap: [AppComponent],
   entryComponents: [MarketServiceBookComponent]
 })

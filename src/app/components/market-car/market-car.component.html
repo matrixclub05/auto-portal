@@ -2,7 +2,7 @@
   <div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook()">ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>
   <div class="col-xs-4 image">
     <div class="row">
-      <img src="assets/default-car-image.jpg" width="100%"/>
+      <img src="{{_photoMemory.getCarImage(_car)}}" width="100%"/>
     </div>
 
   </div>

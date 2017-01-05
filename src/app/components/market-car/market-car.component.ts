@@ -2,6 +2,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from "@angular/core";
 import {Ad} from "../../global-services/data-objects/Ad";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {MarketServiceBookComponent} from "./market-service-book/market-service-book.component";
+import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 
 @Component({
   selector: 'app-market-car',
@@ -13,7 +14,7 @@ export class MarketCarComponent implements OnInit {
   @Input() _car: Ad;
   @Output() onSelected = new EventEmitter<Ad>();
 
-  constructor(private _modalService: NgbModal) {
+  constructor(private _modalService: NgbModal, private _photoMemory:PhotoMemoryService) {
 
   }
 
