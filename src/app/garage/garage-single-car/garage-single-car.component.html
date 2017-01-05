@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="col-xs-4 image">
       <div class="row">
-        <img src="assets/default-car-image.jpg" width="100%"/>
+        <img #carImage src="{{_garageMemo.getCarImage(_car)}}" width="100%"/>
       </div>
 
     </div>
@@ -14,10 +14,15 @@
         <li>Дата следующего ТО: 20.04.2017</li>
         <li>Объем двигателя: 5л</li>
         <li class="footer">
+            <label for="isInternalservice" class="pull-right">
+            <input checked id="isInternalservice" type="checkbox">
+            Обслуживается на Автосервисе
+            </label>
             <a href="javascript:void(0)" class="btn btn-primary pull-right" (click)="select()">Сервисная книга</a>
             <a href="javascript:void(0)" class="btn btn-primary pull-right" (click)="addToMarket()">Добавить на рынок</a>
+            <input class="input-capture" type="file" accept="image/*" id="capture" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
+            <label for="capture" class="btn btn-primary pull-right">Сделать снимок</label>
         </li>
-        <!--<app-rollover-btn [text]="'Сервисная книга'" (click)="select()" class="info small"></app-rollover-btn>-->
       </ul>
     </div>
   </div>

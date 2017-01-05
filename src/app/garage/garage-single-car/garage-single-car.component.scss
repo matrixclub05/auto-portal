@@ -69,3 +69,18 @@ div.button-wrapper
 {
   margin: 1px 0;
 }
+
+.input-capture
+{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.input-capture + label {
+  display: inline-block;
+  cursor: pointer;
+}

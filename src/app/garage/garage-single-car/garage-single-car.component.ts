@@ -1,21 +1,20 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output, ViewChild, AfterViewInit} from "@angular/core";
 import {CarData} from "../../global-services/data-objects/CarData";
 import {DBServiceService} from "../../global-services/dbservice.service";
-import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {TooMuchTimeWOServiceComponent} from "./too-much-time-woservice/too-much-time-woservice.component";
+import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 
 @Component({
   selector: '[app-garage-single-car]',
   templateUrl: 'garage-single-car.component.html',
-  styleUrls: ['garage-single-car.component.scss']
+  styleUrls: ['garage-single-car.component.scss'],
 })
 export class GarageSingleCarComponent implements OnInit {
 
   @Input() _car:CarData;
   @Output() onSelected = new EventEmitter<CarData>();
-  private _isTooMuchTimeWOServiceShown:boolean = false;
+  @ViewChild('carImage') carImage;
 
-  constructor(private _databaseService:DBServiceService, private _modalService:NgbModal) { }
+  constructor(private _databaseService:DBServiceService, private _garageMemo:PhotoMemoryService) { }
 
   ngOnInit() {
   }
@@ -27,17 +26,15 @@ export class GarageSingleCarComponent implements OnInit {
 
   public addToMarket()
   {
-    if(this._isTooMuchTimeWOServiceShown)
-    {
-      this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year);
-    }
-    else
-    {
-      const modalRef:NgbModalRef = this._modalService.open(TooMuchTimeWOServiceComponent);
-      modalRef.componentInstance.modalRef = modalRef;
-      modalRef.componentInstance.car = this._car;
-      this._isTooMuchTimeWOServiceShown = true;
-    }
+    this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year);
   }
 
+  protected capturePhoto($event)
+  {
+    if($event.target.files.length > 0)
+    {
+      var file = $event.target.files[0];
+      this._garageMemo.addCarImage(this._car, file);
+    }
+  }
 }
