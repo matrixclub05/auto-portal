@@ -9,7 +9,7 @@
 </div>
 
 <div class="jumbotron">
-  <div class="row">
+  <div class="row" *ngIf="_car">
     <app-market-car [_car]="_car"  [_showCalcLink]="false"  class="col-xs-12"></app-market-car>
   </div>
 
