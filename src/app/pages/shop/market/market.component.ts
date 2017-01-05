@@ -39,6 +39,7 @@ export class MarketComponent implements OnInit, AfterViewInit {
   private _carToAddToCart: Ad = null;
 
   private timeout = null;
+  private isFilterOpened:boolean = false;
 
   constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService: DBServiceService) {
   }
@@ -59,8 +60,8 @@ export class MarketComponent implements OnInit, AfterViewInit {
     this._dbService.selectCars(filter).then(this.setCarList.bind(this));
   }
 
-  protected swipe(type: boolean){
-    debugger;
+  protected swipe(){
+    this.isFilterOpened=!this.isFilterOpened;
   }
   protected setCarList(data: Array<Ad>) {
     this._carList = data;

@@ -1,12 +1,14 @@
 <div class="row top-bar">
   <div class="col-sm-4">
-    <input class="form-control" type="text" placeholder="Введите название или марку автомобиля"
+    <a  href="javascript:void(0)" (click)="swipe()" class="btn btn-primary">Фильтр</a>
+    <input class="form-control xs-hidden" type="text" placeholder="Введите название или марку автомобиля"
            (input)="onCarFilter($event)"/>
   </div>
 </div>
 
-<div class="row" id="car-list" (swipeleft)="swipe(true)" (swiperight)="swipe(false)" >
+<div class="row" id="car-list">
   <div class="col-md-3 cars-filter" [ngClass]="{'active': isFilterOpened }">
+    <a  href="javascript:void(0)" (click)="swipe()" class="btn btn-primary filter-btn">Закрыть фильтр</a>
     <div class="list-group">
       <div class="list-group-item">
         <label class="control-label">Типы двигателей</label>

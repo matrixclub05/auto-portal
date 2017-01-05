@@ -9,10 +9,14 @@
   top: 96px;
   left: -320px;
   width: 320px;
-  box-shadow: 0 0 10px #000;
+
   transition: left 0.3s;
   &.active{
     left: 0;
     transition: left 0.3s;
+    box-shadow: 0 0 10px #000;
   }
+}
+.filter-btn {
+  margin: 20px 0;
 }
