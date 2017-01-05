@@ -31,6 +31,6 @@ export class GarageSingleCarComponent implements OnInit {
   protected capturePhoto($event)
   {
     var files = $event.target.files;
-    alert(JSON.stringify(files, null, 4));
+    //alert(JSON.stringify(files, null, 4));
   }
 }
