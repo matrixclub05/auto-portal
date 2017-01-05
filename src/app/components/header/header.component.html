@@ -47,7 +47,7 @@
     </li>
   </nav>
 </div>
-<div class="services">
+<div class="header-services">
   <a href="javascript:void(0)" (click)="openTestDrive()"><i class="fa fa-car" aria-hidden="true"></i></a>
   <a href="javascript:void(0)" (click)="openSignUpService()"><i class="fa fa-cogs" aria-hidden="true"></i></a>
   <a href="javascript:void(0)" [routerLink]="['/service/credit']"><i class="fa fa-money" aria-hidden="true"></i></a>
@@ -59,7 +59,7 @@
 </div>
 
 
-<!--<div class="header-bg xs-hidden"></div>
+<div class="header-bg xs-hidden"></div>
 <div class="top">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['']">
@@ -77,9 +77,9 @@
       </ul>
       <ul class="nav navbar-nav" *ngIf="_loginService.isLoggedIn">
 
-        &lt;!&ndash;<li class="nav-item pull-right">
+        <!--<li class="nav-item pull-right">
           <a href="javascript:void(0)" class="nav-link user" [routerLink]="['/profile/personal']">{{_loginService.getCurrentUser().firstName}} {{_loginService.getCurrentUser().middleName}}</a>
-        </li>&ndash;&gt;
+        </li>-->
         <li class="nav-item pull-right">
           <a [routerLink]="['/shop/cart']" class="nav-link">Корзина</a>
         </li>
@@ -102,13 +102,13 @@
       <li class="nav-item">
         <a class="nav-link"  data-hover="Сервис" [routerLink]="['/service']">Сервис</a>
       </li>
-    &lt;!&ndash;  <li class="nav-item">
+    <!--  <li class="nav-item">
         <a class="nav-link"  data-hover="Мы" [routerLink]="['/about']" >Мы</a>
-      </li>&ndash;&gt;
-      &lt;!&ndash;<li class="nav-item pull-right">
+      </li>-->
+      <!--<li class="nav-item pull-right">
         <a class="nav-link" [routerLink]="['/profile']" data-hover="ГАРАЖ">ГАРАЖ</a>
-      </li>&ndash;&gt;
+      </li>-->
     </ul>
   </nav>
 </div>
-</div>-->
+</div>

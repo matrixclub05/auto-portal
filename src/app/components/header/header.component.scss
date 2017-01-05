@@ -111,121 +111,119 @@
   float: right;
 }
 @media (min-width: 768px) {
-  .main-menu, .main-header, .xs-hidden{
+  .main-menu, .main-header{
     display: block;
   }
-
+  .header-container, .header-services{
+    display: none;
+  }
 }
-.xs-hidden, .main-header {
-  display: none;
-}
-@media (min-width: 320px) {
+@media (max-width: 767px) {
 
-}
-
-.header-container{
-  display: flex;
-  position: fixed;
-  top:0;
-  width: 100%;
-  background-color: #000;
-  z-index: 100;
-  box-shadow: 0 0 10px 0 #333;
-  align-items: center;
-  margin: auto;
-  justify-content: space-between;
-  font-size: 1.1em;
-  .menu {
-    position: absolute;
-    /*background-color: rgba(223,31,61,.7);*/
-    background: rgba(0,0,0,0.8);
-    top: -1000%;
+  .header-container {
+    display: flex;
+    position: fixed;
+    top: 0;
     width: 100%;
-    box-shadow: 0 0 10px #000;
-    will-change: top;
-    z-index: 99;
-    transition: top 0.3s;
+    background-color: #000;
+    z-index: 100;
+    box-shadow: 0 0 10px 0 #333;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+    font-size: 1.1em;
+    .menu {
+      position: absolute;
+      /*background-color: rgba(223,31,61,.7);*/
+      background: rgba(0, 0, 0, 0.8);
+      top: -1000%;
+      width: 100%;
+      box-shadow: 0 0 10px #000;
+      will-change: top;
+      z-index: 99;
+      transition: top 0.3s;
 
-    .submenu{
-      padding-left: 20px;
-      &>li{
-        list-style-type: none;
-        border-bottom-color: rgba(255,255,255,0.3);
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        &>a{
-          padding: 0.5em 1em 0.5em 2em;
-          color: #ffffff;
-          font-size: 1.2em;
-          &.active{
-            color: #2980b9;
+      .submenu {
+        padding-left: 20px;
+        & > li {
+          list-style-type: none;
+          border-bottom-color: rgba(255, 255, 255, 0.3);
+          border-bottom-width: 1px;
+          border-bottom-style: solid;
+          & > a {
+            padding: 0.5em 1em 0.5em 2em;
+            color: #ffffff;
+            font-size: 1.2em;
+            &.active {
+              color: #2980b9;
+            }
           }
         }
       }
+      &.active {
+        top: 100%;
+        transition: top 0.3s;
+
+      }
+      & > li {
+        list-style-type: none;
+
+        & > a {
+          padding: 0.5em 1em 0.5em 1.5em;
+          font-size: 1.2em;
+          background-color: rgba(0, 0, 0, 0.6);
+          width: 100%;
+          color: rgb(223, 31, 61);
+          font-weight: bold;
+
+        }
+      }
     }
-    &.active {
-      top: 100%;
-      transition: top 0.3s;
-
+    .menu-btn {
+      padding: 0 15px;
+      color: #fff;
     }
-    &>li{
-      list-style-type: none;
 
-      &>a{
-        padding: 0.5em 1em 0.5em 1.5em;
-        font-size: 1.2em;
-        background-color: rgba(0,0,0,0.6);
-        width: 100%;
-        color: rgb(223,31,61);
-        font-weight: bold;
+    .sign-in {
+      padding: 0 15px;
+      color: #fff;
+      &:hover, &:focus {
+        color: #fff;
+      }
+      &.active {
+        color: rgb(223, 31, 61);
+      }
+    }
 
+    .brand {
+      color: #fff;
+
+      & > h1 {
+        font-size: 1.8em;
+        text-align: center;
+        margin: 10px 0;
       }
     }
   }
-  .menu-btn{
-    padding: 0 15px;
-    color: #fff;
-  }
-
-  .sign-in {
-    padding: 0 15px;
-    color: #fff;
-    &:hover, &:focus {
-      color: #fff;
-    }
-    &.active{
-      color: rgb(223,31,61);
-    }
-  }
-
-  .brand {
-    color: #fff;
-
-    &>h1{
-      font-size: 1.8em;
-      text-align: center;
-      margin: 10px 0;
-    }
-  }
-}
-.services{
-  display: flex;
-  position: fixed;
-  top:50px;
-  width: 100%;
-  background-color: rgb(223,31,61);
-  z-index: 90;
-  color: #ffffff;
-  align-items: center;
-  margin: auto;
-  justify-content: space-between;
-  font-size: 1.1em;
-
-  &>a{
-    text-align: center;
+  .header-services {
+    display: flex;
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    background-color: rgb(223, 31, 61);
+    z-index: 90;
     color: #ffffff;
-    padding: 10px;
-    flex: 1;
-  }
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+    font-size: 1.1em;
 
+    & > a {
+      text-align: center;
+      color: #ffffff;
+      padding: 10px;
+      flex: 1;
+    }
+
+  }
 }
