@@ -113,7 +113,7 @@ import {PhotoMemoryService} from "./global-services/photo-memory.service";
   ],
   providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService],
   bootstrap: [AppComponent],
-  entryComponents: [MarketServiceBookComponent]
+  entryComponents: [MarketServiceBookComponent, CreditCalcComponent]
 })
 export class AppModule {
 }

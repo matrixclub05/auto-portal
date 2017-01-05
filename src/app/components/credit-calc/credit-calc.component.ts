@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Ad} from "../../global-services/data-objects/Ad";
 class Thing {
   public zadoljnost: string = "";
   public na4islProcenti: string = "";
@@ -12,7 +13,7 @@ class Thing {
   styleUrls: ['./credit-calc.component.scss']
 })
 export class CreditCalcComponent implements OnInit {
-
+  private _car:Ad = null;
 
   private sumCredit: number = 1000;
   private timeCredit: number = 12;
@@ -58,6 +59,11 @@ export class CreditCalcComponent implements OnInit {
       }
 
   };
+
+  set car(value: Ad) {
+    this._car = value;
+    this.sumCredit = parseInt(<any>this._car.price);
+  }
 
   private myRound(num) {
     return (Math.round(num * 100) / 100);
