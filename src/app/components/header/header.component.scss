@@ -161,7 +161,7 @@
         }
       }
       &.active {
-        top: 100%;
+        top: 95px;
         transition: top 0.3s;
 
       }
@@ -211,7 +211,7 @@
     top: 50px;
     width: 100%;
     background-color: rgb(223, 31, 61);
-    z-index: 90;
+    z-index: 100;
     color: #ffffff;
     align-items: center;
     margin: auto;
