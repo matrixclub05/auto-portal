@@ -1,4 +1,4 @@
-<div class="car-wrapper">
+<div class="xs-hidden car-wrapper">
   <div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook()">ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>
   <div class="col-xs-4 image">
     <div class="row">
@@ -18,9 +18,27 @@
         <a href="javascript:void(0)">50 просмотров</a>
         <a href="javascript:void(0)">100 комментариев</a>
         <a href="javascript:void(0)">30.12.2016</a>
-        <a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Расчитать кредит</a>
+        <a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Кредит</a>
       </li>
-
     </ul>
   </div>
+</div>
+
+<div class="xs-car-wrapper">
+  <h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4>
+  <img src="{{_photoMemory.getCarImage(_car)}}" width="100%"/>
+  <div class="divider"></div>
+  <ul class="list-group ">
+    <li>{{_car.year}}г</li>
+    <li><span class="price" *ngIf="_car.isNew === 'true'">БЕЗ ПРОБЕГА</span></li>
+    <li>Трансмиссия: {{_car.transmissionType}}</li>
+    <li>Город: {{_car.city}}</li>
+    <li>Объем двигателя: {{_car.engineCapacity}}л</li>
+    <li class="footer">
+      <a href="javascript:void(0)">50 просмотров</a>
+      <a href="javascript:void(0)">100 комментариев</a>
+      <a href="javascript:void(0)">30.12.2016</a>
+      <a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Рассчитать кредит</a>
+    </li>
+  </ul>
 </div>
