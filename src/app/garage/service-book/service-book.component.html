@@ -1,21 +1,61 @@
-<span #content>
-  <button class="btn btn-primary" (click)="backButtonHit()">Назад</button>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Проведено</th>
-        <th>ДА</th>
-        <th>НЕТ</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of carServiceBook">
-        <td>{{item.description}}</td>
-        <td>{{item.done? "+" : ""}}</td>
-        <td>{{item.done? "" : "+"}}</td>
-      </tr>
-      </tbody>
-    </table>
+<div *ngIf="modalMode">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Сервисная книга</h4>
   </div>
-</span>
+  <div class="modal-content">
+    <span #content>
+      <div class="table-responsive" *ngFor="let item of _techServiceArray; let i = index">
+        <h5>ТО-{{i + 1}}</h5>
+        <h6>{{item}}</h6>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Проведено</th>
+            <th>ДА</th>
+            <th>НЕТ</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of carServiceBook">
+            <td>{{item.description}}</td>
+            <td>{{item.done? "+" : ""}}</td>
+            <td>{{item.done? "" : "+"}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </span>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Закрыть</button>
+  </div>
+</div>
+<div *ngIf="!modalMode">
+  <span #content>
+      <button class="btn btn-primary" (click)="backButtonHit()" *ngIf="carServiceBook">Назад</button>
+      <div class="table-responsive" *ngFor="let item of _techServiceArray; let i = index">
+        <h5>ТО-{{i+1}}</h5>
+        <h6>{{item}}</h6>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Проведено</th>
+            <th>ДА</th>
+            <th>НЕТ</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of carServiceBook">
+            <td>{{item.description}}</td>
+            <td>{{item.done? "+" : ""}}</td>
+            <td>{{item.done? "" : "+"}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </span>
+</div>

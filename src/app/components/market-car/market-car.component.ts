@@ -4,6 +4,8 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {MarketServiceBookComponent} from "./market-service-book/market-service-book.component";
 import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 import {CreditCalcComponent} from "../credit-calc/credit-calc.component";
+import {ServiceBookComponent} from "../../garage/service-book/service-book.component";
+import {Service} from "../../garage/draftData/Service";
 
 @Component({
   selector: 'app-market-car',
@@ -24,7 +26,16 @@ export class MarketCarComponent implements OnInit {
 
   }
 
-  protected openServiceBook() {
+  protected openServiceBook()
+  {
+    const modalRef: NgbModalRef = this._modalService.open(ServiceBookComponent, {
+      size: 'lg',
+      windowClass: 'car-market-car-details'
+    });
+    modalRef.componentInstance.modalRef = modalRef;
+  }
+
+  protected openCarDetails() {
     const modalRef: NgbModalRef = this._modalService.open(MarketServiceBookComponent, {
       size: 'lg',
       windowClass: 'car-market-car-details'
