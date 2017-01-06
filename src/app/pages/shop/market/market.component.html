@@ -7,7 +7,7 @@
 </div>
 
 <div class="row" id="car-list">
-  <div class="col-md-3 cars-filter" [ngClass]="{'active': isFilterOpened }">
+  <div class="col-md-4 cars-filter" [ngClass]="{'active': isFilterOpened }">
     <a  href="javascript:void(0)" (click)="swipe()" class="btn btn-primary filter-btn">Закрыть фильтр</a>
     <div class="list-group">
       <div class="list-group-item">
@@ -92,7 +92,7 @@
     <div class="divider xs-hidden"></div>
     <img src="assets/vestaxray.jpg" alt="" width="100%" class="xs-hidden">
   </div>
-  <div class="col-sm-9">
+  <div class="col-md-8">
 
     <div class="row" *ngIf="_carList.length > 0">
 
