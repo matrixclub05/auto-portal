@@ -1,15 +1,19 @@
 <div class="xs-hidden car-wrapper" (click)="openCarDetails()">
-  <div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook()" >ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>
+  <!--<div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook()" >ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>-->
   <div class="col-xs-4 image">
     <div class="row">
       <img src="{{_photoMemory.getCarImage(_car)}}" width="100%"/>
     </div>
 
   </div>
-  <div class="col-xs-8">
+  <div class="col-xs-8 info">
     <ul class="list-group row">
       <li><h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4></li>
-      <li><span class="price" *ngIf="_car.isNew === 'true'">БЕЗ ПРОБЕГА</span></li>
+      <li>
+        <span class="price" *ngIf="_car.isNew === 'true'">БЕЗ ПРОБЕГА</span>
+        <br *ngIf="_car.isNew === 'true'">
+        <span class="price" *ngIf="_car.internalService === 'true'">ОБСЛУЖИВАЕТСЯ НА АВТОСЕРВИСЕ</span>
+      </li>
       <li>Трансмиссия: {{_car.transmissionType}}</li>
       <li>{{_car.year}}г</li>
       <li>{{_car.city}}</li>
@@ -18,27 +22,41 @@
         <a href="javascript:void(0)">50 просмотров</a>
         <a href="javascript:void(0)">100 комментариев</a>
         <a href="javascript:void(0)">30.12.2016</a>
-        <a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Кредит</a>
+        <div class="icons-ct pull-right">
+          <i class="fa fa-bookmark btn" aria-hidden="true" (click)="openCarDetails()"
+             *ngIf="_car.internalService == 'true'" style="color: #090"></i>
+          <i class="fa fa-book btn" aria-hidden="true" (click)="openServiceBook()"></i>
+          <i class="fa fa-calculator btn" aria-hidden="true" (click)="openCarCredit()"></i>
+        </div>
+        <!--<a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Кредит</a>-->
       </li>
     </ul>
   </div>
 </div>
 
-<div class="xs-car-wrapper">
+<div class="xs-car-wrapper" >
+
   <h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4>
-  <div *ngIf="_car.internalService == 'true'" class="internal-service"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
-  <img src="{{_photoMemory.getCarImage(_car)}}" width="100%"/>
+  <div class="info-wrap">
+    <div class="icons-ct">
+      <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails()"
+         *ngIf="_car.internalService == 'true'"></i>
+      <i class="fa fa-book btn btn-primary pull-right" aria-hidden="true" (click)="openServiceBook()"></i>
+      <i class="fa fa-calculator btn btn-primary pull-right" aria-hidden="true" (click)="openCarCredit()"></i>
+      <i class="fa fa-camera btn btn-primary pull-right" aria-hidden="true"></i>
+    </div>
+    <div class="image-ct">
+      <img src="{{_photoMemory.getCarImage(_car)}}" width="100%"/>
+    </div>
+  </div>
+  <!--<div *ngIf="_car.internalService == 'true'" class="internal-service"><i class="fa fa-bookmark" aria-hidden="true"></i></div>-->
+
   <div class="divider"></div>
   <ul class="list-group ">
     <li>{{_car.year}}г, {{_car.transmissionType}}, {{_car.engineCapacity}}л, {{_car.engineType}}</li>
     <li><span class="price" *ngIf="_car.isNew === 'true'">БЕЗ ПРОБЕГА</span></li>
     <li>Город: {{_car.city}}</li>
     <li><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{owner.phoneNumber}}</li>
-    <li><a href="javascript:void(0)">30.12.2016</a></li>
-
-    <li class="footer">
-
-      <a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Рассчитать кредит</a>
-    </li>
+    <li><a href="javascript:void(0)"><i class="fa fa-clock-o" aria-hidden="true"></i> 30.12.2016</a></li>
   </ul>
 </div>

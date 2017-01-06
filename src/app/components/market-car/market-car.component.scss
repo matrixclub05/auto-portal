@@ -37,20 +37,25 @@ h4{
   padding: 10px 15px;
 }
 .car-wrapper {
+  cursor: pointer;
   box-shadow: 1px 1px 2px 0px #ccc;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   transition: outline 0.5s ease;
   outline: 1px solid transparent;
+
   &:hover {
     outline: 1px solid #df1f3d;
     box-sizing: border-box;
     width: 100%;
     transition: outline 0.5s ease;
   }
+  .info {
+    border-left: 3px solid #df1f3d;
+  }
   .image {
-    border-right: 3px solid #df1f3d;
+
     background: #fff;
   }
   &::after{
@@ -84,11 +89,31 @@ h4{
   cursor: pointer;
 }
 .xs-car-wrapper {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   border: 1px solid #cccccc;
   padding: 10px;
   position: relative;
+  .divider {
+    margin: 0;
+  }
+  .info-wrap{
+    display: flex;
+    img{
+      border: 1px solid #cccccc;
+    }
+  }
+  .icons-ct {
+    padding: 0 10px 0 0;
+    width: 58px;
+    &>.btn {
+      width: 48px;
+      background: #ffffff;
+      color: #df1f3d;
+      margin-bottom: 8.3px;
+    }
+  }
   .internal-service {
     position: absolute;
     top: 35px;
