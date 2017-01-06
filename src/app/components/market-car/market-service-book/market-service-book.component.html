@@ -1,4 +1,7 @@
 <div class="modal-header">
+  <button aria-label="Close" class="close" type="button" (click)="_modalRef.close()">
+    <span aria-hidden="true">×</span>
+  </button>
   <h4>{{_car.carName}}</h4>
   <h5 *ngIf="_car.internalService">Автомобиль проверен на нашем СТО</h5>
 </div>

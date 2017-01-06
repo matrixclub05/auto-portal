@@ -47,13 +47,15 @@ export class ChatComponent implements OnInit {
       if(this._currentMessage.length > 0)
       {
         this._messages.push({type:"in", message:this._currentMessage, isPhoto:false});
+        setTimeout(this.updateChatScroll.bind(this), 300);
       }
 
       this._currentMessage = "";
 
       setTimeout(function(){
-        msgs.push({type:"out", message:predef[Math.floor(Math.random()*predef.length)], isPhoto:false})
-      }, 1000);
+        msgs.push({type:"out", message:predef[Math.floor(Math.random()*predef.length)], isPhoto:false});
+        setTimeout(this.updateChatScroll.bind(this), 300);
+      }.bind(this), 1000);
     }
   }
 
@@ -62,7 +64,7 @@ export class ChatComponent implements OnInit {
     this._chatIsShown = !this._chatIsShown;
     if(this._chatIsShown && this._messages.length == 0)
     {
-      setInterval(this.updateChatScroll.bind(this), 300);
+      setTimeout(this.updateChatScroll.bind(this), 300);
       this._messages.push({type:"out",message:"Здравствуйте меня зовут Робот я помогу вам", isPhoto:false});
     }
   }

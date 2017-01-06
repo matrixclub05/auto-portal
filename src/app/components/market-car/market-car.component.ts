@@ -52,6 +52,7 @@ export class MarketCarComponent implements OnInit {
       windowClass: 'car-market-car-details'
     });
     modalRef.componentInstance.car = this._car;
+    modalRef.componentInstance.modalRef = modalRef;
   }
 
 }

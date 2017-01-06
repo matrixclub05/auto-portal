@@ -63,6 +63,13 @@ export class DBServiceService {
     if (filter.engineCapacity)
       conditions.push('engineCapacity BETWEEN ' + filter.engineCapacity[0] + ' AND ' + filter.engineCapacity[1]);
 
+    if(filter.brand)
+    {
+      conditions.push("brand == "+ filter.brand);
+      if(filter.model)
+        conditions.push("model == "+ filter.model);
+    }
+
     return "WHERE " + conditions.join(" AND ");
   }
 
