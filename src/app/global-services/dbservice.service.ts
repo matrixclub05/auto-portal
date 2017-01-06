@@ -33,7 +33,7 @@ export class DBServiceService {
     let filterString = '';
     if (filter) filterString = this.createCarFilter(filter);
     this._database.transaction((tx) => {
-      tx.executeSql("SELECT * FROM car_list " + filterString, [],
+      tx.executeSql("SELECT * FROM car_list " + filterString +" ORDER BY id DESC", [],
         (tx, queryResult) => {
           deferred.resolve(<Array<Ad>>(queryResult.rows))
         }
@@ -138,7 +138,7 @@ export class DBServiceService {
       var columnNames: string[] = Object.keys(carList[0]);
       var columnNameList: string = columnNames.join(",");
       this._database.transaction((tx) => {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS car_list (' + columnNameList + ')', [],
+        tx.executeSql('CREATE TABLE IF NOT EXISTS car_list (id INTEGER PRIMARY KEY,' + columnNameList + ')', [],
           (insertTx) => {
             var values: any[] = [];
             var repl: string[] = [];
