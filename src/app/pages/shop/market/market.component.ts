@@ -6,6 +6,7 @@ import {LoginServiceService} from "../../../global-services/login-service.servic
 
 import {Ad} from "../../../global-services/data-objects/Ad";
 import {DBServiceService} from "../../../global-services/dbservice.service";
+import {Cars} from "../../../garage/draftData/Cars";
 
 @Component({
   selector: 'app-market',
@@ -40,6 +41,12 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
   private timeout = null;
   private isFilterOpened:boolean = false;
+
+  private _searchCarBrand:string = "";
+  private _searchCarModel:string = "";
+
+  private _carsListByBrand = Cars.carByBrand;
+  private _carBrands = Object.keys(Cars.carByBrand);
 
   constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService: DBServiceService) {
   }
@@ -107,6 +114,13 @@ export class MarketComponent implements OnInit, AfterViewInit {
     if(this._filterCarName != "")
       filter['carName'] = this._filterCarName;
 
+    if(this._searchCarBrand != "")
+    {
+      filter["brand"] = "'" + this._searchCarBrand + "'";
+      if(this._searchCarModel != "")
+        filter['model'] =  "'" + this._searchCarModel  + "'";
+    }
+
     filter['engineCapacity'] = [this._engineCapacityFrom, this._engineCapacityTo];
 
     this.selectCars(filter);
@@ -127,6 +141,12 @@ export class MarketComponent implements OnInit, AfterViewInit {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(k, 2000);
     this._loginService.loginData.storeUserData("garageCar", ud);
+  }
+
+  protected onCarBrandChange()
+  {
+    this._searchCarModel = "";
+    this.createCarForDisplay();
   }
 }
 

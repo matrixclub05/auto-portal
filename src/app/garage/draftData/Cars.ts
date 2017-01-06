@@ -520,7 +520,7 @@ export class Cars {
       }
     };
 
-  public static data ={
+  public static data = {
     "ACURA": {
       "CL": [
         2001,
@@ -12438,5 +12438,17 @@ export class Cars {
     }
   };
 
-
+  public static carByBrand = {
+    "CHEVROLET": ["ASTRO"],
+    "DAEWOO": ["LANOS", "LEGANZA", "NUBIRA"],
+    "HYUNDAI": ["ACCENT", "ELANTRA", "SANTA"],
+    "MAZDA": ["3", "5"],
+    "MERCEDES-BENZ": ["CLK430", "CLK55", "E320"],
+    "MITSUBISHI": ["ECLIPSE", "GALANT"],
+    "NISSAN": ["ALMERA", "ALTIMA"],
+    "PEUGEOT": ["206", "207", "208"],
+    "RENAULT": ["MEGANE", "SCENIC", "CLIO"],
+    "SUBARU": ["FORESTER", "IMPREZA", "LEGACY"],
+    "VOLKSWAGEN": ["BEETLE", "CABRIO"]
+  };
 }

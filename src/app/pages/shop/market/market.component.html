@@ -30,6 +30,24 @@
           </label>
         </div>
       </div>
+
+
+      <div class="list-group-item">
+        <label>Марка Авто
+            <select id="auto-brand" class="form-control" [(ngModel)]="_searchCarBrand" (change)="onCarBrandChange()">
+              <option value="">Выбирете марку автомобиля</option>
+              <option *ngFor="let make of _carBrands" value="{{make}}">{{make}}</option>
+            </select>
+        </label>
+        <label>Модель Авто
+          <select id="auto-model" class="form-control" [(ngModel)]="_searchCarModel" (change)="createCarForDisplay()">
+            <option value="">Выбирете модель автомобиля</option>
+            <option *ngFor="let model of _carsListByBrand[_searchCarBrand]" value="{{model}}">{{model}}</option>
+          </select>
+        </label>
+      </div>
+
+
       <div class="list-group-item">
         <label>Объем двигателя</label>
         <div>
