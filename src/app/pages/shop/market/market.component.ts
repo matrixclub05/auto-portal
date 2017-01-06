@@ -45,8 +45,11 @@ export class MarketComponent implements OnInit, AfterViewInit {
   private _searchCarBrand:string = "";
   private _searchCarModel:string = "";
 
-  private _carsListByBrand = Cars.carByBrand;
-  private _carBrands = Object.keys(Cars.carByBrand);
+  private _carsListByBrand = Cars.data;
+  private _carBrands = Object.keys(Cars.data);
+  private _carModels = [];
+
+  private _isNew:Object = {new:true, used:true};
 
   constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService: DBServiceService) {
   }
@@ -121,6 +124,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
         filter['model'] =  "'" + this._searchCarModel  + "'";
     }
 
+    if(!((this._isNew["new"] && this._isNew["used"]) || (!this._isNew["new"] && !this._isNew["used"])))
+      filter["isNew"] = !this._isNew["new"];
+
     filter['engineCapacity'] = [this._engineCapacityFrom, this._engineCapacityTo];
 
     this.selectCars(filter);
@@ -146,6 +152,10 @@ export class MarketComponent implements OnInit, AfterViewInit {
   protected onCarBrandChange()
   {
     this._searchCarModel = "";
+    if(this._searchCarBrand != '')
+    {
+      this._carModels = Object.keys(this._carsListByBrand[this._searchCarBrand]);
+    }
     this.createCarForDisplay();
   }
 }
