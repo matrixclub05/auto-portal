@@ -40,18 +40,21 @@ export class ChatComponent implements OnInit {
 
   protected sendMessage()
   {
-    let msgs = this._messages;
-    let predef = this._predefinedMessages;
-    if(this._currentMessage.length > 0)
+    if(this._currentMessage != '')
     {
-      this._messages.push({type:"in", message:this._currentMessage});
+      let msgs = this._messages;
+      let predef = this._predefinedMessages;
+      if(this._currentMessage.length > 0)
+      {
+        this._messages.push({type:"in", message:this._currentMessage, isPhoto:false});
+      }
+
+      this._currentMessage = "";
+
+      setTimeout(function(){
+        msgs.push({type:"out", message:predef[Math.floor(Math.random()*predef.length)], isPhoto:false})
+      }, 1000);
     }
-
-    this._currentMessage = "";
-
-    setTimeout(function(){
-      msgs.push({type:"out", message:predef[Math.floor(Math.random()*predef.length)]})
-    }, 1000);
   }
 
   protected toggleChatVisibility()
@@ -60,7 +63,19 @@ export class ChatComponent implements OnInit {
     if(this._chatIsShown && this._messages.length == 0)
     {
       setInterval(this.updateChatScroll.bind(this), 300);
-      this._messages.push({type:"out",message:"Здравствуйте меня зовут Робот я помогу вам"});
+      this._messages.push({type:"out",message:"Здравствуйте меня зовут Робот я помогу вам", isPhoto:false});
+    }
+  }
+
+  protected capturePhoto($event){
+    if($event.target.files.length > 0)
+    {
+      var file = $event.target.files[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function(event){
+        this._messages.push({type:"in", message:event.target.result,isPhoto:true});
+      }.bind(this);
+      fileReader.readAsDataURL(file);
     }
   }
 
@@ -71,6 +86,7 @@ interface IMessage
 {
   type:string
   message:string;
+  isPhoto:boolean;
 }
 
 

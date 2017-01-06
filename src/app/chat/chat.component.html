@@ -21,7 +21,8 @@
             <div *ngIf="item.type == 'in'" class="row msg_container base_sent">
               <div class="col-md-10 col-xs-10">
                 <div class="messages msg_sent">
-                  <p>{{item.message}}</p>
+                  <p *ngIf="!item.isPhoto">{{item.message}}</p>
+                  <p *ngIf="item.isPhoto"><img src="{{item.message}}"></p>
                   <time datetime="2009-11-13T20:00">Робот • Только что</time>
                 </div>
               </div>
@@ -39,7 +40,8 @@
               </div>
               <div class="col-md-10 col-xs-10">
                 <div class="messages msg_receive">
-                  <p>{{item.message}}</p>
+                  <p *ngIf="!item.isPhoto">{{item.message}}</p>
+                  <p *ngIf="item.isPhoto"><img src="{{item.message}}"></p>
                   <time datetime="2009-11-13T20:00">Я • Только что</time>
                 </div>
               </div>
@@ -53,9 +55,11 @@
         <div class="panel-footer">
           <div class="input-group">
             <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Зайдайте вопрос здесь..." [(ngModel)]="_currentMessage"/>
-            <span class="input-group-btn">
-                <button class="btn btn-primary btn-sm" id="btn-chat" (click)="sendMessage()">Отправить</button>
-            </span>
+            <div class="input-group-btn input-group-chat">
+                <button class="btn btn-primary pull-right" (click)="sendMessage()">Отправить</button>
+                <input class="input-capture" type="file" accept="image/*" id="capture" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
+                <label for="capture" class="btn btn-primary pull-right capture"></label>
+            </div>
           </div>
         </div>
       </div>
