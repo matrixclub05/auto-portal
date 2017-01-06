@@ -15,13 +15,14 @@ export class MarketCarComponent implements OnInit {
   @Input() _showCalcLink = true;
   @Input() _car: Ad;
   @Output() onSelected = new EventEmitter<Ad>();
+  private owner: any;
 
   constructor(private _modalService: NgbModal, private _photoMemory:PhotoMemoryService) {
 
   }
 
   ngOnInit() {
-
+    this.owner = JSON.parse(this._car.ownerData);
   }
 
   protected openServiceBook() {

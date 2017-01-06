@@ -147,14 +147,32 @@ app-root, app-profile, app-main {
     padding-bottom: 560px;
   }
 }
+@media (min-width: 320px) {
+  .sub-breadcrumbs {
+    &>h2 {
+      width: auto !important;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .breadcrumbs {
     display: block;
   }
-}
-@media (min-width: 768px) {
+  .sub-breadcrumbs {
+    &>h2 {
+      width: 60% !important;
+    }
+  }
   .xs-hidden{
     display: block;
+  }
+}
+@media (min-width: 992px) {
+  .sub-breadcrumbs {
+    &>h2 {
+      width: 50% !important;
+    }
   }
 
 }
