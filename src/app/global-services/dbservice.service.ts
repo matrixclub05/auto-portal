@@ -70,6 +70,9 @@ export class DBServiceService {
         conditions.push("model == "+ filter.model);
     }
 
+    if(filter.isNew != undefined)
+      conditions.push("isNew == " + (filter.isNew ? "'true'" : "'false'"));
+
     return "WHERE " + conditions.join(" AND ");
   }
 

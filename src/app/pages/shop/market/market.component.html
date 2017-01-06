@@ -47,6 +47,15 @@
         </label>
       </div>
 
+      <div class="list-group-item">
+        <label class="btn btn-primary" [class.active]="_isNew.new" (change)="createCarForDisplay()">
+          <input type="checkbox" [(ngModel)]="_isNew.new"> С пробегом
+        </label>
+
+        <label class="btn btn-primary" [class.active]="_isNew.used" (change)="createCarForDisplay()">
+          <input type="checkbox" [(ngModel)]="_isNew.used"> Без пробега
+        </label>
+      </div>
 
       <div class="list-group-item">
         <label>Объем двигателя</label>
