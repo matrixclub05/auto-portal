@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4>{{_car.carName}}</h4>
-  <h5>Автомобиль проверен на нашем СТО</h5>
+  <h5 *ngIf="_car.internalService">Автомобиль проверен на нашем СТО</h5>
 </div>
 <div class="modal-body">
   <ul>

@@ -115,7 +115,7 @@ import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
   ],
   providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService],
   bootstrap: [AppComponent],
-  entryComponents: [MarketServiceBookComponent, CreditCalcComponent]
+  entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent]
 })
 export class AppModule {
 }
