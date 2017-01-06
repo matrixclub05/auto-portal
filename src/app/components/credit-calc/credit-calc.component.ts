@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Ad} from "../../global-services/data-objects/Ad";
+import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 class Thing {
   public zadoljnost: string = "";
   public na4islProcenti: string = "";
@@ -24,6 +25,8 @@ export class CreditCalcComponent implements OnInit {
   private sumNa4islProcenti: number = 0;
   private sumSumPlatej: number = 0;
   private sumSumCredit: number = 0;
+
+  private _modalRef:NgbModalRef = null;
 
   private action() {
       this.results = [];
@@ -71,6 +74,12 @@ export class CreditCalcComponent implements OnInit {
 
   constructor() {
   }
+
+  public set modalRef(modalRef:NgbModalRef)
+  {
+    this._modalRef = modalRef;
+  }
+
 
   ngOnInit() {
   }
