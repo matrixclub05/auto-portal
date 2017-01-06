@@ -42,7 +42,7 @@
         <label>Модель Авто
           <select id="auto-model" class="form-control" [(ngModel)]="_searchCarModel" (change)="createCarForDisplay()">
             <option value="">Выбирете модель автомобиля</option>
-            <option *ngFor="let model of _carsListByBrand[_searchCarBrand]" value="{{model}}">{{model}}</option>
+            <option *ngFor="let model of _carModels" value="{{model}}">{{model}}</option>
           </select>
         </label>
       </div>

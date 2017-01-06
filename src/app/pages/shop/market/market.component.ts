@@ -45,8 +45,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
   private _searchCarBrand:string = "";
   private _searchCarModel:string = "";
 
-  private _carsListByBrand = Cars.carByBrand;
-  private _carBrands = Object.keys(Cars.carByBrand);
+  private _carsListByBrand = Cars.data;
+  private _carBrands = Object.keys(Cars.data);
+  private _carModels = [];
 
   constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService: DBServiceService) {
   }
@@ -146,6 +147,10 @@ export class MarketComponent implements OnInit, AfterViewInit {
   protected onCarBrandChange()
   {
     this._searchCarModel = "";
+    if(this._searchCarBrand != '')
+    {
+      this._carModels = Object.keys(this._carsListByBrand[this._searchCarBrand]);
+    }
     this.createCarForDisplay();
   }
 }
