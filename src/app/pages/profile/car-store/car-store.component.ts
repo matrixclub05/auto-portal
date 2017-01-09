@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarStoreComponent implements OnInit {
 
+  private _isServiceChatCollapsed:boolean = true;
+
   constructor() { }
 
   ngOnInit() {

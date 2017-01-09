@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
 
 @Component({
   selector: 'chat',
@@ -9,25 +9,43 @@ export class ChatComponent implements OnInit {
 
   @ViewChild('panelBody') panelBody:ElementRef;
 
+  @Input() isGlobalChat:boolean = true;
+
   private _currentMessage:string = "";
 
-  private _predefinedMessages:Array<string> = [
-    "чем можем помочь?",
-    "вы можете записаться на тест драйв нажав в салон-магазине на кнопку прокатиться",
-    "зарегистрируйтесь и получите скидочный купон на любую услугу",
-    "ваши машины доступны в меню гараж",
-    "размер и количество кредитных платежей вы можете расчитать в кредитном калькуляторе"
-  ];
+  private _predefinedMessages:Array<string> = [];
 
   private _messages:Array<IMessage> = [];
 
 
-  private _chatIsShown:boolean = false;
+  private _chatIsShown:boolean = !this.isGlobalChat;
 
   constructor() { }
 
   ngOnInit() {
+    if(this.isGlobalChat)
+    {
+      this._predefinedMessages = [
+        "чем можем помочь?",
+        "вы можете записаться на тест драйв нажав в салон-магазине на кнопку прокатиться",
+        "зарегистрируйтесь и получите скидочный купон на любую услугу",
+        "ваши машины доступны в меню гараж",
+        "размер и количество кредитных платежей вы можете расчитать в кредитном калькуляторе"
+      ];
+    }
+    else
+    {
+      this._chatIsShown = true;
 
+      this._messages.push({type:"out", message: "Здравствуйте, Вас приветствует сервисный отдел. Я мастер приемщик Андрей, чем можем вам помочь?", isPhoto:false});
+
+      this._predefinedMessages = [
+        "Пожалуйста, опишите вашу проблему",
+        "Для того что бы оценить проблему, пожалуйста, сделайте фотографию повреждения. Для этого нажмите кнопку с избражением фотоаппарата",
+        "Для оценки повреждений, пожалуйста, сделайте фотографию. Для этого нажмите кнопку с избражением фотоаппарата",
+        "Пожалуйста сфотографируйте поврежденный места. Для этого нажмите кнопку с избражением фотоаппарата"
+      ];
+    }
   }
 
   private updateChatScroll(){

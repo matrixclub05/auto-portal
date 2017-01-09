@@ -96,8 +96,6 @@ export class GarageDataService {
         i++;
       }
     }
-
-    debugger;
     return out;
   }
 

@@ -1,14 +1,14 @@
-<div>
-  <div *ngIf="_chatIsShown" class="row chat-window col-xs-5 col-md-3" id="chat_window_1">
+<div [ngClass]="{'chat-root': isGlobalChat}">
+  <div *ngIf="_chatIsShown" class="row col-lg-6" id="chat_window_1" [ngClass]="{'chat-window': isGlobalChat, 'chat-integrated':!isGlobalChat}">
     <div class="col-xs-12 col-md-12">
       <div class="panel panel-default chat-holder">
-        <div class="panel-heading top-bar">
-          <div class="col-md-11 col-xs-11">
+        <div *ngIf="isGlobalChat" class="panel-heading top-bar">
+          <div class="col-md-11 col-xs-10">
             <h3 class="panel-title"><i class="fa fa-comments-o" aria-hidden="true"></i></h3>
           </div>
-          <div class="col-md-1 col-xs-1">
+          <div class="col-md-1 col-xs-1 pull-righ" *ngIf="isGlobalChat">
             <a href="javascript:void(0)" (click)="toggleChatVisibility()" style="color: #fff; text-align: right">
-              <i class="fa fa-times" aria-hidden="true" id="minim_chat_window"></i>
+              <i class="fa fa-times pull-right" aria-hidden="true" id="minim_chat_window"></i>
             </a>
           </div>
         </div>
@@ -27,16 +27,16 @@
                 </div>
               </div>
               <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                <img
+                  src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
+                  class=" img-responsive ">
               </div>
             </div>
-
-
-
-
             <div *ngIf="item.type == 'out'" class="row msg_container base_receive">
               <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                <img
+                  src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
+                  class=" img-responsive ">
               </div>
               <div class="col-md-10 col-xs-10">
                 <div class="messages msg_receive">
@@ -46,30 +46,38 @@
                 </div>
               </div>
             </div>
-
-
         </span>
 
         </div>
 
         <div class="panel-footer">
-          <div class="input-group">
-            <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Зайдайте вопрос здесь..." [(ngModel)]="_currentMessage"/>
-            <div class="input-group-btn input-group-chat">
-                <button class="btn btn-primary pull-right" (click)="sendMessage()">Отправить</button>
-                <input class="input-capture" type="file" accept="image/*" id="capture" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
-                <label for="capture" class="btn btn-primary pull-right capture"></label>
-            </div>
+          <div class="input-group chat-form">
+            <input class="input-capture" type="file" accept="image/*" id="capture" capture="camera"
+                   placeholder="make a photo" (change)="capturePhoto($event)">
+
+            <label for="capture" class="btn btn-primary pull-right" style="color: #fff; padding: 10px 12px; margin: 0;">
+              <i class="fa fa-camera" aria-hidden="true"></i>
+            </label>
+
+            <input id="btn-input" type="text" class="form-control input-sm chat_input"
+                   placeholder="Зайдайте вопрос здесь..." [(ngModel)]="_currentMessage"/>
+
+            <button class="btn btn-primary" (click)="sendMessage()">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="btn-group dropup">
-    <button  type="button" class="btn btn-default chat-btn" (click)="toggleChatVisibility()">
+  <div class="btn-group dropup" *ngIf="isGlobalChat">
+    <button type="button" class="btn btn-default chat-btn" (click)="toggleChatVisibility()">
       <i class="fa fa-comments-o" aria-hidden="true"></i>
-      <div [ngClass]="{'glyphicon glyphicon-triangle-top':_chatIsShown, 'glyphicon glyphicon-triangle-bottom':!_chatIsShown}">&nbsp;</div>
+      <div
+        [ngClass]="{'glyphicon glyphicon-triangle-top':_chatIsShown, 'glyphicon glyphicon-triangle-bottom':!_chatIsShown}">
+        &nbsp;</div>
       <span class="sr-only">Toggle Dropdown</span>
     </button>
   </div>
