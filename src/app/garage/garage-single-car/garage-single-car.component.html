@@ -20,8 +20,8 @@
             </label>
             <a href="javascript:void(0)" class="btn btn-primary pull-right" (click)="select()">Сервисная книга</a>
             <a href="javascript:void(0)" class="btn btn-primary pull-right" (click)="addToMarket()">Добавить на рынок</a>
-            <input class="input-capture" type="file" accept="image/*" id="capture" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
-            <label for="capture" class="btn btn-primary pull-right">Сделать снимок</label>
+            <input class="input-capture" type="file" accept="image/*" id="capture{{_car.manufacturer+_car.model+_car.year}}" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
+            <label for="capture{{_car.manufacturer+_car.model+_car.year}}" class="btn btn-primary pull-right">Сделать снимок</label>
         </li>
       </ul>
     </div>

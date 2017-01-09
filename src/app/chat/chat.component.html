@@ -52,10 +52,10 @@
 
         <div class="panel-footer">
           <div class="input-group chat-form">
-            <input class="input-capture" type="file" accept="image/*" id="capture" capture="camera"
+            <input class="input-capture" type="file" accept="image/*" id="captureChatImage{{isGlobalChat}}" capture="camera"
                    placeholder="make a photo" (change)="capturePhoto($event)">
 
-            <label for="capture" class="btn btn-primary pull-right" style="color: #fff; padding: 10px 12px; margin: 0;">
+            <label for="captureChatImage{{isGlobalChat}}" class="btn btn-primary pull-right" style="color: #fff; padding: 10px 12px; margin: 0;">
               <i class="fa fa-camera" aria-hidden="true"></i>
             </label>
 
