@@ -29,7 +29,7 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
-        component: StartComponent
+        component: CarStoreComponent
       },
       {
         path: 'car-store',

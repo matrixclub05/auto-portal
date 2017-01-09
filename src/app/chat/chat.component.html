@@ -1,14 +1,14 @@
-<div>
-  <div *ngIf="_chatIsShown" class="row chat-window col-lg-6" id="chat_window_1">
+<div [ngClass]="{'chat-root': isGlobalChat}">
+  <div *ngIf="_chatIsShown" class="row col-lg-6" id="chat_window_1" [ngClass]="{'chat-window': isGlobalChat, 'chat-integrated':!isGlobalChat}">
     <div class="col-xs-12 col-md-12">
       <div class="panel panel-default chat-holder">
-        <div class="panel-heading top-bar">
+        <div *ngIf="isGlobalChat" class="panel-heading top-bar">
           <div class="col-md-11 col-xs-10">
             <h3 class="panel-title"><i class="fa fa-comments-o" aria-hidden="true"></i></h3>
           </div>
-          <div class="col-md-1 col-xs-1">
+          <div class="col-md-1 col-xs-1 pull-righ" *ngIf="isGlobalChat">
             <a href="javascript:void(0)" (click)="toggleChatVisibility()" style="color: #fff; text-align: right">
-              <i class="fa fa-times" aria-hidden="true" id="minim_chat_window"></i>
+              <i class="fa fa-times pull-right" aria-hidden="true" id="minim_chat_window"></i>
             </a>
           </div>
         </div>
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class="btn-group dropup">
+  <div class="btn-group dropup" *ngIf="isGlobalChat">
     <button type="button" class="btn btn-default chat-btn" (click)="toggleChatVisibility()">
       <i class="fa fa-comments-o" aria-hidden="true"></i>
       <div

@@ -11,3 +11,18 @@
 </div>
 
 <div garage-cars></div>
+
+<div class="card">
+  <div class="card-block">
+    <div class="card-header">
+      <button type="button" class="btn btn-primary pull-right" (click)="_isServiceChatCollapsed = !_isServiceChatCollapsed" [attr.aria-expanded]="!_isServiceChatCollapsed" aria-controls="collapseExample">
+        {{_isServiceChatCollapsed ? "Открыть" : "Скрыть"}} чат с Механиком
+      </button>
+    </div>
+    <div class="card-header" [ngbCollapse]="_isServiceChatCollapsed">
+      <div class="panel-body">
+        <chat [isGlobalChat]="false"></chat>
+      </div>
+    </div>
+  </div>
+</div>
