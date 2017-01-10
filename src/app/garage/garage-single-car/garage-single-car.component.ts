@@ -6,7 +6,7 @@ import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 @Component({
   selector: '[app-garage-single-car]',
   templateUrl: 'garage-single-car.component.html',
-  styleUrls: ['garage-single-car.component.scss'],
+  styleUrls: ['garage-single-car.component.scss', '../../components/market-car/market-car.component.scss'],
 })
 export class GarageSingleCarComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class GarageSingleCarComponent implements OnInit {
   @Output() onSelected = new EventEmitter<CarData>();
   @ViewChild('carImage') carImage;
 
-  constructor(private _databaseService:DBServiceService, private _garageMemo:PhotoMemoryService) { }
+  constructor(private _databaseService:DBServiceService, private _garageMemo:PhotoMemoryService, ) { }
 
   ngOnInit() {
   }

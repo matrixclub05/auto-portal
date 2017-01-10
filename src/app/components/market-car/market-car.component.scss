@@ -107,7 +107,7 @@ h4{
   .icons-ct {
     padding: 0 10px 0 0;
     width: 58px;
-    &>.btn {
+    .btn {
       width: 48px;
       background: #ffffff;
       color: #df1f3d;
@@ -156,6 +156,9 @@ h4{
   }
   .xs-car-wrapper {
     display: none;
+  }
+  .btn {
+    margin-bottom: 10px;
   }
 
 }
