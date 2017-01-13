@@ -18,6 +18,7 @@ import {CreditCalcComponent} from "./components/credit-calc/credit-calc.componen
 import {StartServiceComponent} from "./pages/service/start-service/start-service.component";
 import {ServiceCreditComponent} from "./pages/service/service-credit/service-credit.component";
 import {MarketComponent} from "./pages/shop/market/market.component";
+import {MessagesComponent} from "./pages/profile/messages/messages.component";
 /*import {GBEComponent} from "./pages/service/gbe/gbe.component";*/
 
 
@@ -38,6 +39,10 @@ const appRoutes: Routes = [
       {
         path: 'personal',
         component: PersonalComponent
+      },
+      {
+        path: 'messages',
+        component: MessagesComponent
       }
     ]
   },

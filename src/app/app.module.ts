@@ -23,7 +23,7 @@ import {StartComponent} from "./pages/profile/start/start.component";
 import {LoginServiceService} from "./global-services/login-service.service";
 import {GarageCarsComponent} from "./garage/garage-cars/garage-cars.component";
 import {GarageSingleCarComponent} from './garage/garage-single-car/garage-single-car.component';
-import {BanerComponent} from './baner/baner.component';
+/*import {BanerComponent} from './baner/baner.component';*/
 import {ServiceBookComponent} from "./garage/service-book/service-book.component";
 import {AddToGarageButtonComponent} from "./garage/add-to-garage-button/add-to-garage-button.component";
 import {BrandListComponent} from './components/brand-list/brand-list.component';
@@ -53,6 +53,7 @@ import {DBServiceService} from "./global-services/dbservice.service";
 import { MarketServiceBookComponent } from './components/market-car/market-service-book/market-service-book.component';
 import {PhotoMemoryService} from "./global-services/photo-memory.service";
 import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
+import { MessagesComponent } from './pages/profile/messages/messages.component';
 
 
 @NgModule({
@@ -73,7 +74,7 @@ import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
     StartComponent,
     GarageCarsComponent,
     GarageSingleCarComponent,
-    BanerComponent,
+    /*BanerComponent,*/
     BrandListComponent,
     AddToGarageButtonComponent,
     CategoriesComponent,
@@ -101,7 +102,8 @@ import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
     ShopCarComponent,
     ShopGoodsComponent,
     MarketServiceBookComponent,
-    MarketCarComponent
+    MarketCarComponent,
+    MessagesComponent
   ],
   imports: [
 
