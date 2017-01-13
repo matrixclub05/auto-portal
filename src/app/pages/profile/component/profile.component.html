@@ -4,19 +4,22 @@
       <nav class="col-lg-9 vertical-align">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/profile/car-store']" [routerLinkActive]="['active']" href="">Мои Автомобили</a>
+            <a class="nav-link" [routerLink]="['/profile/car-store']" [routerLinkActive]="['active']" href="">Мои
+              Автомобили</a>
           </li>
           <li>
-            <a class="nav-link" href="javascript:void(0)" >Заказы</a>
+            <a class="nav-link" href="javascript:void(0)">Заказы</a>
           </li>
           <li>
             <a class="nav-link" href="javascript:void(0)">Запчасти</a>
           </li>
           <li>
-            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/messages']" [routerLinkActive]="['active']">Сообщения</a>
+            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/messages']"
+               [routerLinkActive]="['active']">Сообщения</a>
           </li>
           <li *ngIf="_loginService.isLoggedIn">
-            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/personal']" [routerLinkActive]="['active']">Личные данные</a>
+            <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/personal']"
+               [routerLinkActive]="['active']">Личные данные</a>
           </li>
         </ul>
       </nav>
@@ -24,7 +27,7 @@
     </div>
   </div>
 
-      <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
 </section>
 

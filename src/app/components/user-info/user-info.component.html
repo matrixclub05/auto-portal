@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h6 class="modal-title">Информация о пользователе</h6>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ul>
+    <li><i class="fa fa-user-o" aria-hidden="true"></i> {{user.fullName}}</li>
+    <li><i class="fa fa-phone" aria-hidden="true"></i> {{user.phoneNumber}}</li>
+    <li *ngIf="user.position"><i class="fa fa-user-o" aria-hidden="true" ></i> {{user.position}}</li>
+    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {{user.email}}</li>
+  </ul>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Позвонить</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Закрыть</button>
+</div>

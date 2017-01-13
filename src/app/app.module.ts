@@ -54,6 +54,8 @@ import { MarketServiceBookComponent } from './components/market-car/market-servi
 import {PhotoMemoryService} from "./global-services/photo-memory.service";
 import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
 import { MessagesComponent } from './pages/profile/messages/messages.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { FirmInfoComponent } from './components/firm-info/firm-info.component';
 
 
 @NgModule({
@@ -103,7 +105,9 @@ import { MessagesComponent } from './pages/profile/messages/messages.component';
     ShopGoodsComponent,
     MarketServiceBookComponent,
     MarketCarComponent,
-    MessagesComponent
+    MessagesComponent,
+    UserInfoComponent,
+    FirmInfoComponent
   ],
   imports: [
 
@@ -117,7 +121,7 @@ import { MessagesComponent } from './pages/profile/messages/messages.component';
   ],
   providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService],
   bootstrap: [AppComponent],
-  entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent]
+  entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent]
 })
 export class AppModule {
 }
