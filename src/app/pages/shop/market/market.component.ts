@@ -32,6 +32,7 @@ export class MarketComponent implements OnInit, AfterViewInit {
   protected _selectedTransmissionTypes: {} = {'МКПП': false, "АКПП": false};
 
   protected _filterCarName: string = "";
+  protected _filterVINNumber: string = "";
 
   private _carList: Array<Ad> = [];
 
@@ -55,9 +56,15 @@ export class MarketComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (!this._loginService.isLoggedIn) {
-      let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
-      modalInstance.componentInstance.modalInstance = modalInstance;
+    if (!this._loginService.isLoggedIn)
+    {
+      let bannerShown = localStorage.getItem("askToRegisterBanerShown");
+      if(!bannerShown)
+      {
+        let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
+        modalInstance.componentInstance.modalInstance = modalInstance;
+        localStorage.setItem("askToRegisterBanerShown", "true");
+      }
     }
   }
 
@@ -80,6 +87,12 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
   protected onCarFilter($event) {
     this._filterCarName = $event.target.value.toUpperCase();
+    this.createCarForDisplay();
+  }
+
+  protected onVinFilter($event)
+  {
+    this._filterVINNumber = $event.target.value.toUpperCase();
     this.createCarForDisplay();
   }
 
@@ -116,6 +129,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
     if(this._filterCarName != "")
       filter['carName'] = this._filterCarName;
+
+    if(this._filterVINNumber != "")
+      filter['vinNumber'] = this._filterVINNumber;
 
     if(this._searchCarBrand != "")
     {
