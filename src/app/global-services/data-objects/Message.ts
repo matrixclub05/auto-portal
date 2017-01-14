@@ -28,6 +28,7 @@ export class User {
 
 
 export class Message{
+  public isExpanded: boolean = false;
   public sentDate: string = '';
   public subject: string = '';
   public description: string = 'Нет описания';

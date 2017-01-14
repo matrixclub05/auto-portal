@@ -77,12 +77,14 @@ export class MessagesComponent implements OnInit {
     this.activeMessage.setRead(true);
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-
-  showMessage(message: Message){
-    debugger
+  showMessage(message: Message, e: any){
+    debugger;
+    if(e){
+      e.stopPropagation();
+    }
+    message.isExpanded = !message.isExpanded;
   }
 
   showWorkplaceInfo(workplace: any){
@@ -94,7 +96,8 @@ export class MessagesComponent implements OnInit {
     const modalRef = this.modalService.open(UserInfoComponent);
     modalRef.componentInstance.user = user;
   }
-  showInfo(sender: User){
+  showInfo(sender: User, e:any){
+    e.stopPropagation();
     if(sender.workPlace){
       this.showWorkplaceInfo(sender.workPlace);
     }else {
@@ -102,7 +105,10 @@ export class MessagesComponent implements OnInit {
     }
 
   }
-  deleteMessage(message: Message){
+  deleteMessage(message: Message, e:any){
+    if(e){
+      e.stopPropagation();
+    }
     var index = this.messages.indexOf(message);
     this.messages.splice(index, 1);
 

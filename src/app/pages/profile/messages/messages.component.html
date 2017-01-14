@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4">
+  <!--<div class="col-lg-4">
     <div class="list-group">
       <div class="list-group-item" *ngFor="let message of messages"
          [ngClass]="{'unread': !message.isRead}"
@@ -12,62 +12,66 @@
         <p class="list-group-item-text">от: СТО</p>
       </div>
     </div>
-  </div>
+  </div>-->
 
-  <div class="col-lg-8">
-    <div class="panel panel-default" *ngIf="activeMessage">
+  <div class="col-lg-8" *ngFor="let message of messages">
+    <div class="panel panel-default" (click)="showMessage(message)" >
       <div class="panel-heading">
         <div class="sender-info">
-          <img src="{{activeMessage.sender.workPlace ? activeMessage.sender.workPlace.photo : activeMessage.sender.photo}}"
-               (click)="showInfo(activeMessage.sender)"
+          <img src="{{message.sender.workPlace ? message.sender.workPlace.photo : message.sender.photo}}"
+               (click)="showInfo(message.sender, $event)"
                alt="usr-photo">
-          <h6 (click)="showInfo(activeMessage.sender)">
-            <span>{{activeMessage.sender.fullName}}</span>
-            <span class="date">{{activeMessage.sentDate}}</span>
+          <h6>
+            <span>{{message.sender.fullName}}</span>
+            <span class="date">{{message.sentDate}}</span>
+            <div class="subject" *ngIf="!message.isExpanded"><strong>Тема: </strong><span>{{message.subject}}</span></div>
           </h6>
+
         </div>
 
         <div class="buttons">
-          <a class="xs-hidden" [href]="'mailto:'+activeMessage.sender.email+ ' | safeUrl'">
+          <a class="xs-hidden" [href]="'mailto:'+message.sender.email+ ' | safeUrl'">
             <i class="fa fa-reply" aria-hidden="true"></i>
             <span>Ответить</span>
           </a>
-          <a class="xs-hidden" [href]="'tel:'+activeMessage.sender.phoneNumber + ' | safeUrl'">
+          <a class="xs-hidden" [href]="'tel:'+message.sender.phoneNumber + ' | safeUrl'">
             <i class="fa fa-phone" aria-hidden="true"></i>
             <span>Перезвонить</span>
           </a>
-          <a class="xs-hidden" [href]="'sms:'+activeMessage.sender.phoneNumber+ ' | safeUrl'">
-            <i class="fa fa-mobile" aria-hidden="true"></i>
-            <span>SMS</span>
-          </a>
-          <a href="javascript:void(0)" (click)="deleteMessage(activeMessage)"><i class="fa fa-trash" aria-hidden="true"></i>
+          <a href="javascript:void(0)" (click)="deleteMessage(message, $event)"><i class="fa fa-trash" aria-hidden="true"></i>
             <span class="hidden-xs-down" >Удалить</span>
           </a>
           <a ngbDropdown id="dropdownMenu2" ngbDropdownToggle class="hidden-md-up">
             <i class="fa fa-bars"></i>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-              <a class="dropdown-item" [href]="'mailto:'+activeMessage.sender.email+ ' | safeUrl'">
+              <a class="dropdown-item" [href]="'mailto:'+message.sender.email+ ' | safeUrl'">
                 <i class="fa fa-reply" aria-hidden="true"></i>
                 <span>Ответить</span>
               </a>
-              <a class="dropdown-item" [href]="'tel:'+activeMessage.sender.phoneNumber + ' | safeUrl'">
+              <a class="dropdown-item" [href]="'tel:'+message.sender.phoneNumber + ' | safeUrl'">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>Перезвонить</span>
               </a>
-              <a class="dropdown-item" [href]="'smsto:'+activeMessage.sender.phoneNumber+ ' | safeUrl'">
-                <i class="fa fa-mobile" aria-hidden="true"></i>
-                <span>Отправить SMS</span>
-              </a>
             </div>
+          </a>
+
+          <a href="javascript:void(0)" *ngIf="!message.isExpanded" (click)="showMessage(message, $event)">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+            <span class="xs-hidden">Открыть</span>
+          </a>
+          <a href="javascript:void(0)" *ngIf="message.isExpanded" (click)="showMessage(message, $event)"><i class="fa fa-angle-up" aria-hidden="true"></i>
+            <span class="xs-hidden">Скрыть</span>
           </a>
         </div>
       </div>
-      <div class="subject">
-        <strong>Тема: </strong><span>{{activeMessage.subject}}</span>
-      </div>
-      <div class="panel-body">
-        <p>{{activeMessage.description}}</p>
+
+      <div class="panel-body" *ngIf="message.isExpanded">
+        <div class="subject">
+          <strong>Тема: </strong><span>{{message.subject}}</span>
+        </div>
+        <div class="divider"></div>
+        <p>{{message.description}}</p>
       </div>
     </div>
   </div>
