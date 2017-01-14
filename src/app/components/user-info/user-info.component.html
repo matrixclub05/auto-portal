@@ -15,8 +15,8 @@
 
 </div>
 <div class="modal-footer">
+  <a class="btn btn-secondary" [href]="'tel:'+user.phoneNumber + ' | safeUrl'">Позвонить</a>
+  <a class="btn btn-secondary" [href]="'mailto:'+user.email+ ' | safeUrl'">Отправить email</a>
 
-  <a class="btn btn-secondary" href="tel:{{user.phoneNumber}}">Позвонить</a>
-  <a class="btn btn-secondary" href="sms:{{user.phoneNumber}}">Отправить SMS</a>
   <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Закрыть</button>
 </div>

@@ -19,13 +19,13 @@
     <li>
       <a class="nav-link" data-hover="Салон-магазин" [routerLink]="['/shop']">Салон-магазин</a>
       <ul class="submenu">
-        <li class="nav-item">
+       <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="['/shop/cars']" [routerLinkActive]="['active']">Автомобили</a>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/shop/market']" [routerLinkActive]="['active']">Автобазар</a>
         </li>
-        <li>
+       <!-- <li>
           <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/machines']"
              [routerLinkActive]="['active']">Техника</a>
         </li>
@@ -34,7 +34,7 @@
         </li>
         <li>
           <a class="nav-link" href="javascript:void(0)" [routerLink]="['/shop/goods']" [routerLinkActive]="['active']">Товары</a>
-        </li>
+        </li>-->
       </ul>
     </li>
     <li>
@@ -45,6 +45,24 @@
         </li>
       </ul>
     </li>
+    <li>
+      <a class="nav-link" data-hover="Сервис" [routerLink]="['/service']">Сервис</a>
+      <ul class="submenu">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/profile/car-store']" [routerLinkActive]="['active']" href="">Мои
+            Автомобили</a>
+        </li>
+        <li>
+          <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/messages']"
+             [routerLinkActive]="['active']">Сообщения</a>
+        </li>
+        <li *ngIf="_loginService.isLoggedIn">
+          <a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile/personal']"
+             [routerLinkActive]="['active']">Личные данные</a>
+        </li>
+      </ul>
+    </li>
+
   </nav>
 </div>
 <div class="header-services">
