@@ -22,41 +22,43 @@ import {CarStoreComponent} from "./pages/profile/car-store/car-store.component";
 import {StartComponent} from "./pages/profile/start/start.component";
 import {LoginServiceService} from "./global-services/login-service.service";
 import {GarageCarsComponent} from "./garage/garage-cars/garage-cars.component";
-import {GarageSingleCarComponent} from './garage/garage-single-car/garage-single-car.component';
+import {GarageSingleCarComponent} from "./garage/garage-single-car/garage-single-car.component";
 /*import {BanerComponent} from './baner/baner.component';*/
 import {ServiceBookComponent} from "./garage/service-book/service-book.component";
 import {AddToGarageButtonComponent} from "./garage/add-to-garage-button/add-to-garage-button.component";
-import {BrandListComponent} from './components/brand-list/brand-list.component';
-import {CategoriesComponent} from './components/categories/categories.component';
+import {BrandListComponent} from "./components/brand-list/brand-list.component";
+import {CategoriesComponent} from "./components/categories/categories.component";
 import {CarsSelectorComponent} from "./garage/cars-selector/cars-selector.component";
 import {NativeWindowTools} from "./global-services/NativeWindowTools";
-import {StoreServicesComponent} from './pages/profile/store-services/store-services.component';
-import {RolloverBtnComponent} from './components/rollover-btn/rollover-btn.component';
+import {StoreServicesComponent} from "./pages/profile/store-services/store-services.component";
+import {RolloverBtnComponent} from "./components/rollover-btn/rollover-btn.component";
 import {SignUpForServiceComponent} from "./garage/sign-up-for-service/sign-up-for-service.component";
 /*import { AboutComponent } from './pages/about/about.component';*/
-import {PersonalComponent} from './pages/profile/personal/personal.component';
-import {ServiceComponent} from './pages/service/service.component';
+import {PersonalComponent} from "./pages/profile/personal/personal.component";
+import {ServiceComponent} from "./pages/service/service.component";
 import {CarsComponent} from "./pages/shop/cars/cars.component";
 import {MachinesComponent} from "./pages/shop/machines/machines.component";
 import {PartsComponent} from "./pages/shop/parts/parts.component";
 import {GoodsComponent} from "./pages/shop/goods/goods.component";
 import {ShoppingCartComponent} from "./pages/shop/shopping-cart/shopping-cart.component";
-import {CreditCalcComponent} from './components/credit-calc/credit-calc.component';
-import {StartServiceComponent} from './pages/service/start-service/start-service.component';
-import {ServiceCreditComponent} from './pages/service/service-credit/service-credit.component';
+import {CreditCalcComponent} from "./components/credit-calc/credit-calc.component";
+import {StartServiceComponent} from "./pages/service/start-service/start-service.component";
+import {ServiceCreditComponent} from "./pages/service/service-credit/service-credit.component";
 /*import {GBEComponent} from './pages/service/gbe/gbe.component';*/
 import {ShopCarComponent} from "./pages/shop/shopping-cart/shop-car/shop-car.component";
 import {ShopGoodsComponent} from "./pages/shop/shopping-cart/shop-goods/shop-goods.component";
 import {MarketComponent} from "./pages/shop/market/market.component";
-import { MarketCarComponent } from './components/market-car/market-car.component';
+import {MarketCarComponent} from "./components/market-car/market-car.component";
 import {DBServiceService} from "./global-services/dbservice.service";
-import { MarketServiceBookComponent } from './components/market-car/market-service-book/market-service-book.component';
+import {MarketServiceBookComponent} from "./components/market-car/market-service-book/market-service-book.component";
 import {PhotoMemoryService} from "./global-services/photo-memory.service";
 import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
-import { MessagesComponent } from './pages/profile/messages/messages.component';
-import {UserInfoComponent, SafeUrlPipe} from './components/user-info/user-info.component';
-import { FirmInfoComponent } from './components/firm-info/firm-info.component';
-import { PushPopupComponent } from './components/push-popup/push-popup.component';
+import {MessagesComponent} from "./pages/profile/messages/messages.component";
+import {UserInfoComponent, SafeUrlPipe} from "./components/user-info/user-info.component";
+import {FirmInfoComponent} from "./components/firm-info/firm-info.component";
+import {PushPopupComponent} from "./components/push-popup/push-popup.component";
+import {UserNavigationHistoryService} from "./global-services/user-navigation-history.service";
+import { TrackerComponent } from './components/tracker/tracker.component';
 
 
 @NgModule({
@@ -110,7 +112,8 @@ import { PushPopupComponent } from './components/push-popup/push-popup.component
     UserInfoComponent,
     SafeUrlPipe,
     FirmInfoComponent,
-    PushPopupComponent
+    PushPopupComponent,
+    TrackerComponent
   ],
   imports: [
 
@@ -122,7 +125,7 @@ import { PushPopupComponent } from './components/push-popup/push-popup.component
     GarageModule,
     NgbModule.forRoot()
   ],
-  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService],
+  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService],
   bootstrap: [AppComponent],
   entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent]
 })

@@ -6,6 +6,7 @@ import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 import {CreditCalcComponent} from "../credit-calc/credit-calc.component";
 import {ServiceBookComponent} from "../../garage/service-book/service-book.component";
 import {Service} from "../../garage/draftData/Service";
+import {UserNavigationHistoryService} from "../../global-services/user-navigation-history.service";
 
 @Component({
   selector: 'app-market-car',
@@ -19,7 +20,7 @@ export class MarketCarComponent implements OnInit {
   @Output() onSelected = new EventEmitter<Ad>();
   private owner: any;
 
-  constructor(private _modalService: NgbModal, private _photoMemory:PhotoMemoryService) {
+  constructor(private _modalService: NgbModal, private _photoMemory:PhotoMemoryService, private _userNavigation:UserNavigationHistoryService) {
 
   }
 
@@ -43,6 +44,8 @@ export class MarketCarComponent implements OnInit {
     });
     modalRef.componentInstance.modalRef = modalRef;
     modalRef.componentInstance.car = this._car;
+
+    this._userNavigation.trackAction("OPEN CAR DETAILS " + this._car.carName + " " + this._car.engineType)
   }
 
   protected openCarCredit()
