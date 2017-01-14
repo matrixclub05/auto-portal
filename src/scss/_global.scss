@@ -139,7 +139,7 @@ app-root, app-profile, app-main {
   }
 }
 .xs-hidden {
-  display: none;
+  display: none !important;
 }
 
 @media (min-width: 992px) {
@@ -165,7 +165,7 @@ app-root, app-profile, app-main {
     }
   }
   .xs-hidden{
-    display: block;
+    display: block !important;
   }
 }
 @media (min-width: 992px) {
