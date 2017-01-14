@@ -2,6 +2,20 @@
   display: block;
   margin-top: 15px;
   margin-bottom: 15px;
+
+}
+.messages{
+
+  >.menu {
+    float: left;
+    display: flex;
+    flex-direction: column;
+
+  }
+  >.message-list{
+    float: left;
+
+  }
 }
 .panel {
   margin-bottom: 20px;

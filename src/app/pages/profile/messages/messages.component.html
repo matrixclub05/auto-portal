@@ -1,21 +1,11 @@
-<div class="row">
-  <!--<div class="col-lg-4">
-    <div class="list-group">
-      <div class="list-group-item" *ngFor="let message of messages"
-         [ngClass]="{'unread': !message.isRead}"
-         (click)="messageClick(message)" (touch)="showMessage(message)">
+<div class="messages">
+  <div class="menu">
+    <a href="" class="btn btn-secondary">Написать сообщение</a>
+    <a href="" class="btn btn-secondary">Удалить все</a>
+  </div>
 
-        <h6 class="list-group-item-heading">
-          <img src="{{message.sender.photo}}" alt="">
-          <span class="full-name">{{message.sender.fullName}}</span></h6>
-        <p class="list-group-item-text">{{message.sentDate}}</p>
-        <p class="list-group-item-text">от: СТО</p>
-      </div>
-    </div>
-  </div>-->
-
-  <div class="col-lg-8" *ngFor="let message of messages">
-    <div class="panel panel-default" (click)="showMessage(message)" >
+  <div class="message-list">
+    <div *ngFor="let message of messages" class="panel panel-default" (click)="showMessage(message)" >
       <div class="panel-heading">
         <div class="sender-info">
           <img src="{{message.sender.workPlace ? message.sender.workPlace.photo : message.sender.photo}}"
