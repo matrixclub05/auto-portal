@@ -56,9 +56,15 @@ export class MarketComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (!this._loginService.isLoggedIn) {
-      let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
-      modalInstance.componentInstance.modalInstance = modalInstance;
+    if (!this._loginService.isLoggedIn)
+    {
+      let bannerShown = localStorage.getItem("askToRegisterBanerShown");
+      if(!bannerShown)
+      {
+        let modalInstance = this._modalService.open(AskToRegisterBanerComponent);
+        modalInstance.componentInstance.modalInstance = modalInstance;
+        localStorage.setItem("askToRegisterBanerShown", "true");
+      }
     }
   }
 
