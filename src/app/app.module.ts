@@ -54,7 +54,7 @@ import { MarketServiceBookComponent } from './components/market-car/market-servi
 import {PhotoMemoryService} from "./global-services/photo-memory.service";
 import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
 import { MessagesComponent } from './pages/profile/messages/messages.component';
-import { UserInfoComponent } from './components/user-info/user-info.component';
+import {UserInfoComponent, SafeUrlPipe} from './components/user-info/user-info.component';
 import { FirmInfoComponent } from './components/firm-info/firm-info.component';
 
 
@@ -107,6 +107,7 @@ import { FirmInfoComponent } from './components/firm-info/firm-info.component';
     MarketCarComponent,
     MessagesComponent,
     UserInfoComponent,
+    SafeUrlPipe,
     FirmInfoComponent
   ],
   imports: [
