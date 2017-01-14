@@ -1,10 +1,10 @@
 <div class="popup-wrapper" *ngIf="_currentMessage">
-  <div class="content" [class.animate-fadeInOut] = "_currentMessage">
+  <div class="content" [class.animate-fadeInOut] = "_currentMessage" (click)="goToMessages()">
     <div class="row">
       <div class="col-xs-2 image-holder">
         <div class="row">
           <div class="col-sm-12">
-            <img class="sender-image" src="{{_currentMessage.sender.workPlace.photo}}">
+            <img class="sender-image" src="{{_currentMessage.sender.workPlace ? _currentMessage.sender.workPlace.photo : _currentMessage.sender.photo}}">
           </div>
           <div class="col-sm-12">
             <span class="sender-name">

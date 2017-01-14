@@ -5,7 +5,6 @@ import {MarketServiceBookComponent} from "./market-service-book/market-service-b
 import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 import {CreditCalcComponent} from "../credit-calc/credit-calc.component";
 import {ServiceBookComponent} from "../../garage/service-book/service-book.component";
-import {Service} from "../../garage/draftData/Service";
 import {UserNavigationHistoryService} from "../../global-services/user-navigation-history.service";
 
 @Component({
