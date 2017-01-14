@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {
   RegistrationFlowComponent,
-  UserInputInfo
 } from "../../registration/registrationFlow/registration-flow.component";
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {Router} from '@angular/router';
 import {SignUpForServiceComponent} from "../../garage/sign-up-for-service/sign-up-for-service.component";
 import {TestDriveComponent} from "../../garage/test-drive/test-drive.component";
+import {User} from "../../global-services/data-objects/Message";
 
 @Component({
   selector: '[app-header]',
@@ -16,7 +16,7 @@ import {TestDriveComponent} from "../../garage/test-drive/test-drive.component";
 })
 export class HeaderComponent implements OnInit {
 
-  private _currentUser: UserInputInfo;
+  private _currentUser: User;
   private isMenuOpened: boolean = false;
   constructor(private _modalService: NgbModal, private _loginService:LoginServiceService) {
   }
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     if(user) {
       this._currentUser = user;
     }else{
-      this._currentUser = new UserInputInfo();
+      this._currentUser = new User();
     }
   }
   private toggleMenu(){

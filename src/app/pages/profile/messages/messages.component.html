@@ -1,10 +1,10 @@
-<div class="messages">
-  <div class="menu">
-    <a href="" class="btn btn-secondary">Написать сообщение</a>
-    <a href="" class="btn btn-secondary">Удалить все</a>
+<div class="row">
+  <div class="col-lg-3 menu">
+    <a href="javascript:void(0)" class="btn btn-secondary" (click)="newMessage()">Написать сообщение</a>
+    <a href="javascript:void(0)" class="btn btn-secondary" (click)="deleteAllMessages()">Удалить все</a>
   </div>
 
-  <div class="message-list">
+  <div class="col-lg-9">
     <div *ngFor="let message of messages" class="panel panel-default" (click)="showMessage(message)" >
       <div class="panel-heading">
         <div class="sender-info">
@@ -20,9 +20,13 @@
         </div>
 
         <div class="buttons">
+          <a class="xs-hidden" href="javascript:void(0)" (click)="newMessage(message)">
+            <i class="fa fa-reply" aria-hidden="true"></i>
+            <span>Сообщение</span>
+          </a>
           <a class="xs-hidden" [href]="'mailto:'+message.sender.email+ ' | safeUrl'">
             <i class="fa fa-reply" aria-hidden="true"></i>
-            <span>Ответить</span>
+            <span>E-mail</span>
           </a>
           <a class="xs-hidden" [href]="'tel:'+message.sender.phoneNumber + ' | safeUrl'">
             <i class="fa fa-phone" aria-hidden="true"></i>

@@ -1,6 +1,16 @@
 
 
 export class User {
+  get login(): string {
+    return this._login;
+  }
+
+  set login(value: string) {
+    this._login = value;
+    this.email = value;
+  }
+  private _login: string = "";
+  public password: string = "";
   get fullName(): string {
     return this.firstName + ' ' + this.lastName;
   }
@@ -31,13 +41,18 @@ export class Message{
   public isExpanded: boolean = false;
   public sentDate: string = '';
   public subject: string = '';
-  public description: string = 'Нет описания';
+  public description: string = '';
   public isRead: boolean = false;
   public isSent: boolean;
   public sender: User;
+  public recipient: User;
+  public isNew: boolean = false;
   constructor(cfg?: any) {
     //noinspection TypeScriptUnresolvedFunction
     Object.assign(this, cfg);
+    if(!cfg.recipient && this.isNew){
+      this.recipient = new User({});
+    }
   }
   public setRead(value:boolean){
     this.isRead = value;

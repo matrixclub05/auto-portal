@@ -3,6 +3,8 @@ import {Message, User} from "../../../global-services/data-objects/Message";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {UserInfoComponent} from "../../../components/user-info/user-info.component";
 import {FirmInfoComponent} from "../../../components/firm-info/firm-info.component";
+import {MessageFormComponent} from "../../../components/message-form/message-form.component";
+import {LoginServiceService} from "../../../global-services/login-service.service";
 
 
 
@@ -15,7 +17,7 @@ export class MessagesComponent implements OnInit {
   private messages: any = [];
   private activeMessage: any;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, public loginService: LoginServiceService) {
     var date = new Date().toLocaleDateString();
     var user = new User({
       phoneNumber: '+123456789',
@@ -80,7 +82,6 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {}
 
   showMessage(message: Message, e: any){
-    debugger;
     if(e){
       e.stopPropagation();
     }
@@ -122,6 +123,27 @@ export class MessagesComponent implements OnInit {
   messageClick(message: Message){
     this.activeMessage = message;
     message.setRead(true);
+  }
+  deleteAllMessages(){
+    this.messages = [];
+  }
+  newMessage(message: Message){
+
+    var mess;
+    const modalRef = this.modalService.open(MessageFormComponent);
+
+    if(message){
+      //noinspection TypeScriptUnresolvedFunction
+      mess = new Message(message);
+      mess.isNew = true;
+      mess.recipient = message.sender;
+      mess.sender = this.loginService.getCurrentUser();
+
+    }
+
+    modalRef.componentInstance.message = mess || new Message({
+      isNew: true
+    });
   }
 
 }

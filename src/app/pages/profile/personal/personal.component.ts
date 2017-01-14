@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginServiceService} from "../../../global-services/login-service.service";
-import {
-  RegistrationFlowComponent,
-  UserInputInfo
-} from "../../../registration/registrationFlow/registration-flow.component";
+import {RegistrationFlowComponent} from "../../../registration/registrationFlow/registration-flow.component";
+
 import {Router} from "@angular/router";
+import {User} from "../../../global-services/data-objects/Message";
 
 
 @Component({
@@ -14,7 +13,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
-  private user: UserInputInfo;
+  private user: User;
   constructor(private router: Router, private _loginService:LoginServiceService) { }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {Router} from '@angular/router';
+import {User} from "../../global-services/data-objects/Message";
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -14,7 +15,7 @@ export class RegistrationFlowComponent {
 
   private RegistrationStatesEnum = RegistrationStates;
   private _currentRegistrationState: RegistrationStates = RegistrationStates.LOGIN;
-  private _userInputInfo: UserInputInfo = new UserInputInfo();
+  private _userInputInfo: User = new User();
 
   constructor(public _currentModal: NgbActiveModal, private _loginService: LoginServiceService, private router: Router) {
   }
@@ -32,11 +33,13 @@ export class RegistrationFlowComponent {
   protected buttonClick() {
     this._currentModal.close('Close click');
   }
+
   protected registerUser(): void {
     this._loginService.tryLoginUser(this._userInputInfo);
     this._currentModal.close();
     this.router.navigateByUrl('profile')
   }
+
   protected logUserIn(): void {
     this._loginService.tryLoginUser(this._userInputInfo);
     this._currentModal.close();
@@ -44,7 +47,7 @@ export class RegistrationFlowComponent {
   }
 
   protected get canLogin(): boolean {
-    return (this._userInputInfo.login != "" && this._userInputInfo.password != "");
+    return (this._userInputInfo.email != "" && this._userInputInfo.password != "");
   }
 
   protected changeRegistrationStateTo(state: RegistrationStates) {
@@ -53,16 +56,5 @@ export class RegistrationFlowComponent {
 
 }
 
-export class UserInputInfo {
-  public login: string = "";
-  public firstName: string = "";
-  public lastName: string = "";
-  public middleName: string = "";
-  public password: string = "";
-  public phoneNumber: string = ""
-}
 
-enum RegistrationStates
-{
-  LOGIN, REGISTER
-}
+enum RegistrationStates{LOGIN, REGISTER}

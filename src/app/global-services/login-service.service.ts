@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {LoggedInData} from "./data-objects/LoggedInData";
 import {LoginStrategies} from "./data-objects/LoginStategies";
-import {UserInputInfo} from "../registration/registrationFlow/registration-flow.component";
+
 import {Router} from '@angular/router';
 import {UserNavigationHistoryService} from "./user-navigation-history.service";
+import {User} from "./data-objects/Message";
 
 @Injectable()
 export class LoginServiceService {
@@ -11,14 +12,14 @@ export class LoginServiceService {
   private __DEFAULT_LOGIN_KEY: string = "___DEFAULT_LOGIN_KEY_4320984";
   private _currentLoginStrategy: LoginStrategies = LoginStrategies.LocalStorageFlow;
   private _loginData: LoggedInData = null;
-  private _currentUser: UserInputInfo = null;
+  private _currentUser: User;
 
   constructor(private router: Router, private _userNavService:UserNavigationHistoryService) {
     let loginKey: string = localStorage.getItem("siteLoginKey");
     if (!loginKey) {
       loginKey = this.__DEFAULT_LOGIN_KEY;
     }else{
-      this._currentUser = <UserInputInfo>(localStorage.getItem("users_" + loginKey) || new UserInputInfo());
+      this._currentUser = <User>(localStorage.getItem("users_" + loginKey) || new User());
     }
 
     this._loginData = new LoggedInData(loginKey);
@@ -30,7 +31,7 @@ export class LoginServiceService {
     this._userNavService.trackAction(actionName);
   }
 
-  public tryLoginUser(User: UserInputInfo) {
+  public tryLoginUser(User: User) {
     switch (this._currentLoginStrategy) {
       case LoginStrategies.LocalStorageFlow: {
         this.loginWithLocalStorage(User);
@@ -48,32 +49,33 @@ export class LoginServiceService {
     this.router.navigateByUrl('/');
   }
 
-  private loginWithLocalStorage(user: UserInputInfo): void {
-    localStorage.setItem("siteLoginKey", user.login);
+  private loginWithLocalStorage(user: User): void {
+    localStorage.setItem("siteLoginKey", user.email);
     this.setCurrentUser(user);
-    this._loginData = new LoggedInData(user.login);
+    this._loginData = new LoggedInData(user.email);
   }
   private getUserById(id){
-    return this._currentUser = <UserInputInfo>JSON.parse(localStorage.getItem("users_" + id));
+    return this._currentUser = <User>JSON.parse(localStorage.getItem("users_" + id));
   }
-  public updateUser(user: UserInputInfo){
-    localStorage.setItem("users_" + user.login, JSON.stringify(user));
+  public updateUser(user: User){
+    debugger;
+    localStorage.setItem("users_" + user.email, JSON.stringify(user));
   }
-  public setCurrentUser(user: UserInputInfo){
-    let cu = this.getUserById(user.login);
+  public setCurrentUser(user: User){
+    let cu = this.getUserById(user.email);
 
     if(cu && cu.login){
       this._currentUser = cu;
-      localStorage.setItem("users_" + user.login, JSON.stringify(cu));
+      localStorage.setItem("users_" + user.email, JSON.stringify(cu));
     }else {
-      localStorage.setItem("users_" + user.login, JSON.stringify(user));
+      localStorage.setItem("users_" + user.email, JSON.stringify(user));
       this._currentUser = user;
     }
 
   }
 
   public getCurrentUser() {
-    this._currentUser = <UserInputInfo>JSON.parse(localStorage.getItem("users_" + this._loginData.loginKey));
+    this._currentUser = <User>JSON.parse(localStorage.getItem("users_" + this._loginData.loginKey));
     return this._currentUser;
   }
 

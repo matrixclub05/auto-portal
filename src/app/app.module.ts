@@ -59,6 +59,7 @@ import {FirmInfoComponent} from "./components/firm-info/firm-info.component";
 import {PushPopupComponent} from "./components/push-popup/push-popup.component";
 import {UserNavigationHistoryService} from "./global-services/user-navigation-history.service";
 import { TrackerComponent } from './components/tracker/tracker.component';
+import { MessageFormComponent } from './components/message-form/message-form.component';
 
 
 @NgModule({
@@ -113,7 +114,8 @@ import { TrackerComponent } from './components/tracker/tracker.component';
     SafeUrlPipe,
     FirmInfoComponent,
     PushPopupComponent,
-    TrackerComponent
+    TrackerComponent,
+    MessageFormComponent
   ],
   imports: [
 
@@ -127,7 +129,7 @@ import { TrackerComponent } from './components/tracker/tracker.component';
   ],
   providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService],
   bootstrap: [AppComponent],
-  entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent]
+  entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent, MessageFormComponent]
 })
 export class AppModule {
 }
