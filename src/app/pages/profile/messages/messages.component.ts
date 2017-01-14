@@ -5,6 +5,7 @@ import {UserInfoComponent} from "../../../components/user-info/user-info.compone
 import {FirmInfoComponent} from "../../../components/firm-info/firm-info.component";
 import {MessageFormComponent} from "../../../components/message-form/message-form.component";
 import {LoginServiceService} from "../../../global-services/login-service.service";
+import {MessageCollectorService} from "../../../global-services/message-collector.service";
 
 
 
@@ -14,16 +15,17 @@ import {LoginServiceService} from "../../../global-services/login-service.servic
   styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit {
-  private messages: any = [];
+
   private activeMessage: any;
 
-  constructor(private modalService: NgbModal, public loginService: LoginServiceService) {
-    var date = new Date().toLocaleDateString();
-    var user = new User({
+  constructor(private modalService: NgbModal, private _messageCollector:MessageCollectorService, public loginService: LoginServiceService) {
+    let date = new Date().toLocaleDateString();
+    let user = new User({
       phoneNumber: '+123456789',
       email: 'email@e.com'
     });
-    this.messages[0] = new Message({
+
+    this._messageCollector.addMessage(new Message({
       sentDate: date,
       subject: 'Замена масла',
       description: 'Описание сообщения',
@@ -43,8 +45,8 @@ export class MessagesComponent implements OnInit {
           }
         }
       })
-    });
-    this.messages[1] = new Message({
+    }));
+    this._messageCollector.addMessage(new Message({
 
       sentDate: date,
       subject: 'Акт выполненых работ',
@@ -66,16 +68,16 @@ export class MessagesComponent implements OnInit {
           }
         }
       }),
-    });
-    this.messages[2] = new Message({
+    }));
+    this._messageCollector.addMessage(new Message({
       sentDate: date,
       subject: 'Куплю/обменяю авто',
       description: 'Куплю ваше авто за 3000$ или обменяю на BMW 325 1995г',
       isSent: 'boolean',
       sender: user,
-    });
+    }));
 
-    this.activeMessage = this.messages[0];
+    this.activeMessage = this._messageCollector.allMessages[0];
     this.activeMessage.setRead(true);
   }
 
@@ -110,16 +112,19 @@ export class MessagesComponent implements OnInit {
     if(e){
       e.stopPropagation();
     }
-    var index = this.messages.indexOf(message);
-    this.messages.splice(index, 1);
 
-    if(this.messages.length > 0){
-      this.activeMessage = this.messages[0];
+    this._messageCollector.deleteMessage(message);
+
+    let msgs = this._messageCollector.allMessages;
+
+    if(msgs.length > 0){
+      this.activeMessage = msgs[0];
     }else{
       this.activeMessage = null;
     }
 
   }
+
   messageClick(message: Message){
     this.activeMessage = message;
     message.setRead(true);

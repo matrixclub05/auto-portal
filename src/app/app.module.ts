@@ -60,6 +60,7 @@ import {PushPopupComponent} from "./components/push-popup/push-popup.component";
 import {UserNavigationHistoryService} from "./global-services/user-navigation-history.service";
 import { TrackerComponent } from './components/tracker/tracker.component';
 import { MessageFormComponent } from './components/message-form/message-form.component';
+import {MessageCollectorService} from "./global-services/message-collector.service";
 
 
 @NgModule({
@@ -127,7 +128,7 @@ import { MessageFormComponent } from './components/message-form/message-form.com
     GarageModule,
     NgbModule.forRoot()
   ],
-  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService],
+  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService, MessageCollectorService],
   bootstrap: [AppComponent],
   entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent, MessageFormComponent]
 })

@@ -4,7 +4,7 @@
     <a href="javascript:void(0)" class="btn btn-secondary" (click)="deleteAllMessages()">Удалить все</a>
   </div>
 
-  <div class="col-lg-9">
+  <div class="col-lg-9" *ngFor="let message of _messageCollector.allMessages">
     <div *ngFor="let message of messages" class="panel panel-default" (click)="showMessage(message)" >
       <div class="panel-heading">
         <div class="sender-info">

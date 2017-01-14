@@ -5,7 +5,6 @@ import {MarketServiceBookComponent} from "./market-service-book/market-service-b
 import {PhotoMemoryService} from "../../global-services/photo-memory.service";
 import {CreditCalcComponent} from "../credit-calc/credit-calc.component";
 import {ServiceBookComponent} from "../../garage/service-book/service-book.component";
-import {Service} from "../../garage/draftData/Service";
 import {UserNavigationHistoryService} from "../../global-services/user-navigation-history.service";
 
 @Component({
@@ -35,6 +34,7 @@ export class MarketCarComponent implements OnInit {
       windowClass: 'car-market-car-details'
     });
     modalRef.componentInstance.modalRef = modalRef;
+    this._userNavigation.trackAction("СЕРВИСНАЯ КНИГА " + this._car.carName + " " + this._car.engineType)
   }
 
   protected openCarDetails() {
@@ -45,7 +45,7 @@ export class MarketCarComponent implements OnInit {
     modalRef.componentInstance.modalRef = modalRef;
     modalRef.componentInstance.car = this._car;
 
-    this._userNavigation.trackAction("OPEN CAR DETAILS " + this._car.carName + " " + this._car.engineType)
+    this._userNavigation.trackAction("ДЕТАЛИ АВТО " + this._car.carName + " " + this._car.engineType)
   }
 
   protected openCarCredit()
@@ -56,6 +56,7 @@ export class MarketCarComponent implements OnInit {
     });
     modalRef.componentInstance.car = this._car;
     modalRef.componentInstance.modalRef = modalRef;
+    this._userNavigation.trackAction("РАСЧЕТ КРЕДИТА " + this._car.carName + " " + this._car.engineType)
   }
 
 }
