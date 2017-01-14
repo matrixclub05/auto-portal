@@ -4,8 +4,8 @@
     <a href="javascript:void(0)" class="btn btn-secondary" (click)="deleteAllMessages()">Удалить все</a>
   </div>
 
-  <div class="col-lg-9" >
-    <div *ngFor="let message of _messageCollector.allMessages" class="panel panel-default" (click)="showMessage(message)" >
+  <div class="col-lg-9 message-list" >
+    <div *ngFor="let message of _messageCollector.allMessages" class="panel panel-default" (click)="showMessage(message)" [ngClass]="{'unread': !message.isRead}" >
       <div class="panel-heading">
         <div class="sender-info">
           <img src="{{message.sender.workPlace ? message.sender.workPlace.photo : message.sender.photo}}"
@@ -20,22 +20,7 @@
         </div>
 
         <div class="buttons">
-          <a class="xs-hidden" href="javascript:void(0)" (click)="newMessage(message)">
-            <i class="fa fa-reply" aria-hidden="true"></i>
-            <span>Сообщение</span>
-          </a>
-          <a class="xs-hidden" [href]="'mailto:'+message.sender.email+ ' | safeUrl'">
-            <i class="fa fa-reply" aria-hidden="true"></i>
-            <span>E-mail</span>
-          </a>
-          <a class="xs-hidden" [href]="'tel:'+message.sender.phoneNumber + ' | safeUrl'">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-            <span>Перезвонить</span>
-          </a>
-          <a href="javascript:void(0)" (click)="deleteMessage(message, $event)"><i class="fa fa-trash" aria-hidden="true"></i>
-            <span class="hidden-xs-down" >Удалить</span>
-          </a>
-          <a ngbDropdown id="dropdownMenu2" ngbDropdownToggle class="hidden-md-up">
+          <a ngbDropdown id="dropdownMenu2" ngbDropdownToggle >
             <i class="fa fa-bars"></i>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
@@ -53,14 +38,16 @@
               </a>
             </div>
           </a>
-
-          <a href="javascript:void(0)" *ngIf="!message.isExpanded" (click)="showMessage(message, $event)">
+          <a href="javascript:void(0)" (click)="deleteMessage(message, $event)"><i class="fa fa-trash" aria-hidden="true"></i>
+            <span class="hidden-xs-down" >Удалить</span>
+          </a>
+          <!--<a href="javascript:void(0)" *ngIf="!message.isExpanded" (click)="showMessage(message, $event)">
             <i class="fa fa-angle-down" aria-hidden="true"></i>
             <span class="xs-hidden">Открыть</span>
           </a>
           <a href="javascript:void(0)" *ngIf="message.isExpanded" (click)="showMessage(message, $event)"><i class="fa fa-angle-up" aria-hidden="true"></i>
             <span class="xs-hidden">Скрыть</span>
-          </a>
+          </a>-->
         </div>
       </div>
 

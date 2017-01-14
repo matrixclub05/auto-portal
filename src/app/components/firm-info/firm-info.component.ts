@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {User} from "../../global-services/data-objects/Message";
 
 @Component({
   selector: 'app-firm-info',
@@ -7,7 +8,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./firm-info.component.scss']
 })
 export class FirmInfoComponent {
-  @Input() firm: any;
+  @Input() user: any;
   constructor(public activeModal: NgbActiveModal) {}
 
 }

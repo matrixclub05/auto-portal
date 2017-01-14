@@ -1,0 +1,22 @@
+.modal-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  li{
+    list-style: none;
+  }
+  ul{
+    display: block;
+    padding: 0 15px;
+    flex: 1;
+
+  }
+}
+.modal-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  >h6{
+    width: 100%;
+  }
+}

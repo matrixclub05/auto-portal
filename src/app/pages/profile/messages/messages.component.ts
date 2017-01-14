@@ -34,9 +34,10 @@ export class MessagesComponent implements OnInit {
         fullName: 'Михаил Иванов',
         phoneNumber: '+123456789',
         email: 'email@e.com',
+        position: "Менеджер по продажам",
         workPlace: {
           name: "Авто-сервис",
-          phoneNumber: '123456789',
+          phoneNumber: '+123456789',
           photo: 'assets/firm/local_auto.jpg',
           loacation: {
             city: "Астана",
@@ -59,7 +60,7 @@ export class MessagesComponent implements OnInit {
         position: "Менеджер по продажам",
         workPlace: {
           name: "Авто-сервис",
-          phoneNumber: '123456789',
+          phoneNumber: '+123456789',
           photo: 'assets/firm/local_auto.jpg',
           loacation: {
             city: "Астана",
@@ -87,12 +88,17 @@ export class MessagesComponent implements OnInit {
     if(e){
       e.stopPropagation();
     }
+    if(!message.isRead){
+      message.setRead(true);
+      message.isExpanded = true;
+      return;
+    }
     message.isExpanded = !message.isExpanded;
   }
 
-  showWorkplaceInfo(workplace: any){
+  showWorkplaceInfo(user: User){
     const modalRef = this.modalService.open(FirmInfoComponent);
-    modalRef.componentInstance.firm = workplace;
+    modalRef.componentInstance.user = user;
   }
   showUserInfo(user: User){
 
@@ -102,7 +108,7 @@ export class MessagesComponent implements OnInit {
   showInfo(sender: User, e:any){
     e.stopPropagation();
     if(sender.workPlace){
-      this.showWorkplaceInfo(sender.workPlace);
+      this.showWorkplaceInfo(sender);
     }else {
       this.showUserInfo(sender);
     }

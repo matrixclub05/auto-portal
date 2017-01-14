@@ -1,12 +1,39 @@
-<div class="modal-header">
 
+
+
+
+
+<div class="modal-header">
+  <h6 class="modal-title">Информация о пользователе</h6>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello, {{firm.name}}</p>
+  <img src="{{user.photo}}" style="height: 100px"/>
+  <ul>
+    <li><i class="fa fa-user-o" aria-hidden="true"></i> {{user.fullName}}</li>
+    <li><i class="fa fa-phone" aria-hidden="true"></i> {{user.phoneNumber}}</li>
+    <li *ngIf="user.position"><i class="fa fa-address-card-o" aria-hidden="true" ></i> {{user.position}}</li>
+    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {{user.email}}</li>
+
+  </ul>
+
+
+</div>
+<div class="modal-body">
+  <img src="{{user.workPlace.photo}}" style="height: 50px"/>
+  <ul>
+    <li><h6>{{user.workPlace.name}}</h6></li>
+    <li><i class="fa fa-phone" aria-hidden="true"></i> {{user.workPlace.phoneNumber}}</li>
+    <li *ngIf="user.workPlace.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{user.workPlace.email}}</li>
+    <li><i class="fa fa-map-marker"></i> {{user.workPlace.loacation.city}}, {{user.workPlace.loacation.street}}, {{user.workPlace.loacation.buildingNumber}}</li>
+  </ul>
+
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+  <a class="btn btn-secondary" [href]="'tel:'+user.phoneNumber + ' | safeUrl'">Позвонить</a>
+  <a class="btn btn-secondary" [href]="'mailto:'+user.email+ ' | safeUrl'">E-mail</a>
+
+  <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Закрыть</button>
 </div>
