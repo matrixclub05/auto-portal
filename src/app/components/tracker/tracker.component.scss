@@ -4,7 +4,8 @@
   bottom: 0;
   z-index: 66666;
   height: 200px;
-  width: 300px;
+  width: 405px;
+  pointer-events: none;
 }
 
 div.body
@@ -14,18 +15,28 @@ div.body
   border: 1px solid #df1f3d;
   font-size: 10px;
   height: 150px;
+  display: inline-block;
+  float: left;
+  pointer-events: all;
+  width: 340px;
 }
 
 div.trackerButton
 {
   display: inline-block;
-  z-index: 654654654;
-  position: relative;
-  bottom: 0;
+  float: left;
 
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
+  margin-top: 23px;
+  margin-left: -23px;
+  pointer-events: all;
+}
+
+button p{
+  margin: 0;
+  padding: 0;
 }
