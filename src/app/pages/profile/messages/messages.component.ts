@@ -80,6 +80,11 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  showMessage(message: Message){
+    debugger
+  }
+
   showWorkplaceInfo(workplace: any){
     const modalRef = this.modalService.open(FirmInfoComponent);
     modalRef.componentInstance.firm = workplace;

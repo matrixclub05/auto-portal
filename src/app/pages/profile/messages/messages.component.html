@@ -3,7 +3,7 @@
     <div class="list-group">
       <div class="list-group-item" *ngFor="let message of messages"
          [ngClass]="{'unread': !message.isRead}"
-         (click)="messageClick(message)">
+         (click)="messageClick(message)" (touch)="showMessage(message)">
 
         <h6 class="list-group-item-heading">
           <img src="{{message.sender.photo}}" alt="">
@@ -28,15 +28,15 @@
         </div>
 
         <div class="buttons">
-          <a class="hidden-xs-down" [href]="'mailto:'+activeMessage.sender.email+ ' | safeUrl'">
+          <a class="xs-hidden" [href]="'mailto:'+activeMessage.sender.email+ ' | safeUrl'">
             <i class="fa fa-reply" aria-hidden="true"></i>
             <span>Ответить</span>
           </a>
-          <a class="hidden-xs-down" [href]="'tel:'+activeMessage.sender.phoneNumber + ' | safeUrl'">
+          <a class="xs-hidden" [href]="'tel:'+activeMessage.sender.phoneNumber + ' | safeUrl'">
             <i class="fa fa-phone" aria-hidden="true"></i>
             <span>Перезвонить</span>
           </a>
-          <a class="hidden-xs-down" [href]="'sms:'+activeMessage.sender.phoneNumber+ ' | safeUrl'">
+          <a class="xs-hidden" [href]="'sms:'+activeMessage.sender.phoneNumber+ ' | safeUrl'">
             <i class="fa fa-mobile" aria-hidden="true"></i>
             <span>SMS</span>
           </a>
@@ -55,7 +55,7 @@
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>Перезвонить</span>
               </a>
-              <a class="dropdown-item" [href]="'sms:'+activeMessage.sender.phoneNumber+ ' | safeUrl'">
+              <a class="dropdown-item" [href]="'smsto:'+activeMessage.sender.phoneNumber+ ' | safeUrl'">
                 <i class="fa fa-mobile" aria-hidden="true"></i>
                 <span>Отправить SMS</span>
               </a>
