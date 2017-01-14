@@ -14,7 +14,7 @@
     </div>
   </div>-->
 
-  <div class="col-lg-8" *ngFor="let message of messages">
+  <div class="col-lg-8" *ngFor="let message of _messageCollector.allMessages">
     <div class="panel panel-default" (click)="showMessage(message)" >
       <div class="panel-heading">
         <div class="sender-info">
