@@ -5,6 +5,7 @@
   </button>
 </div>
 <div class="modal-body">
+  <img src="{{user.photo}}" style="height: 100px"/>
   <ul>
     <li><i class="fa fa-user-o" aria-hidden="true"></i> {{user.fullName}}</li>
     <li><i class="fa fa-phone" aria-hidden="true"></i> {{user.phoneNumber}}</li>
@@ -14,6 +15,8 @@
 
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Позвонить</button>
-  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Закрыть</button>
+
+  <a class="btn btn-secondary" href="tel:{{user.phoneNumber}}">Позвонить</a>
+  <a class="btn btn-secondary" href="sms:{{user.phoneNumber}}">Отправить SMS</a>
+  <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Закрыть</button>
 </div>
