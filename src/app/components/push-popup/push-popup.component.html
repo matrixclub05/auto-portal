@@ -1,0 +1,30 @@
+<div class="popup-wrapper" *ngIf="_currentMessage">
+  <div class="content" [class.animate-fadeInOut] = "_currentMessage">
+    <div class="row">
+      <div class="col-xs-2 image-holder">
+        <div class="row">
+          <div class="col-sm-12">
+            <img class="sender-image" src="{{_currentMessage.sender.workPlace.photo}}">
+          </div>
+          <div class="col-sm-12">
+            <span class="sender-name">
+              {{_currentMessage.sender.firstName}}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-10">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="new-message">Новое сообщение от {{_currentMessage.sender.fullName}}</span>
+          </div>
+          <div class="col-xs-12">
+            <span class="message-body">
+              {{_currentMessage.description}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
