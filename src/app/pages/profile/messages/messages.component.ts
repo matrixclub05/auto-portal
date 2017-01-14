@@ -130,7 +130,7 @@ export class MessagesComponent implements OnInit {
     message.setRead(true);
   }
   deleteAllMessages(){
-    this.messages = [];
+   // this.messages = [];
   }
   newMessage(message: Message){
 
