@@ -46,7 +46,7 @@ export class MessagesComponent implements OnInit {
 
       sentDate: date,
       subject: 'Акт выполненых работ',
-      description: 'Куплю ваше авто за 3000$ или обменяю на BMW 325 1995г',
+      description: 'Ждем вас на сервисе для подписания документов.',
       isSent: 'boolean',
       sender: new User({
         fullName: 'Игорь Неизвестный',
