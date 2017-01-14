@@ -56,6 +56,7 @@ import {TestDriveComponent} from "./garage/test-drive/test-drive.component";
 import { MessagesComponent } from './pages/profile/messages/messages.component';
 import {UserInfoComponent, SafeUrlPipe} from './components/user-info/user-info.component';
 import { FirmInfoComponent } from './components/firm-info/firm-info.component';
+import { PushPopupComponent } from './components/push-popup/push-popup.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { FirmInfoComponent } from './components/firm-info/firm-info.component';
     MessagesComponent,
     UserInfoComponent,
     SafeUrlPipe,
-    FirmInfoComponent
+    FirmInfoComponent,
+    PushPopupComponent
   ],
   imports: [
 
