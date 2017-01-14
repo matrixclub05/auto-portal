@@ -32,6 +32,7 @@ export class MarketComponent implements OnInit, AfterViewInit {
   protected _selectedTransmissionTypes: {} = {'МКПП': false, "АКПП": false};
 
   protected _filterCarName: string = "";
+  protected _filterVINNumber: string = "";
 
   private _carList: Array<Ad> = [];
 
@@ -83,6 +84,12 @@ export class MarketComponent implements OnInit, AfterViewInit {
     this.createCarForDisplay();
   }
 
+  protected onVinFilter($event)
+  {
+    this._filterVINNumber = $event.target.value.toUpperCase();
+    this.createCarForDisplay();
+  }
+
   protected createCarForDisplay() {
     let filter: Object = {};
     let selectedTransmissionTypes: Array<string> = [];
@@ -116,6 +123,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
     if(this._filterCarName != "")
       filter['carName'] = this._filterCarName;
+
+    if(this._filterVINNumber != "")
+      filter['vinNumber'] = this._filterVINNumber;
 
     if(this._searchCarBrand != "")
     {

@@ -60,6 +60,11 @@ export class DBServiceService {
     if (filter.carName && filter.carName != "")
       conditions.push("carName LIKE '%" + filter.carName + "%'");
 
+    if(filter.vinNumber && filter.vinNumber != "")
+    {
+      conditions.push("vinNumber LIKE '%" + filter.vinNumber + "%'");
+    }
+
     if (filter.engineCapacity)
       conditions.push('engineCapacity BETWEEN ' + filter.engineCapacity[0] + ' AND ' + filter.engineCapacity[1]);
 
@@ -135,6 +140,7 @@ export class DBServiceService {
             brand: key.split(' ')[0],
             model: key.split(' ')[1],
             carName: key,
+            vinNumber: "ABCD"+key.split(' ')[1] + j,
             internalService: this.getRandomInt(0, 1) === 0,
             photo: aDaTa[key].photoPath,
             ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)}),
