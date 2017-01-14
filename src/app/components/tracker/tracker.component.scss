@@ -1,0 +1,31 @@
+:host
+{
+  position: fixed;
+  bottom: 0;
+  z-index: 66666;
+  height: 200px;
+  width: 300px;
+}
+
+div.body
+{
+  overflow-y: scroll;
+  background-color: #FFFFFF;
+  border: 1px solid #df1f3d;
+  font-size: 10px;
+  height: 150px;
+}
+
+div.trackerButton
+{
+  display: inline-block;
+  z-index: 654654654;
+  position: relative;
+  bottom: 0;
+
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}

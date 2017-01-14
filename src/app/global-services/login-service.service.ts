@@ -3,6 +3,7 @@ import {LoggedInData} from "./data-objects/LoggedInData";
 import {LoginStrategies} from "./data-objects/LoginStategies";
 import {UserInputInfo} from "../registration/registrationFlow/registration-flow.component";
 import {Router} from '@angular/router';
+import {UserNavigationHistoryService} from "./user-navigation-history.service";
 
 @Injectable()
 export class LoginServiceService {
@@ -12,7 +13,7 @@ export class LoginServiceService {
   private _loginData: LoggedInData = null;
   private _currentUser: UserInputInfo = null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _userNavService:UserNavigationHistoryService) {
     let loginKey: string = localStorage.getItem("siteLoginKey");
     if (!loginKey) {
       loginKey = this.__DEFAULT_LOGIN_KEY;
@@ -20,7 +21,13 @@ export class LoginServiceService {
       this._currentUser = <UserInputInfo>(localStorage.getItem("users_" + loginKey) || new UserInputInfo());
     }
 
-    this._loginData = new LoggedInData(loginKey)
+    this._loginData = new LoggedInData(loginKey);
+    this._userNavService.loginName = loginKey;
+  }
+
+  public track(actionName:string)
+  {
+    this._userNavService.trackAction(actionName);
   }
 
   public tryLoginUser(User: UserInputInfo) {

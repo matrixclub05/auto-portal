@@ -1,0 +1,15 @@
+<div class="row">
+  <div *ngIf="_isOpen" class="body col-xs-12">
+    <div class="row" *ngFor="let item of _actions">
+      <div class="action-name col-xs-4">{{item.actionType == 0 ? "Навигация" : "Действие"}}</div>
+      <div class="description col-xs-4">{{item.actionDescription}}</div>
+      <div class="date col-xs-4">{{item.date}}</div>
+    </div>
+  </div>
+
+  <div class="trackerButton col-xs-12">
+    <button type="button" class="btn btn-primary" (click)="toggle()">
+      OPEN TRACKER
+    </button>
+  </div>
+</div>
