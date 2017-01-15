@@ -16,7 +16,7 @@ class Thing {
 export class CreditCalcComponent implements OnInit {
   private _car:Ad = null;
 
-  private sumCredit: number = 1000;
+  private sumCredit: number = 10000;
   private timeCredit: number = 12;
   private percentRateCredit: number = 20;
 

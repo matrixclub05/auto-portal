@@ -5,13 +5,14 @@
   float: right;
 }
 .header-bg {
-  background: url("assets/bg.jpg") no-repeat;
+  background: url("assets/car.jpg") no-repeat;
   position: absolute;
   height: 220px;
   width: 100%;
   padding-top: 90px;
   background-size: 100% auto;
   z-index: 0;
+  background-position-y: -80px;
 }
 .main-header {
   margin: auto;
@@ -111,6 +112,9 @@
   float: right;
 }
 @media (min-width: 768px) {
+  .menu {
+    display: none;
+  }
   .main-menu, .main-header{
     display: block;
   }

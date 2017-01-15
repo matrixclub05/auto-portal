@@ -22,13 +22,43 @@
     </div>
 
     <div class="row">
+      <div class="col-lg-2">Сумма кредита:</div>
+      <div class="col-lg-8"><input type="range" min="10000" max="1000000" step="500" [(ngModel)]="sumCredit"></div>
+      <div class="col-lg-2"><input type="text" class="form-control" [(ngModel)]="sumCredit" ></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-2">Срок кредита:</div>
+      <div class="col-lg-8"><input type="range" min="1" max="84" step="1" id="timeCredit" [(ngModel)]="timeCredit"></div>
+      <div class="col-lg-2"><input type="text" class="form-control" [(ngModel)]="timeCredit" ></div>
+    </div>
+
+    <div class="row">
       <form class="form-horizontal ng-pristine ng-valid" >
 
-        <div class="form-group">
-          <label for="sum" class="col-md-3 control-label">Сумма кредита :</label>
+        <!--<div class="form-group">
+          <label for="sum" class="col-md-3 control-label">Сумма кредита:</label>
 
           <div class="col-md-2">
-            <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="sum" name="sumCredit" [(ngModel)]="sumCredit">
+            <input type="range" min="10000" max="1000000" step="500" class="form-control ng-pristine ng-valid ng-touched" id="sum1" name="sumCredit" [(ngModel)]="sumCredit">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sum" class="col-md-3 control-label">Сумма кредита:</label>
+
+          <div class="col-md-2">
+            <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="sum" name="sumCredit" [(ngModel)]="sumCredit" >
+          </div>
+
+          <span class="help-block error ng-binding"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="date1" class="col-md-3 control-label">Срок кредита:</label>
+
+          <div class="col-md-2">
+            <input type="range" class="form-control ng-pristine ng-valid ng-touched" id="date1" name="timeCredit" [(ngModel)]="timeCredit">
           </div>
 
           <span class="help-block error ng-binding"></span>
@@ -42,7 +72,7 @@
           </div>
 
           <span class="help-block error ng-binding"></span>
-        </div>
+        </div>-->
 
         <div class="form-group">
           <label for="percents" class="col-md-3 control-label">Процентная ставка:</label>
