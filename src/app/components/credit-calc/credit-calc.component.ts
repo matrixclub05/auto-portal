@@ -25,8 +25,30 @@ export class CreditCalcComponent implements OnInit {
   private sumNa4islProcenti: number = 0;
   private sumSumPlatej: number = 0;
   private sumSumCredit: number = 0;
+  private totalSum: number = 0;
 
   private _modalRef:NgbModalRef = null;
+
+  private bill:number = 0;
+
+  private calc (){
+    //noinspection TypeScriptUnresolvedFunction
+    var percentRateCredit = parseInt(this.percentRateCredit);
+    //noinspection TypeScriptUnresolvedFunction
+    var sumCredit = parseInt(this.sumCredit);
+    //noinspection TypeScriptUnresolvedFunction
+    var timeCredit = parseInt(this.timeCredit);
+
+
+    var percent = percentRateCredit / 100 / 12, div;
+    if(percent == 0 ){
+      return this.myRound(sumCredit/timeCredit);
+    }
+
+    div =  1 - Math.pow( ( 1 + percent ), -timeCredit);
+
+    return this.myRound((sumCredit * (percent / div)));
+  }
 
   private action() {
       this.results = [];
@@ -34,7 +56,7 @@ export class CreditCalcComponent implements OnInit {
       let timeCredit = +this.timeCredit;
       let percentRateCredit = +this.percentRateCredit;
 
-      this.sumNa4islProcenti = 0;
+    this.sumNa4islProcenti = 0;
       this.sumSumPlatej = 0;
       this.sumSumCredit = +this.sumCredit;
 
