@@ -5,3 +5,24 @@
   display: block;
   position: relative;
 }
+
+@media (min-width: 768px) {
+  .tracker-and-chat-holder
+  {
+
+  }
+}
+
+@media (max-width: 768px) {
+  .tracker-and-chat-holder
+  {
+    display: block;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 21px;
+    background-color: black;
+    z-index: 666;
+    padding: 2px 2px 1px 2px;
+  }
+}
