@@ -61,6 +61,7 @@ import {UserNavigationHistoryService} from "./global-services/user-navigation-hi
 import { TrackerComponent } from './components/tracker/tracker.component';
 import { MessageFormComponent } from './components/message-form/message-form.component';
 import {MessageCollectorService} from "./global-services/message-collector.service";
+import {LocationStrategy, HashLocationStrategy} from "@angular/common";
 
 
 @NgModule({
@@ -128,7 +129,7 @@ import {MessageCollectorService} from "./global-services/message-collector.servi
     GarageModule,
     NgbModule.forRoot()
   ],
-  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService, MessageCollectorService],
+  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService, MessageCollectorService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent, MessageFormComponent]
 })
