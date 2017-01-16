@@ -32,12 +32,12 @@ export class CreditCalcComponent implements OnInit {
   private bill:number = 0;
 
   private calc (){
-    //noinspection TypeScriptUnresolvedFunction
-    var percentRateCredit = parseInt(this.percentRateCredit);
-    //noinspection TypeScriptUnresolvedFunction
-    var sumCredit = parseInt(this.sumCredit);
-    //noinspection TypeScriptUnresolvedFunction
-    var timeCredit = parseInt(this.timeCredit);
+
+    var percentRateCredit = <number>this.percentRateCredit;
+
+    var sumCredit = <number>this.sumCredit;
+
+    var timeCredit = <number>this.timeCredit;
 
 
     var percent = percentRateCredit / 100 / 12, div;
