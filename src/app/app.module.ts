@@ -62,6 +62,7 @@ import { TrackerComponent } from './components/tracker/tracker.component';
 import { MessageFormComponent } from './components/message-form/message-form.component';
 import {MessageCollectorService} from "./global-services/message-collector.service";
 import {LocationStrategy, HashLocationStrategy} from "@angular/common";
+import { SignUpServiceComponent } from './components/sign-up-service/sign-up-service.component';
 
 
 @NgModule({
@@ -117,7 +118,8 @@ import {LocationStrategy, HashLocationStrategy} from "@angular/common";
     FirmInfoComponent,
     PushPopupComponent,
     TrackerComponent,
-    MessageFormComponent
+    MessageFormComponent,
+    SignUpServiceComponent
   ],
   imports: [
 
@@ -129,9 +131,15 @@ import {LocationStrategy, HashLocationStrategy} from "@angular/common";
     GarageModule,
     NgbModule.forRoot()
   ],
-  providers: [LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService, UserNavigationHistoryService, MessageCollectorService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    LoginServiceService, NativeWindowTools, DBServiceService, PhotoMemoryService,
+    UserNavigationHistoryService, MessageCollectorService, {provide: LocationStrategy, useClass: HashLocationStrategy}
+
+    ],
   bootstrap: [AppComponent],
-  entryComponents: [MarketServiceBookComponent, CreditCalcComponent, ServiceBookComponent, UserInfoComponent, FirmInfoComponent, MessageFormComponent]
+  entryComponents: [MarketServiceBookComponent, CreditCalcComponent,
+    ServiceBookComponent, UserInfoComponent,
+    FirmInfoComponent, MessageFormComponent, SignUpServiceComponent]
 })
 export class AppModule {
 }

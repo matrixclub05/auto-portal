@@ -1,5 +1,12 @@
 <div class="popup-wrapper" *ngIf="_currentMessage">
+
   <div class="content" [class.animate-fadeInOut] = "_currentMessage" (click)="goToMessages()">
+    <div class="row">
+      <div class="col-xs-12">
+        <i class="fa fa-times pull-right" aria-hidden="true" (click)="closePopup($event)"></i>
+      </div>
+
+    </div>
     <div class="row">
       <div class="col-xs-2 image-holder">
         <div class="row">

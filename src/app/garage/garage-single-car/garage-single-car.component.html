@@ -23,6 +23,7 @@
           <div class="icons-ct pull-right">
             <i class="fa fa-handshake-o btn" (click)="addToMarket()" title="Добавить на рынок"></i>
             <i class="fa fa-book btn" aria-hidden="true" (click)="select()" title="Сервисная книга"></i>
+            <i class="fa fa-cogs btn" aria-hidden="true" (click)="signUpService()" title="Записаться на сервис"></i>
             <input class="input-capture" type="file"
                    accept="image/*" id="capture{{_car.manufacturer+_car.model+_car.year}}"
                    capture="camera"
@@ -45,6 +46,7 @@
         <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails()"
            *ngIf="_car.internalService == 'true'"></i>
         <i class="fa fa-book btn btn-primary pull-right" aria-hidden="true" (click)="select()"></i>
+        <i class="fa fa-cogs btn btn-primary pull-right" aria-hidden="true" (click)="signUpService()"></i>
 
 
         <input class="input-capture" type="file" accept="image/*" id="capture{{_car.manufacturer+_car.model+_car.year}}" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">

@@ -1,13 +1,11 @@
-.popup-wrapper
-{
+.popup-wrapper {
   position: fixed;
   bottom: 0;
   z-index: 6666;
   width: 100%;
 }
 
-.content
-{
+.content {
   padding: 4px;
   position: relative;
   max-width: 600px;
@@ -16,37 +14,36 @@
   margin: 8px auto;
   background-color: #FFFFFF;
   border: 1px solid #df1f3d;
-  -webkit-box-shadow: 11px 10px 46px -15px rgba(0,0,0,0.45);
-  -moz-box-shadow: 11px 10px 46px -15px rgba(0,0,0,0.45);
-  box-shadow: 11px 10px 46px -15px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 11px 10px 46px -15px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 11px 10px 46px -15px rgba(0, 0, 0, 0.45);
+  box-shadow: 11px 10px 46px -15px rgba(0, 0, 0, 0.45);
+  .fa{
+    font-size: 18px;
+    padding: 10px;
+  }
 }
 
-div.image-holder
-{
+div.image-holder {
   border-right: 1px solid #f2f2f2;
   padding-right: 5px;
 }
 
-img.sender-image
-{
+img.sender-image {
   width: 100%;
 }
 
-span.sender-name
-{
+span.sender-name {
   display: block;
   width: 100%;
   text-align: center;
   font-size: 10px;
 }
 
-span.new-message
-{
+span.new-message {
   font-weight: 600;
 }
 
-.animate-fadeInOut
-{
+.animate-fadeInOut {
   -webkit-animation: flickerAnimation 5s;
   -moz-animation: flickerAnimation 5s;
   -o-animation: flickerAnimation 5s;
@@ -54,26 +51,61 @@ span.new-message
 }
 
 @keyframes fadeInOut {
-  0%   { opacity:0; }
-  25%  { opacity:1; }
-  75%  { opacity:1; }
-  100% { opacity:0; }
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-@-o-keyframes fadeInOut{
-  0%   { opacity:0; }
-  25%  { opacity:1; }
-  75%  { opacity:1; }
-  100% { opacity:0; }
+
+@-o-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-@-moz-keyframes fadeInOut{
-  0%   { opacity:0; }
-  25%  { opacity:1; }
-  75%  { opacity:1; }
-  100% { opacity:0; }
+
+@-moz-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-@-webkit-keyframes fadeInOut{
-  0%   { opacity:0; }
-  25%  { opacity:1; }
-  75%  { opacity:1; }
-  100% { opacity:0; }
+
+@-webkit-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

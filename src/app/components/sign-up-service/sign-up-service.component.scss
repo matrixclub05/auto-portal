@@ -1,0 +1,46 @@
+.message-form{
+  .d-inline-block.dropdown-menu {
+    min-width: 15rem !important;
+  }
+
+}
+.modal-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  li{
+    list-style: none;
+  }
+  ul{
+    display: block;
+    padding: 0 15px;
+    flex: 1;
+
+  }
+}
+.modal-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  >h6{
+    width: 100%;
+  }
+}
+.input-capture
+{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.input-capture + label {
+  display: inline-block;
+  cursor: pointer;
+}
+.photo {
+  border: 1px solid #ddd;
+  width: 100%;
+}

@@ -30,6 +30,7 @@ export class User {
   public workPlace: any = null;
   public position: string = '';
   private _fullName: string;
+  public location: any = {};
   constructor(cfg?: any) {
     //noinspection TypeScriptUnresolvedFunction
     Object.assign(this, cfg);

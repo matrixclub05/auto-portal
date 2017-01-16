@@ -5,12 +5,21 @@ import {Message} from "./data-objects/Message";
 export class MessageCollectorService {
 
   private _messages:Array<Message> = [];
-
+  public urgentMessage: Message;
   constructor()
   {
 
   }
+  public showMessage(message: Message, car: any, date: any, time: any){
 
+    this.urgentMessage = new Message({
+      subject: message.subject,
+      description: `Ваша заявка на сервис принята, ждем Вас в Автосервисе ${date.day}.${date.month}.${date.year} числа в ${time.hour}:${time.minute}  `,
+      sender: message.recipient,
+      recipient: message.sender
+    });
+    this.addMessage(message);
+  }
   public addMessageCollection(messageArray:Array<Message>)
   {
     this._messages.concat(messageArray);

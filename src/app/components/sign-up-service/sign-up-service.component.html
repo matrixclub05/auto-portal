@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <h6 class="modal-title">Запись на сервис</h6>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="message-form">
+    <h4>{{car.manufacturer}} {{car.model}}, {{car.year}}</h4>
+    <div class="form-group">
+      <label>Выберете удобный Вам день</label>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [displayMonths]="displayMonths" [navigation]="navigation" ngbDatepicker #d="ngbDatepicker"
+                   [(ngModel)]="model">
+            <div class="input-group-addon" (click)="d.toggle()">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <label>Выберете удобное для Вас время</label>
+      <div class="input-group">
+        <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="exampleTextarea">Описание поломки</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="message.description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>
+      <input class="input-capture" type="file"
+             accept="image/*"
+             capture="camera"
+             placeholder="make a photo" (change)="capturePhoto($event)">
+      Добавить фото <i class="fa fa-camera"></i></label>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 " *ngFor="let photo of photos">
+        <img src="{{photo}}" alt="" class="photo">
+      </div>
+    </div>
+    <div class="row">
+      <ul class="col-xs-12">
+        <label >Адресс сервиса:</label>
+        <li><h6>Автосервис</h6></li>
+        <li><i class="fa fa-phone" aria-hidden="true"></i> {{message.recipient.phoneNumber}}</li>
+        <li *ngIf="message.recipient.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{message.recipient.email}}
+        </li>
+        <li><i class="fa fa-map-marker"></i> {{message.recipient.location.city}}, {{message.recipient.location.street}},
+          {{message.recipient.location.buildingNumber}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <a class="btn btn-secondary" [href]="'tel:'+message.recipient.phoneNumber + ' | safeUrl'">Позвонить</a>
+  <button type="button" class="btn btn-primary" (click)="signUp()">Записаться</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Закрыть</button>
+</div>

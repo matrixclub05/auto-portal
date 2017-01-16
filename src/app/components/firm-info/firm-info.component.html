@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="modal-header">
   <h6 class="modal-title">Информация о пользователе</h6>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
@@ -16,10 +11,7 @@
     <li><i class="fa fa-phone" aria-hidden="true"></i> {{user.phoneNumber}}</li>
     <li *ngIf="user.position"><i class="fa fa-address-card-o" aria-hidden="true" ></i> {{user.position}}</li>
     <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {{user.email}}</li>
-
   </ul>
-
-
 </div>
 <div class="modal-body">
   <img src="{{user.workPlace.photo}}" style="height: 50px"/>
@@ -29,11 +21,9 @@
     <li *ngIf="user.workPlace.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{user.workPlace.email}}</li>
     <li><i class="fa fa-map-marker"></i> {{user.workPlace.loacation.city}}, {{user.workPlace.loacation.street}}, {{user.workPlace.loacation.buildingNumber}}</li>
   </ul>
-
 </div>
 <div class="modal-footer">
   <a class="btn btn-secondary" [href]="'tel:'+user.phoneNumber + ' | safeUrl'">Позвонить</a>
   <a class="btn btn-secondary" [href]="'mailto:'+user.email+ ' | safeUrl'">E-mail</a>
-
   <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Закрыть</button>
 </div>
