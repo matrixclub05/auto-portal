@@ -178,7 +178,7 @@
     }
   }
   .header-container {
-    display: flex;
+    display: table;
     position: fixed;
     top: 0;
     width: 100%;
@@ -189,7 +189,10 @@
     margin: auto;
     justify-content: space-between;
     font-size: 1.1em;
-
+    >a {
+      display: table-cell;
+      vertical-align: middle;
+    }
     .menu-btn {
       padding: 0 15px;
       color: #fff;
