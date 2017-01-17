@@ -35,6 +35,7 @@ export class DBServiceService {
     this._database.transaction((tx) => {
       tx.executeSql("SELECT * FROM car_list " + filterString +" ORDER BY id DESC", [],
         (tx, queryResult) => {
+          console.log(queryResult.rows);
           deferred.resolve(<Array<Ad>>(queryResult.rows))
         }
       )

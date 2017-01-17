@@ -111,6 +111,12 @@
 .pull-right {
   float: right;
 }
+
+.header-container
+{
+  transform: translateZ(0);
+}
+
 @media (min-width: 768px) {
   .menu {
     display: none;
