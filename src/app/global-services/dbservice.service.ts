@@ -40,7 +40,7 @@ export class DBServiceService {
           let len:number = queryResult.rows.length;
           for(let i =0; i < len; i++)
           {
-            arr.push(queryResult.rows[i]);
+            arr.push(queryResult.rows.item(i));
           }
           deferred.resolve(arr)
         }
