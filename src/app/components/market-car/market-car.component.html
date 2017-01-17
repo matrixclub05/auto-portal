@@ -8,7 +8,7 @@
   </div>
   <div class="col-xs-8 info">
     <ul class="list-group row">
-      <li><h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4></li>
+      <li><h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price }}тг</span></h4></li>
       <li>
         <span class="price" *ngIf="_car.isNew === 'true'">БЕЗ ПРОБЕГА</span>
         <br *ngIf="_car.isNew === 'true'">
@@ -36,7 +36,7 @@
 
 <div class="xs-car-wrapper" >
 
-  <h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price | number }}тг</span></h4>
+  <h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price }}тг</span></h4>
   <div class="info-wrap">
     <div class="icons-ct">
       <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails()"
