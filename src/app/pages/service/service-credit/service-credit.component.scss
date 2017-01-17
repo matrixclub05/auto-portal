@@ -1,5 +1,5 @@
 :host{
-  display: table;
+  display: block;
 }
 table {
   width: 100%;
@@ -23,4 +23,10 @@ table th, td {
 }
 .static-content {
   padding-top: 30px;
+}
+.content-wrap{
+  overflow-x: hidden;
+}
+.img-responsive{
+  max-width: 100%;
 }
