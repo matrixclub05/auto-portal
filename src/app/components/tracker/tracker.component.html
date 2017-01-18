@@ -1,5 +1,23 @@
 <div>
   <div *ngIf="_isOpen" class="body">
+    <div class="row user" *ngIf="_currentUser">
+      <div>
+        <div class="col-md-4 float-lg-left">
+          {{_currentUser.firstName + " " + _currentUser.lastName}}
+        </div>
+        <div class="col-md-4 float-lg-left">
+          почта: {{_currentUser.email}}
+        </div>
+        <div class="col-md-4 float-lg-left" *ngIf="_currentUser.phoneNumber != ''">
+          Телефон:{{_currentUser.phoneNumber}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="!_currentUser" class="col-lg-12">
+        <p>Не зарегистрированный пользователь</p>
+      </div>
+    </div>
     <div class="row" *ngFor="let item of _actions">
       <div class="action-name col-xs-4">{{item.actionType == 0 ? "Навигация" : "Действие"}}</div>
       <div class="description col-xs-4">{{item.actionDescription}}</div>
