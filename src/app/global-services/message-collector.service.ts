@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Message} from "./data-objects/Message";
 
 @Injectable()
 export class MessageCollectorService {
 
-  private _messages:Array<Message> = [];
+  private _messages: Array<Message> = [];
   public urgentMessage: Message;
-  constructor()
-  {
+
+  constructor() {
 
   }
-  public showMessage(message: Message, car: any, date: any, time: any){
+
+  public showMessage(message: Message, car: any, date: any, time: any) {
 
     this.urgentMessage = new Message({
       subject: message.subject,
@@ -20,26 +21,26 @@ export class MessageCollectorService {
     });
     this.addMessage(message);
   }
-  public addMessageCollection(messageArray:Array<Message>)
-  {
+
+  public deleteAll(): void {
+    this._messages = [];
+  }
+
+  public addMessageCollection(messageArray: Array<Message>) {
     this._messages.concat(messageArray);
   }
 
-  public addMessage(message:Message)
-  {
+  public addMessage(message: Message) {
     this._messages.push(message);
   }
 
-  public get allMessages():Array<Message>
-  {
+  public get allMessages(): Array<Message> {
     return this._messages;
   }
 
-  public deleteMessage(message:Message)
-  {
+  public deleteMessage(message: Message) {
     var index = this._messages.indexOf(message);
-    if(index > -1)
-    {
+    if (index > -1) {
       this._messages.splice(index, 1);
     }
   }

@@ -19,67 +19,68 @@ export class MessagesComponent implements OnInit {
   private activeMessage: any;
 
   constructor(private modalService: NgbModal, private _messageCollector:MessageCollectorService, public loginService: LoginServiceService) {
-    let date = new Date().toLocaleDateString();
-    let user = new User({
-      phoneNumber: '+123456789',
-      email: 'email@e.com'
-    });
-
-    this._messageCollector.addMessage(new Message({
-      sentDate: date,
-      subject: 'Замена масла',
-      description: 'Описание сообщения',
-      isSent: 'boolean',
-      sender: new User({
-        fullName: 'Михаил Иванов',
+    if(this._messageCollector.allMessages.length == 0){
+      let date = new Date().toLocaleDateString();
+      let user = new User({
         phoneNumber: '+123456789',
-        email: 'email@e.com',
-        position: "Менеджер по продажам",
-        workPlace: {
-          name: "Авто-сервис",
-          phoneNumber: '+123456789',
-          photo: 'assets/firm/local_auto.jpg',
-          loacation: {
-            city: "Астана",
-            street: "Кенесары көшесі",
-            buildingNumber: "79/1"
-          }
-        }
-      })
-    }));
-    this._messageCollector.addMessage(new Message({
+        email: 'email@e.com'
+      });
 
-      sentDate: date,
-      subject: 'Акт выполненых работ',
-      description: 'Ждем вас на сервисе для подписания документов.',
-      isSent: 'boolean',
-      sender: new User({
-        fullName: 'Игорь Неизвестный',
-        phoneNumber: '+123456789',
-        email: 'email@e.com',
-        position: "Менеджер по продажам",
-        workPlace: {
-          name: "Авто-сервис",
+      this._messageCollector.addMessage(new Message({
+        sentDate: date,
+        subject: 'Замена масла',
+        description: 'Описание сообщения',
+        isSent: 'boolean',
+        sender: new User({
+          fullName: 'Михаил Иванов',
           phoneNumber: '+123456789',
-          photo: 'assets/firm/local_auto.jpg',
-          loacation: {
-            city: "Астана",
-            street: "Кенесары көшесі",
-            buildingNumber: "79/1"
+          email: 'email@e.com',
+          position: "Менеджер по продажам",
+          workPlace: {
+            name: "Авто-сервис",
+            phoneNumber: '+123456789',
+            photo: 'assets/firm/local_auto.jpg',
+            loacation: {
+              city: "Астана",
+              street: "Кенесары көшесі",
+              buildingNumber: "79/1"
+            }
           }
-        }
-      }),
-    }));
-    this._messageCollector.addMessage(new Message({
-      sentDate: date,
-      subject: 'Куплю/обменяю авто',
-      description: 'Куплю ваше авто за 3000$ или обменяю на BMW 325 1995г',
-      isSent: 'boolean',
-      sender: user,
-    }));
+        })
+      }));
+      this._messageCollector.addMessage(new Message({
 
-    this.activeMessage = this._messageCollector.allMessages[0];
-    this.activeMessage.setRead(true);
+        sentDate: date,
+        subject: 'Акт выполненых работ',
+        description: 'Ждем вас на сервисе для подписания документов.',
+        isSent: 'boolean',
+        sender: new User({
+          fullName: 'Игорь Неизвестный',
+          phoneNumber: '+123456789',
+          email: 'email@e.com',
+          position: "Менеджер по продажам",
+          workPlace: {
+            name: "Авто-сервис",
+            phoneNumber: '+123456789',
+            photo: 'assets/firm/local_auto.jpg',
+            loacation: {
+              city: "Астана",
+              street: "Кенесары көшесі",
+              buildingNumber: "79/1"
+            }
+          }
+        }),
+      }));
+      this._messageCollector.addMessage(new Message({
+        sentDate: date,
+        subject: 'Куплю/обменяю авто',
+        description: 'Куплю ваше авто за 3000$ или обменяю на BMW 325 1995г',
+        isSent: 'boolean',
+        sender: user,
+      }));
+
+    }
+
   }
 
   ngOnInit() {}
@@ -136,7 +137,7 @@ export class MessagesComponent implements OnInit {
     message.setRead(true);
   }
   deleteAllMessages(){
-   // this.messages = [];
+    this._messageCollector.deleteAll();
   }
   newMessage(message: Message){
 

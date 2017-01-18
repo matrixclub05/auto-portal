@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Message, User} from "../../global-services/data-objects/Message";
 import {MessageCollectorService} from "../../global-services/message-collector.service";
 import {Router} from "@angular/router";
-
+import {LoginServiceService} from "../../global-services/login-service.service";
+import {setTimeout} from "timers";
+const minute = 60 * 1000;
 @Component({
   selector: 'push-popup',
   templateUrl: './push-popup.component.html',
@@ -10,72 +12,123 @@ import {Router} from "@angular/router";
 })
 export class PushPopupComponent implements OnInit {
 
-  private _messageHardCode:Array<Message> = [];
-  private _currentMessage:Message = null;
+  private _messageHardCode: Array<Message> = [];
+  private _currentMessage: Message = null;
   private isUrgentShowed: boolean = false;
-  constructor(private _messageCollector:MessageCollectorService, private router: Router) { }
 
-  ngOnInit()
-  {
-    setInterval(()=>{
-
-      this.showPopup();
-      setTimeout(()=>{
-        this._currentMessage = null;
-      },4 * 1000)
-    }, 8 * 1000);
-
+  constructor(private _messageCollector: MessageCollectorService, private router: Router, private loginService: LoginServiceService) {
     this.createHardCodeMessages();
+
   }
-  closePopup(e){
+
+  private rule: Array<number> = [15 * 1000, minute, 2*minute, 2*minute];
+
+  ngOnInit() {
+    setInterval(()=>{
+      if(this._messageCollector.urgentMessage){
+        this._currentMessage = this._messageCollector.urgentMessage;
+        setTimeout(()=>{
+          this._currentMessage = null;
+          this._messageCollector.urgentMessage = null;
+        }, 6000);
+      }
+    }, 233);
+    this.activateStream();
+    setTimeout(()=>{
+      setInterval(this.activateStream, 8*minute);
+    }, 8*minute);
+
+
+
+    /*setInterval(()=> {
+      if(this._currentMessage == null ) {
+        i++;
+        if(i>len){
+          i = 0;
+        }
+      }else {
+        return;
+      }
+
+
+      if (this.loginService.isLoggedIn) {
+        setTimeout(()=>{
+
+          this.showPopup();
+
+        }, this.showRule[i]);
+
+
+      }
+
+    }, 200);*/
+
+
+  }
+
+  closePopup(e) {
     e.stopPropagation();
     this._currentMessage = null;
+  }
+  activateStream():void {
+    var len = this.rule.length-1;
+    var i = 0;
+    var messegaes = this._messageHardCode;
+    messegaes.map((message, i)=>{
+      setTimeout(()=>{
+        this._currentMessage = message;
+        this._messageCollector.addMessage(this._currentMessage);
+        setTimeout(()=>{
+          this._currentMessage = null;
+
+        }, 6000)
+      }, this.rule[i]);
+    });
   }
   protected getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  private showPopup()
-  {
-    if(this.isUrgentShowed){
+
+  private showPopup() {
+    if (this.isUrgentShowed) {
       this._messageCollector.urgentMessage = null;
     }
-    if(this._messageCollector.urgentMessage){
+    if (this._messageCollector.urgentMessage) {
       this._currentMessage = this._messageCollector.urgentMessage;
       this.isUrgentShowed = true;
-    }else{
+    } else {
       this._currentMessage = this.getFirstHardCodeMessage();
-      if(this._currentMessage)
-      {
+      if (this._currentMessage) {
         this._messageCollector.addMessage(this._currentMessage);
       }
     }
 
+    setTimeout(()=> {
+      this._currentMessage = null;
+    }, 6000);
+
   }
 
 
+  private getFirstHardCodeMessage(): Message {
 
-  private getFirstHardCodeMessage():Message
-  {
-
-    var rndIdx = this.getRandomInt(0, this._messageHardCode.length-1);
-    return  this._messageHardCode[rndIdx];
+    var rndIdx = this.getRandomInt(0, this._messageHardCode.length - 1);
+    return this._messageHardCode[rndIdx];
 
     /*if(this._messageHardCode.length > 0)
-    {
-      let lastMessage:Message = this._messageHardCode.shift();
-      return this._messageHardCode[rndIdx]; //lastMessage;
-    }
-    return null;*/
+     {
+     let lastMessage:Message = this._messageHardCode.shift();
+     return this._messageHardCode[rndIdx]; //lastMessage;
+     }
+     return null;*/
   }
 
-  private goToMessages()
-  {
+  private goToMessages() {
     this.router.navigateByUrl('/profile/messages');
   }
 
 
-  private createHardCodeMessages()
-  {
+  private createHardCodeMessages() {
     var date = new Date().toLocaleDateString();
     this._messageHardCode.push(new Message({
       sentDate: date,
