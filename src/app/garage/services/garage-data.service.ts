@@ -127,6 +127,7 @@ export interface ICarAccessory
   engineType:string[];
   transmissionType:string[];
   photoPath:string;
+  vinNumber: string;
 }
 
 export interface ServiceRow

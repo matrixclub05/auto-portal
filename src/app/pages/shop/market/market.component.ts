@@ -73,6 +73,8 @@ export class MarketComponent implements OnInit, AfterViewInit {
   }
 
   protected selectCars(filter?: Object) {
+
+    //noinspection TypeScriptUnresolvedFunction
     this._dbService.selectCars(filter).then(this.setCarList.bind(this));
   }
 

@@ -1,5 +1,9 @@
 <div class="col-sm-6">
   <div class="form-group">
+    <label for="selectedManufacturer">VIN Номер автомобиля</label>
+    <input type="text"  class="form-control" [(ngModel)]="_vinNumber">
+  </div>
+  <div class="form-group">
     <label for="selectedManufacturer">Марка</label>
     <select id="selectedManufacturer" class="form-control" [(ngModel)]="_selectedManufacturer"
             (ngModelChange)="getVehiclesByManufacturer()" [disabled]="_manufacturers.length == 0">

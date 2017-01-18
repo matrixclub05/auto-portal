@@ -10,6 +10,7 @@ export interface IVehicle {
   photo: string;
   price: number;
   city: string;
+  vinNumber: string;
 
 }
 
@@ -26,6 +27,7 @@ export class Vehicle implements IVehicle{
   public photo: string;
   public price: number;
   public city: string;
+  public vinNumber: string;
 
   constructor(cfg?: any) {
     //noinspection TypeScriptUnresolvedFunction

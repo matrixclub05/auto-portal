@@ -30,7 +30,7 @@ export class GarageSingleCarComponent implements OnInit {
 
   public addToMarket()
   {
-    this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year);
+    this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year, this._car.vinNumber);
   }
 
   protected capturePhoto($event)

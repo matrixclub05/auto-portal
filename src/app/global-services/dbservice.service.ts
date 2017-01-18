@@ -92,7 +92,7 @@ export class DBServiceService {
     this.createCars();
   }
 
-  public addFakeCarFromGarage(manufacturer:string, model:string, year:number)
+  public addFakeCarFromGarage(manufacturer:string, model:string, year:number, vinNumber: string)
   {
     let randomCarParams = this.generateRandomCarParams();
     let advCar:Ad = new Ad({
@@ -105,6 +105,7 @@ export class DBServiceService {
       brand: manufacturer,
       model: model,
       carName: manufacturer + model,
+      vinNumber: vinNumber,
       internalService: this.getRandomInt(0, 1) === 0,
       photo: "assets/subaru-impreza/impreza.jpg",
       ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)})
@@ -119,6 +120,7 @@ export class DBServiceService {
     }
 
     let repl = new Array(values.length);
+    //noinspection TypeScriptUnresolvedFunction
     repl.fill('?');
 
     this._database.transaction((tx) => {
@@ -171,6 +173,7 @@ export class DBServiceService {
                 values.push(carList[i][key]);
               }
               repl = new Array(values.length);
+              //noinspection TypeScriptUnresolvedFunction
               repl.fill('?');
               insertTx.executeSql('INSERT INTO car_list (' + columnNameList + ') VALUES (' + repl.join(',') + ')', values);
             }

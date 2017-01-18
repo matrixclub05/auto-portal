@@ -15,6 +15,7 @@ export class Ad implements IVehicle{
   public city: string;
   public carName:string;
   public isNew:boolean = false;
+  public vinNumber: string = "";
 
   constructor(cfg?: any) {
     //noinspection TypeScriptUnresolvedFunction
