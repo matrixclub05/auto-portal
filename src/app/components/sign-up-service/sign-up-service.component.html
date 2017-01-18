@@ -6,7 +6,14 @@
 </div>
 <div class="modal-body">
   <div class="message-form">
-    <h4>{{car.manufacturer}} {{car.model}}, {{car.year}}</h4>
+    <h4 *ngIf="car">{{car.manufacturer}} {{car.model}}, {{car.year}}</h4>
+    <div class="form-group" *ngIf="_carList">
+      <label for="exampleSelect1">Выберете машину из списка</label>
+      <select class="form-control" id="exampleSelect1">
+        <option *ngFor="let car of _carList" [value]="car">{{car.manufacturer}} {{car.model}}, {{car.year}}</option>
+
+      </select>
+    </div>
     <div class="form-group">
       <label>Выберете удобный Вам день</label>
       <div class="row">

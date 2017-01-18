@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Message} from "../../global-services/data-objects/Message";
 import {NgbActiveModal, NgbDateStruct, NgbTimeStruct} from "@ng-bootstrap/ng-bootstrap";
 import {MessageCollectorService} from "../../global-services/message-collector.service";
+import {LoginServiceService} from "../../global-services/login-service.service";
 const now = new Date();
 @Component({
   selector: 'app-sign-up-service',
@@ -11,14 +12,17 @@ const now = new Date();
 export class SignUpServiceComponent {
   @Input() message: Message;
   @Input() car: any;
-
+  _carList: any = null;
   now = new Date();
   photos: any = [];
   time: NgbTimeStruct;
   model: NgbDateStruct = {year: this.now.getFullYear(), month: this.now.getMonth() + 1, day: this.now.getDate()+1};
 
-  constructor(public activeModal: NgbActiveModal, public pushService: MessageCollectorService) {
-    this.time = {hour: this.getRandomInt(9, 17), minute: this.getRandomInt(0, 60), second: 0}
+  constructor(public activeModal: NgbActiveModal, public pushService: MessageCollectorService, private _loginService:LoginServiceService) {
+    this.time = {hour: this.getRandomInt(9, 17), minute: this.getRandomInt(0, 60), second: 0};
+    if(!this.car){
+      this._carList = this._loginService.loginData.getUserData("garageCar").carList;
+    }
   }
 
   protected getRandomInt(min: number, max: number) {
