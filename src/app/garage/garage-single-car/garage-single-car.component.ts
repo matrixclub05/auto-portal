@@ -28,20 +28,26 @@ export class GarageSingleCarComponent implements OnInit {
     this.onSelected.emit(this._car);
   }
 
-  public addToMarket()
+  public addToMarket(e)
   {
+    e.stopPropagation();
     this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year, this._car.vinNumber);
   }
 
   protected capturePhoto($event)
   {
+    $event.stopPropagation();
     if($event.target.files.length > 0)
     {
       var file = $event.target.files[0];
       this._garageMemo.addCarImage(this._car, file);
     }
   }
-  private signUpService(){
+  private onPhotoClick(e){
+    e.stopPropagation();
+  }
+  private signUpService(e){
+    e.stopPropagation();
     const modalRef = this.modalService.open(SignUpServiceComponent);
     modalRef.componentInstance.car = this._car;
     modalRef.componentInstance.message = new Message({

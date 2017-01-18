@@ -1,5 +1,5 @@
-<div class="xs-hidden car-wrapper" (click)="openCarDetails()">
-  <!--<div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook()" >ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>-->
+<div class="xs-hidden car-wrapper" (click)="openCarDetails($event)">
+  <!--<div class="sale" *ngIf="_car.internalService == 'true'" (click)="openServiceBook($event)" >ОБСЛУЖИВАЕТСЯ <br>НА АВТОСЕРВИСЕ</div>-->
   <div class="col-xs-4 image">
     <div class="row">
       <img src="{{_photoMemory.getCarImage(_car)}}" width="100%"/>
@@ -23,12 +23,12 @@
         <a href="javascript:void(0)">100 комментариев</a>
         <a href="javascript:void(0)">30.12.2016</a>
         <div class="icons-ct pull-right">
-          <i class="fa fa-bookmark btn" aria-hidden="true" (click)="openCarDetails()"
+          <i class="fa fa-bookmark btn" aria-hidden="true" (click)="openCarDetails($event)"
              *ngIf="_car.internalService == 'true'" style="color: #090"></i>
-          <i class="fa fa-book btn" aria-hidden="true" (click)="openServiceBook()"></i>
-          <i class="fa fa-calculator btn" aria-hidden="true" (click)="openCarCredit()"></i>
+          <i class="fa fa-book btn" aria-hidden="true" (click)="openServiceBook($event)"></i>
+          <i class="fa fa-calculator btn" aria-hidden="true" (click)="openCarCredit($event)"></i>
         </div>
-        <!--<a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit()">Кредит</a>-->
+        <!--<a *ngIf="_showCalcLink" href="javascript:void(0)" class="btn btn-primary" (click)="openCarCredit($event)">Кредит</a>-->
       </li>
     </ul>
   </div>
@@ -39,10 +39,10 @@
   <h4>{{_car.brand}} {{_car.model}} <span class="price">{{_car.price }}тг</span></h4>
   <div class="info-wrap">
     <div class="icons-ct">
-      <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails()"
+      <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails($event)"
          *ngIf="_car.internalService == 'true'"></i>
-      <i class="fa fa-book btn btn-primary pull-right" aria-hidden="true" (click)="openServiceBook()"></i>
-      <i class="fa fa-calculator btn btn-primary pull-right" aria-hidden="true" (click)="openCarCredit()"></i>
+      <i class="fa fa-book btn btn-primary pull-right" aria-hidden="true" (click)="openServiceBook($event)"></i>
+      <i class="fa fa-calculator btn btn-primary pull-right" aria-hidden="true" (click)="openCarCredit($event)"></i>
       <i class="fa fa-camera btn btn-primary pull-right" aria-hidden="true"></i>
     </div>
     <div class="image-ct">

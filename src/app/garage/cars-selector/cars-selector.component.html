@@ -8,10 +8,10 @@
   </div>
   <div class="col-md-9 list-group-item">
     <div *ngIf="(_carViewState == CAR_VIEW_STATES.CarView)" app-garage-single-car [_car]="selectedCar"
-         (onSelected)="openServiceBook($event)"></div>
+         (click)="openServiceBook($event)"></div>
 
     <div *ngIf="_carViewState == CAR_VIEW_STATES.ServiceBook" service-book [carServiceBook]="_garageData.serviceBook"
-         (goBack)="showCar($event)">
+         (click)="showCar($event)">
     </div>
   </div>
 </div>

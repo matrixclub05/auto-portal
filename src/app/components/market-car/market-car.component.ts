@@ -27,8 +27,9 @@ export class MarketCarComponent implements OnInit {
     this.owner = JSON.parse(this._car.ownerData);
   }
 
-  protected openServiceBook()
+  protected openServiceBook(e)
   {
+    e.stopPropagation();
     const modalRef: NgbModalRef = this._modalService.open(ServiceBookComponent, {
       size: 'lg',
       windowClass: 'car-market-car-details'
@@ -37,7 +38,8 @@ export class MarketCarComponent implements OnInit {
     this._userNavigation.trackAction("СЕРВИСНАЯ КНИГА " + this._car.carName + " " + this._car.engineType)
   }
 
-  protected openCarDetails() {
+  protected openCarDetails(e) {
+    e.stopPropagation();
     const modalRef: NgbModalRef = this._modalService.open(MarketServiceBookComponent, {
       size: 'lg',
       windowClass: 'car-market-car-details'
@@ -48,8 +50,9 @@ export class MarketCarComponent implements OnInit {
     this._userNavigation.trackAction("ДЕТАЛИ АВТО " + this._car.carName + " " + this._car.engineType)
   }
 
-  protected openCarCredit()
+  protected openCarCredit(e)
   {
+    e.stopPropagation();
     const modalRef = this._modalService.open(CreditCalcComponent,  {
       size: 'lg',
       windowClass: 'car-market-car-details'

@@ -20,6 +20,7 @@ export class SignUpServiceComponent {
 
   constructor(public activeModal: NgbActiveModal, public pushService: MessageCollectorService, private _loginService:LoginServiceService) {
     this.time = {hour: this.getRandomInt(9, 17), minute: this.getRandomInt(0, 60), second: 0};
+
     if(!this.car){
       this._carList = this._loginService.loginData.getUserData("garageCar").carList;
     }

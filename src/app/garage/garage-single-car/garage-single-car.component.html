@@ -21,14 +21,14 @@
            <!-- <input class="input-capture" type="file" accept="image/*" id="capture{{_car.manufacturer+_car.model+_car.year}}" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
             <label for="capture{{_car.manufacturer+_car.model+_car.year}}" class="btn btn-primary pull-right">Сделать снимок</label>-->
           <div class="icons-ct pull-right">
-            <i class="fa fa-handshake-o btn" (click)="addToMarket()" title="Добавить на рынок"></i>
+            <i class="fa fa-handshake-o btn" (click)="addToMarket($event)" title="Добавить на рынок"></i>
             <i class="fa fa-book btn" aria-hidden="true" (click)="select()" title="Сервисная книга"></i>
-            <i class="fa fa-cogs btn" aria-hidden="true" (click)="signUpService()" title="Записаться на сервис"></i>
-            <input class="input-capture" type="file"
+            <i class="fa fa-cogs btn" aria-hidden="true" (click)="signUpService($event)" title="Записаться на сервис"></i>
+            <input class="input-capture" type="file" (click)="onPhotoClick($event)"
                    accept="image/*" id="capture{{_car.manufacturer+_car.model+_car.year}}"
                    capture="camera"
                    placeholder="make a photo" (change)="capturePhoto($event)">
-            <label for="capture{{_car.manufacturer+_car.model+_car.year}}" class="fa fa-camera btn" title="Сделать снимок">
+            <label for="capture{{_car.manufacturer+_car.model+_car.year}}" class="fa fa-camera btn" title="Сделать снимок" (click)="onPhotoClick($event)">
 
             </label>
           </div>
@@ -43,17 +43,17 @@
     <h4>{{_car.manufacturer}} {{_car.model}} {{_car.year}}</h4>
     <div class="info-wrap">
       <div class="icons-ct">
-        <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails()"
+        <i class="fa fa-bookmark btn btn-primary pull-right" aria-hidden="true" (click)="openCarDetails($event)"
            *ngIf="_car.internalService == 'true'"></i>
         <i class="fa fa-book btn btn-primary pull-right" aria-hidden="true" (click)="select()"></i>
-        <i class="fa fa-cogs btn btn-primary pull-right" aria-hidden="true" (click)="signUpService()"></i>
+        <i class="fa fa-cogs btn btn-primary pull-right" aria-hidden="true" (click)="signUpService($event)"></i>
 
 
         <input class="input-capture" type="file" accept="image/*" id="capture{{_car.manufacturer+_car.model+_car.year}}" capture="camera" placeholder="make a photo" (change)="capturePhoto($event)">
-        <label for="capture{{_car.manufacturer+_car.model+_car.year}}" class="btn btn-primary pull-right">
+        <label for="capture{{_car.manufacturer+_car.model+_car.year}}" class="btn btn-primary pull-right" (click)="onPhotoClick($event)">
           <i class="fa fa-camera" aria-hidden="true"></i>
         </label>
-        <i class="fa fa-handshake-o btn btn-primary pull-right" aria-hidden="true" (click)="addToMarket()"></i>
+        <i class="fa fa-handshake-o btn btn-primary pull-right" aria-hidden="true" (click)="addToMarket($event)"></i>
       </div>
       <div class="image-ct">
         <img src="{{_garageMemo.getCarImage(_car)}}" width="100%"/>
@@ -64,7 +64,7 @@
     <div class="divider"></div>
     <ul class="list-group ">
       <li>
-        <label for="isInternalservice">
+        <label for="isInternalservice" (click)="onPhotoClick($event)">
           <input checked id="isInternalservice" type="checkbox">
           Обслуживается на Автосервисе
         </label>
