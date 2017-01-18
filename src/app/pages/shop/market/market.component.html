@@ -61,6 +61,16 @@
       </div>
 
       <div class="list-group-item">
+        <label class="form-check-label form-control" [class.active]="_isInternalService.yes" (change)="createCarForDisplay()">
+          <input type="checkbox" [(ngModel)]="_isInternalService.yes"> Обслуживается на Автосервисе
+        </label>
+
+        <label class="form-check-label form-control" [class.active]="_isInternalService.no" (change)="createCarForDisplay()">
+          <input type="checkbox" [(ngModel)]="_isInternalService.no"> Не Обслуживается на Автосервисе
+        </label>
+      </div>
+
+      <div class="list-group-item">
         <label>Объем двигателя</label>
         <div>
           <label for="minEngCapa">Минимальный объем двигателя</label>

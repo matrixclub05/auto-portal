@@ -33,6 +33,7 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
   protected _filterCarName: string = "";
   protected _filterVINNumber: string = "";
+  protected _
 
   private _carList: Array<Ad> = [];
 
@@ -51,6 +52,7 @@ export class MarketComponent implements OnInit, AfterViewInit {
   private _carModels = [];
 
   private _isNew:Object = {new:true, used:true};
+  private _isInternalService:Object = {yes:false, no:false};
 
   constructor(private _modalService: NgbModal, private _loginService: LoginServiceService, private _dbService: DBServiceService) {
   }
@@ -143,6 +145,9 @@ export class MarketComponent implements OnInit, AfterViewInit {
 
     if(!((this._isNew["new"] && this._isNew["used"]) || (!this._isNew["new"] && !this._isNew["used"])))
       filter["isNew"] = !this._isNew["new"];
+
+    if(!((this._isInternalService["yes"] && this._isInternalService["no"]) || (!this._isInternalService["yes"] && !this._isInternalService["no"])))
+      filter["internalService"] = this._isInternalService["yes"];
 
     filter['engineCapacity'] = [this._engineCapacityFrom, this._engineCapacityTo];
 

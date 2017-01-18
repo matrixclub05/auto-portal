@@ -85,6 +85,9 @@ export class DBServiceService {
     if(filter.isNew != undefined)
       conditions.push("isNew == " + (filter.isNew ? "'true'" : "'false'"));
 
+    if(filter.internalService != undefined)
+      conditions.push("internalService == " + (filter.internalService ? "'true'" : "'false'"));
+
     return "WHERE " + conditions.join(" AND ");
   }
 
