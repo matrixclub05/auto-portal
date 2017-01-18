@@ -7,7 +7,8 @@ import {LoginServiceService} from "../../global-services/login-service.service";
 import {Router} from '@angular/router';
 import {SignUpForServiceComponent} from "../../garage/sign-up-for-service/sign-up-for-service.component";
 import {TestDriveComponent} from "../../garage/test-drive/test-drive.component";
-import {User} from "../../global-services/data-objects/Message";
+import {User, Message} from "../../global-services/data-objects/Message";
+import {SignUpServiceComponent} from "../sign-up-service/sign-up-service.component";
 
 @Component({
   selector: '[app-header]',
@@ -46,9 +47,30 @@ export class HeaderComponent implements OnInit {
     modalRef.componentInstance.modalRef = modalRef;
     modalRef.componentInstance.testDriveMode = true;
   }
-  protected openSignUpService($event) {
+  /*protected openSignUpService($event) {
     const modalRef: NgbModalRef = this._modalService.open(SignUpForServiceComponent);
     modalRef.componentInstance.modalRef = modalRef;
     modalRef.componentInstance.testDriveMode = true;
+  }*/
+
+  protected openSignUpService($event) {
+    const modalRef: NgbModalRef = this._modalService.open(SignUpServiceComponent);
+
+    //modalRef.componentInstance.car = this._car;
+    modalRef.componentInstance.message = new Message({
+      sentDate: new Date().toLocaleDateString(),
+      description: '',
+      subject: 'Запись на сервис',
+      recipient: new User({
+        fullName: 'Автосервис Усть-Каменогорск',
+        firstName: 'Автосервис',
+        lastName: 'Усть-Каменогорск',
+        email: 'auto-service@bipek.kz',
+        phoneNumber: '+77232522525',
+        location: {name: 'Автосервис',city: 'Усть-Каменогорск', street: 'просп. Независимости', buildingNumber: '92/1'}
+      }),
+      sender: this._loginService.getCurrentUser()
+    });
+
   }
 }
