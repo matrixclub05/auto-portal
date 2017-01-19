@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, AfterViewInit, AfterViewChecked, DoCheck} from '@angular/core';
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {CarData} from "../../global-services/data-objects/CarData";
 import {GarageDataService} from "../services/garage-data.service";
@@ -19,7 +19,10 @@ export class GarageCarsComponent implements OnInit {
   constructor(private _loginService:LoginServiceService, private _garageData:GarageDataService) { }
 
   ngOnInit() {
-
+    this.updateCarList();
+    setInterval(()=>{
+      this.updateCarList();
+    }, 1000);
   }
 
   onCarSelected(car:CarData):void
@@ -28,15 +31,16 @@ export class GarageCarsComponent implements OnInit {
     this._currentState = this._states.SERVICE_BOOK;
   }
 
-  protected getAndSaveGarageCars():Array<CarData>
-  {
-    this._carList = this._loginService.loginData.getUserData("garageCar").carList;
-    return this._carList;
-  }
-
   protected backFromServiceBook(data:boolean)
   {
     this._currentState = GarageCarsStates.ADD_CARS_OR_SHOW_CARS;
+  }
+
+  protected updateCarList()
+  {
+    let newCarList = this._loginService.loginData.getUserData("garageCar").carList;
+    if(this._carList.length != newCarList.length)
+      this._carList = newCarList;
   }
 }
 
