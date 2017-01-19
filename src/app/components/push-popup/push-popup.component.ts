@@ -41,7 +41,9 @@ export class PushPopupComponent implements OnInit {
       if(this.loginService.isLoggedIn){
         this.activateStream();
         setTimeout(()=>{
-          setInterval(this.activateStream, 8*minute);
+          setInterval(()=>{
+            this.activateStream();
+          }, 8*minute);
         }, 8*minute);
         //noinspection TypeScriptUnresolvedFunction
         clearInterval(stream);
