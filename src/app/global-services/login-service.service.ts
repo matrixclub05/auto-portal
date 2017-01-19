@@ -44,6 +44,7 @@ export class LoginServiceService {
   }
 
   public logOut() {
+    localStorage.setItem("askToRegisterBanerShown", "false");
     localStorage.setItem("siteLoginKey", this.__DEFAULT_LOGIN_KEY);
     this._loginData = new LoggedInData(this.__DEFAULT_LOGIN_KEY);
     this.router.navigateByUrl('/');
