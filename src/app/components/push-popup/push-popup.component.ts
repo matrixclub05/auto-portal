@@ -25,6 +25,9 @@ export class PushPopupComponent implements OnInit {
 
   ngOnInit() {
     setInterval(()=>{
+      if(!this.loginService.isLoggedIn){
+        return;
+      }
       if(this._messageCollector.urgentMessage){
         this._currentMessage = this._messageCollector.urgentMessage;
         setTimeout(()=>{
@@ -33,37 +36,17 @@ export class PushPopupComponent implements OnInit {
         }, 6000);
       }
     }, 233);
-    this.activateStream();
-    setTimeout(()=>{
-      setInterval(this.activateStream, 8*minute);
-    }, 8*minute);
 
-
-
-    /*setInterval(()=> {
-      if(this._currentMessage == null ) {
-        i++;
-        if(i>len){
-          i = 0;
-        }
-      }else {
-        return;
-      }
-
-
-      if (this.loginService.isLoggedIn) {
+    var stream = setInterval(()=>{
+      if(this.loginService.isLoggedIn){
+        this.activateStream();
         setTimeout(()=>{
-
-          this.showPopup();
-
-        }, this.showRule[i]);
-
-
+          setInterval(this.activateStream, 8*minute);
+        }, 8*minute);
+        //noinspection TypeScriptUnresolvedFunction
+        clearInterval(stream);
       }
-
-    }, 200);*/
-
-
+    },333);
   }
 
   closePopup(e) {
@@ -74,6 +57,11 @@ export class PushPopupComponent implements OnInit {
     var len = this.rule.length-1;
     var i = 0;
     var messegaes = this._messageHardCode;
+
+    if(!this.loginService.isLoggedIn){
+      return;
+    }
+
     messegaes.map((message, i)=>{
       setTimeout(()=>{
         this._currentMessage = message;
