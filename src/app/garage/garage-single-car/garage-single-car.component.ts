@@ -6,6 +6,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SignUpServiceComponent} from "../../components/sign-up-service/sign-up-service.component";
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {Message, User} from "../../global-services/data-objects/Message";
+import {MessageCollectorService} from "../../global-services/message-collector.service";
 
 @Component({
   selector: '[app-garage-single-car]',
@@ -18,7 +19,7 @@ export class GarageSingleCarComponent implements OnInit {
   @Output() onSelected = new EventEmitter<CarData>();
   @ViewChild('carImage') carImage;
 
-  constructor(private _databaseService:DBServiceService, private _garageMemo:PhotoMemoryService, private modalService: NgbModal, public loginService: LoginServiceService) { }
+  constructor(private _databaseService:DBServiceService, private _garageMemo:PhotoMemoryService, private modalService: NgbModal, public loginService: LoginServiceService, private messagesService: MessageCollectorService) { }
 
   ngOnInit() {
   }
@@ -32,6 +33,21 @@ export class GarageSingleCarComponent implements OnInit {
   {
     e.stopPropagation();
     this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year, this._car.vinNumber);
+    this.showMessage();
+
+  }
+  public showMessage() {
+
+    this.messagesService.urgentMessage = new Message({
+      subject: "Автобазар",
+      description: `${this._car.manufacturer} ${this._car.model} была добавлена на рынок `,
+      sender: new User({
+        firstName: "Автобазар",
+        lastName: ""
+      }),
+      recipient: this.loginService.getCurrentUser()
+    });
+    this.messagesService.addMessage(this.messagesService.urgentMessage);
   }
 
   protected capturePhoto($event)
