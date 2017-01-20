@@ -2,6 +2,7 @@ import {Component, OnInit, AfterViewInit, AfterViewChecked, DoCheck} from '@angu
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {CarData} from "../../global-services/data-objects/CarData";
 import {GarageDataService} from "../services/garage-data.service";
+import {Vehicle} from "../../global-services/data-objects/Vehicle";
 
 @Component({
   selector: '[garage-cars]',
@@ -12,7 +13,7 @@ export class GarageCarsComponent implements OnInit {
 
   private _currentState:GarageCarsStates = GarageCarsStates.ADD_CARS_OR_SHOW_CARS;
   private _states = GarageCarsStates;
-  private _carList:Array<CarData> = [];
+  private _carList:Array<Vehicle> = [];
 
   private _selectedCar:CarData = null;
 

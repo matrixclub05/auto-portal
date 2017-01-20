@@ -24,7 +24,7 @@ export class Vehicle implements IVehicle{
   public transmissionType: string = "";
   public internalService: boolean = false;
   public ownerData: string = "";
-  public photo: string;
+  public photo: string = "assets/default-car-image.jpg";
   public price: number;
   public city: string;
   public vinNumber: string;

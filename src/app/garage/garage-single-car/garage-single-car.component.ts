@@ -6,6 +6,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SignUpServiceComponent} from "../../components/sign-up-service/sign-up-service.component";
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {Message, User} from "../../global-services/data-objects/Message";
+import {Vehicle} from "../../global-services/data-objects/Vehicle";
 
 @Component({
   selector: '[app-garage-single-car]',
@@ -14,8 +15,8 @@ import {Message, User} from "../../global-services/data-objects/Message";
 })
 export class GarageSingleCarComponent implements OnInit {
 
-  @Input() _car:CarData;
-  @Output() onSelected = new EventEmitter<CarData>();
+  @Input() _car:Vehicle;
+  @Output() onSelected = new EventEmitter<Vehicle>();
   @ViewChild('carImage') carImage;
 
   constructor(private _databaseService:DBServiceService, private _garageMemo:PhotoMemoryService, private modalService: NgbModal, public loginService: LoginServiceService) { }
@@ -23,7 +24,7 @@ export class GarageSingleCarComponent implements OnInit {
   ngOnInit() {
   }
 
-  protected select(car:CarData)
+  protected select(car:Vehicle)
   {
     this.onSelected.emit(this._car);
   }
@@ -31,7 +32,7 @@ export class GarageSingleCarComponent implements OnInit {
   public addToMarket(e)
   {
     e.stopPropagation();
-    this._databaseService.addFakeCarFromGarage(this._car.manufacturer,this._car.model,this._car.year, this._car.vinNumber);
+    this._databaseService.addFakeCarFromGarage(this._car);
   }
 
   protected capturePhoto($event)
@@ -43,7 +44,26 @@ export class GarageSingleCarComponent implements OnInit {
       this._garageMemo.addCarImage(this._car, file);
     }
   }
+  private onIntenralServiceClick(e){
+    e.stopPropagation();
+    this.updateVehicle(this._car);
+  }
+
+  protected updateVehicle(car:Vehicle) {
+    //TODO: save userData
+      let userData = this.loginService.loginData.getUserData("garageCar");
+
+      userData.carList.push(car);
+
+      this.loginService.loginData.storeUserData("garageCar", userData);
+
+      //this.onAdded.emit(true);
+
+  }
+
+
   private onPhotoClick(e){
+
     e.stopPropagation();
   }
   private signUpService(e){

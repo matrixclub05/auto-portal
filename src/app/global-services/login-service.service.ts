@@ -59,7 +59,6 @@ export class LoginServiceService {
     return this._currentUser = <User>JSON.parse(localStorage.getItem("users_" + id));
   }
   public updateUser(user: User){
-    debugger;
     localStorage.setItem("users_" + user.email, JSON.stringify(user));
   }
   public setCurrentUser(user: User){

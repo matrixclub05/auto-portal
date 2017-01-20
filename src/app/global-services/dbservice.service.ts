@@ -3,6 +3,7 @@ import {Cars} from "../garage/draftData/Cars";
 import {Ad} from "./data-objects/Ad";
 import {Deferred} from "./Deffered";
 import {DefaultKeyValueDiffer} from "@angular/core/src/change_detection/differs/default_keyvalue_differ";
+import {Vehicle} from "./data-objects/Vehicle";
 declare var openDatabase: any;
 @Injectable()
 export class DBServiceService {
@@ -95,7 +96,7 @@ export class DBServiceService {
     this.createCars();
   }
 
-  public addFakeCarFromGarage(manufacturer:string, model:string, year:number, vinNumber: string)
+  public addFakeCarFromGarage(car:Vehicle)
   {
     let randomCarParams = this.generateRandomCarParams();
     let advCar:Ad = new Ad({
@@ -103,12 +104,12 @@ export class DBServiceService {
       engineCapacity: randomCarParams.engineCapacity,
       transmissionType: randomCarParams.transmission,
       city: this.cities[this.getRandomInt(0, this.cities.length - 1)],
-      year: year,
+      year: car.year,
       price: this.getRandomInt(500000, 10000000),
-      brand: manufacturer,
-      model: model,
-      carName: manufacturer + model,
-      vinNumber: vinNumber,
+      brand: car.brand,
+      model: car.model,
+      carName: car.brand + car.model,
+      vinNumber: car.vinNumber,
       internalService: this.getRandomInt(0, 1) === 0,
       photo: "assets/subaru-impreza/impreza.jpg",
       ownerData: JSON.stringify({userName: this.getRandomName(), phoneNumber: "+" + this.getRandomInt(70000000000,79999999999)})

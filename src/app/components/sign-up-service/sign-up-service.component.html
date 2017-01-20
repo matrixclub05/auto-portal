@@ -6,11 +6,11 @@
 </div>
 <div class="modal-body">
   <div class="message-form">
-    <h4 *ngIf="car">{{car.manufacturer}} {{car.model}}, {{car.year}}</h4>
+    <h4 *ngIf="car">{{car.brand}} {{car.model}}, {{car.year}}</h4>
     <div class="form-group" *ngIf="!car">
       <label for="exampleSelect1">Выберете машину из списка</label>
       <select class="form-control" id="exampleSelect1">
-        <option *ngFor="let car of _carList" [value]="car">{{car.manufacturer}} {{car.model}}, {{car.year}}</option>
+        <option *ngFor="let car of _carList" [value]="car">{{car.brand}} {{car.model}}, {{car.year}}</option>
 
       </select>
     </div>

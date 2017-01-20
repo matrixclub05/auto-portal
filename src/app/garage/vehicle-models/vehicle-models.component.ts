@@ -2,6 +2,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {GarageDataService} from "../services/garage-data.service";
 import {LoginServiceService} from "../../global-services/login-service.service";
 import {CarData} from "../../global-services/data-objects/CarData";
+import {Vehicle} from "../../global-services/data-objects/Vehicle";
 
 @Component({
   selector: '[vehicle-models]',
@@ -54,7 +55,13 @@ export class VehicleModelsComponent implements OnInit {
     if (this.readyForSave) {
       let userData = this._loginDataService.loginData.getUserData("garageCar");
 
-      let car: CarData = new CarData(this._selectedManufacturer, this._selectedVehicle, parseInt(this._selectedYear), this._vinNumber);
+      //let car: CarData =  new CarData(this._selectedManufacturer, this._selectedVehicle, parseInt(this._selectedYear), this._vinNumber);
+      let car: Vehicle =  new Vehicle({
+        brand: this._selectedManufacturer,
+        model: this._selectedVehicle,
+        year: this._selectedYear,
+        vinNumber: this._vinNumber
+      });
       if (userData.carList.length == 0) {
         userData.selectedCar = car;
       }
